@@ -1,5 +1,6 @@
 
 import './App.css'
+import Card from './component/Card'
 import Header from './component/Header'
 import Welcome from './component/Welcome'
 
@@ -13,7 +14,8 @@ function App() {
   return (
     <>
      {/* <Welcome user={user}/> */}
-     <Header/>
+     {/* <Header/> */}
+     <Card/>
     </>
   )
 }
