@@ -1,6 +1,9 @@
 import { React } from 'react'
 import { useState } from 'react';
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
+import { GiPlayButton } from "react-icons/gi";
+import { GrPowerReset } from "react-icons/gr";
+
 
 
 const Card = (props) => {
@@ -13,9 +16,13 @@ const Card = (props) => {
   const button = () => {
     let input = document.getElementById("input");
     console.log(comment);
-    setComment([...comment, input.value]);
-    input.value = ""
+    if(input.value==""){
+      alert("please enter value")
+    }else{
+      setComment([...comment, input.value]);
+      input.value = ""
 
+    }
 
   }
 
@@ -41,7 +48,7 @@ const Card = (props) => {
             <img src={props.img} alt="" />
           </div>
           <p>{props.title}</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quaerat quisquam cumque, nemo debitis autem cum architecto inventore vitae suscipit.</p>
+          <p>React apps are made out of components. A component is a piece of the UI (user interface) that has its own logic and appearance. A component can be as small as a button, or as large as an entire page.</p>
           <div className='flex justify-between mt-3 gap-5 w-80'>
             <div className="flex">
               <div onClick={counter} className="text-5xl text-green-700">
@@ -56,17 +63,14 @@ const Card = (props) => {
                 <AiFillDislike />
               </div>
               <button className='w-10 text-2xl' id='buton-2'>{dislike}</button>
-
             </div>
-            <button onClick={reset} className='bg-sky-300 p-2 rounded font-bold hover:bg-sky-500'>reset</button>
+            <button onClick={reset} className='text-5xl text-lime-600'><GrPowerReset />
+            </button>
           </div>
-
-          <form action="">
-            <div className="flex gap-2 mt-3">
-              <input className="border outline-0 rounded" id="input" type="text" placeholder="Enter a comment" />
-              <button type="sumbit" onClick={button} className="border rounded  bg-sky-300 p-1  font-semibold hover:bg-sky-500">sumbit</button>
+            <div className="flex gap-2 mt-3 border w-fit rounded">
+              <input className=" outline-0 rounded" id="input" type="text" placeholder="Enter a comment" />
+              <div className="text-2xl" onClick={button}><GiPlayButton /></div>
             </div>
-          </form>
           <div>
             {comment.map((value) =>
 

@@ -18,8 +18,8 @@ function App() {
      {/* <Header/> */}
      <h2 className='font-bold text-3xl text-center'>My Social Feed</h2>
    <div className='flex gap-5'>
-   <Card title="react app"  img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ04HyzQ1x41KdCCV9KCHaeRdVvRszAP2Zc9A&s"}/>
-   <Card2 title="react app2" />
+   <Card title="React app"  img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ04HyzQ1x41KdCCV9KCHaeRdVvRszAP2Zc9A&s"}/>
+   <Card2 title="React vite" img ={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6EAHvdbel54bf0pizpGJS2ZkDVfkcoEpuQ&s"}/>
    </div>
     </>
   )
