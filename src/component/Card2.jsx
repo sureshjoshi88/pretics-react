@@ -11,10 +11,10 @@ const Card2 = (props) => {
   const [like, setLike] = useState(0);
   const [dislike, setDislike] = useState(0);
   const [comment2, setComment2] = useState([]);
-  const [commenttext,setCommenttext] = useState("");
+  const [commenttext, setCommenttext] = useState("");
 
   const buttons = () => {
-   let input = document.getElementById("input")
+    let input = document.getElementById("input")
 
     if (commenttext.trim() === "") {
       alert("please enter value")
@@ -71,13 +71,13 @@ const Card2 = (props) => {
             <button onClick={reset} className='text-5xl text-lime-600'><GrPowerReset />
             </button>          </div>
           <div className="flex gap-2 mt-3 border w-fit rounded">
-            <input className=" outline-0 rounded" id="input" type="text" value={commenttext} onChange={(e)=>setCommenttext(e.target.value)} onKeyDown={handleevent} placeholder="Enter a comment" />
+            <input className=" outline-0 rounded" id="input" type="text" value={commenttext} onChange={(e) => setCommenttext(e.target.value)} onKeyDown={handleevent} placeholder="Enter a comment" />
             <div className="text-2xl" onClick={buttons}><GiPlayButton /></div>
           </div>
           <div>
             {comment2.map((value) =>
 
-              <li  className="p-1">{value}</li>
+              <li className="p-1">{value}</li>
 
             )}
           </div>

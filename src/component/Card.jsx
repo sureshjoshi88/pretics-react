@@ -16,21 +16,21 @@ const Card = (props) => {
   const button = () => {
     let input = document.getElementById("input");
     console.log(comment);
-    if(input.value==""){
+    if (input.value == "") {
       alert("please enter value")
-    }else{
+    } else {
       setComment([...comment, input.value]);
       input.value = ""
 
     }
   }
- const handleevent=(event)=>{
-      if(event.key==="Enter"){
-        button()
-      }
+  const handleevent = (event) => {
+    if (event.key === "Enter") {
+      button()
+    }
   }
 
-  
+
 
   const counter = () => {
 
@@ -73,10 +73,10 @@ const Card = (props) => {
             <button onClick={reset} className='text-5xl text-lime-600'><GrPowerReset />
             </button>
           </div>
-            <div className="flex gap-2 mt-3 border w-fit rounded">
-              <input className=" outline-0 rounded" id="input" type="text" onKeyDown={handleevent}  placeholder="Enter a comment" />
-              <div className="text-2xl" onClick={button}><GiPlayButton /></div>
-            </div>
+          <div className="flex gap-2 mt-3 border w-fit rounded">
+            <input className=" outline-0 rounded" id="input" type="text" onKeyDown={handleevent} placeholder="Enter a comment" />
+            <div className="text-2xl" onClick={button}><GiPlayButton /></div>
+          </div>
           <div>
             {comment.map((value) =>
 
