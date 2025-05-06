@@ -15,7 +15,7 @@ function App() {
     <>
      {/* <Welcome user={user}/> */}
      {/* <Header/> */}
-     <Card/>
+     <Card title="My Social Feed"/>
     </>
   )
 }
