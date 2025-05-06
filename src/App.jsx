@@ -16,9 +16,11 @@ function App() {
     <>
      {/* <Welcome user={user}/> */}
      {/* <Header/> */}
-     <h2 className='font-bold text-3xl'>My Social Feed</h2>
-     <Card title="react app" />
-     <Card2 title="react app2" />
+     <h2 className='font-bold text-3xl text-center'>My Social Feed</h2>
+   <div className='flex gap-5'>
+   <Card title="react app"  img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ04HyzQ1x41KdCCV9KCHaeRdVvRszAP2Zc9A&s"}/>
+   <Card2 title="react app2" />
+   </div>
     </>
   )
 }
