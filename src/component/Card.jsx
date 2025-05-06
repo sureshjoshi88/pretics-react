@@ -23,8 +23,14 @@ const Card = (props) => {
       input.value = ""
 
     }
-
   }
+ const handleevent=(event)=>{
+      if(event.key==="Enter"){
+        button()
+      }
+  }
+
+  
 
   const counter = () => {
 
@@ -68,7 +74,7 @@ const Card = (props) => {
             </button>
           </div>
             <div className="flex gap-2 mt-3 border w-fit rounded">
-              <input className=" outline-0 rounded" id="input" type="text" placeholder="Enter a comment" />
+              <input className=" outline-0 rounded" id="input" type="text" onKeyDown={handleevent}  placeholder="Enter a comment" />
               <div className="text-2xl" onClick={button}><GiPlayButton /></div>
             </div>
           <div>

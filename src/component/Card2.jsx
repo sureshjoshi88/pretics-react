@@ -1,19 +1,36 @@
 import React from 'react'
 import { useState } from 'react';
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
+import { GiPlayButton } from "react-icons/gi";
+import { GrPowerReset } from "react-icons/gr";
+
+
 
 const Card2 = (props) => {
 
   const [like, setLike] = useState(0);
   const [dislike, setDislike] = useState(0);
   const [comment2, setComment2] = useState([]);
+  const [commenttext,setCommenttext] = useState("");
 
   const buttons = () => {
-    let input = document.getElementById("input");
-    console.log(comment2);
-    setComment2([...comment2, input.value]);
-    input.value = ""
+   let input = document.getElementById("input")
+
+    if (commenttext.trim() === "") {
+      alert("please enter value")
+    } else {
+      setComment2([...comment2, commenttext]);
+      setCommenttext("");
+
+    }
   }
+
+  const handleevent = (event) => {
+    if (event.key === "Enter") {
+      buttons()
+    }
+  }
+
 
   const counter = () => {
 
@@ -51,16 +68,16 @@ const Card2 = (props) => {
               </div>
               <button className='w-10 text-2xl' id='buton-2'>{dislike}</button>
             </div>
-            <button onClick={reset} className='bg-sky-300 p-2 rounded font-bold hover:bg-sky-500'>reset</button>
-          </div>
-          <div className="flex gap-2 mt-3">
-            <input className="border outline-0 rounded" id="input" type="text" placeholder="Enter a comment" />
-            <button onClick={buttons} className="border rounded  bg-sky-300 p-1  font-semibold hover:bg-sky-500">sumbit</button>
+            <button onClick={reset} className='text-5xl text-lime-600'><GrPowerReset />
+            </button>          </div>
+          <div className="flex gap-2 mt-3 border w-fit rounded">
+            <input className=" outline-0 rounded" id="input" type="text" value={commenttext} onChange={(e)=>setCommenttext(e.target.value)} onKeyDown={handleevent} placeholder="Enter a comment" />
+            <div className="text-2xl" onClick={buttons}><GiPlayButton /></div>
           </div>
           <div>
-            {comment2.map((value,index) =>
+            {comment2.map((value) =>
 
-              <li key={index} className="p-1">{value}</li>
+              <li  className="p-1">{value}</li>
 
             )}
           </div>

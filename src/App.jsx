@@ -17,9 +17,15 @@ function App() {
      {/* <Welcome user={user}/> */}
      {/* <Header/> */}
      <h2 className='font-bold text-3xl text-center'>My Social Feed</h2>
-   <div className=' gap-5 md:flex'>
-   <Card title="React app"  img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ04HyzQ1x41KdCCV9KCHaeRdVvRszAP2Zc9A&s"}/>
-   <Card2 title="React vite" img ={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6EAHvdbel54bf0pizpGJS2ZkDVfkcoEpuQ&s"}/>
+   <div className=' gap-5 md:flex w-full'>
+    <div>
+    <Card title="React app"  img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ04HyzQ1x41KdCCV9KCHaeRdVvRszAP2Zc9A&s"}/>
+
+    </div>
+    <div >
+    <Card2 title="React vite" img ={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6EAHvdbel54bf0pizpGJS2ZkDVfkcoEpuQ&s"}/>
+
+    </div>
    </div>
     </>
   )
