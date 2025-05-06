@@ -1,6 +1,7 @@
 
 import './App.css'
 import Card from './component/Card'
+import Card2 from './component/Card2'
 import Header from './component/Header'
 import Welcome from './component/Welcome'
 
@@ -15,7 +16,9 @@ function App() {
     <>
      {/* <Welcome user={user}/> */}
      {/* <Header/> */}
-     <Card title="My Social Feed"/>
+     <h2 className='font-bold text-3xl'>My Social Feed</h2>
+     <Card title="react app" />
+     <Card2 title="react app2" />
     </>
   )
 }
