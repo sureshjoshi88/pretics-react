@@ -2,6 +2,7 @@
 import './App.css'
 import Card from './component/Card'
 import Card2 from './component/Card2'
+import Form from './component/Form'
 import Header from './component/Header'
 import Welcome from './component/Welcome'
 
@@ -27,6 +28,7 @@ function App() {
 
         </div>
       </div>
+      <Form/>
     </>
   )
 }
