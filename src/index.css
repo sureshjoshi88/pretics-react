@@ -73,3 +73,7 @@ button:focus-visible {
 body{
   background-color: whitesmoke;
 }
+
+.webkit::-webkit-scrollbar{
+  background: transparent;
+}

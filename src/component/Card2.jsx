@@ -74,13 +74,14 @@ const Card2 = (props) => {
             <input className=" outline-0 rounded" id="input" type="text" value={commenttext} onChange={(e) => setCommenttext(e.target.value)} onKeyDown={handleevent} placeholder="Enter a comment" />
             <div className="text-2xl" onClick={buttons}><GiPlayButton /></div>
           </div>
-          <div>
-            {comment2.map((value) =>
+          <div className='h-20 overflow-hidden overflow-y-scroll webkit'>
+            {comment2.map((value,index) =>
 
-              <li className="p-1">{value}</li>
+              <li className="p-1" key={index}>{value}</li>
 
             )}
           </div>
+         
         </div>
       </div>
     </div>
