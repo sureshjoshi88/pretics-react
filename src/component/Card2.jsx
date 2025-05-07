@@ -48,7 +48,7 @@ const Card2 = (props) => {
   return (
     <div className='mt-4 '>
       <div>
-        <div className="bg-white rounded shadow-xl p-2 mt-3 border border-amber-600">
+        <div className="bg-white rounded shadow-xl p-2 mt-3 ">
           <div>
             <img src={props.img} alt="" />
           </div>
