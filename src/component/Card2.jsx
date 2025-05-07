@@ -14,7 +14,6 @@ const Card2 = (props) => {
   const [commenttext, setCommenttext] = useState("");
 
   const buttons = () => {
-    let input = document.getElementById("input")
 
     if (commenttext.trim() === "") {
       alert("please enter value")
@@ -53,7 +52,7 @@ const Card2 = (props) => {
           <div>
             <img src={props.img} alt="" />
           </div>
-          <p>{props.title}</p>
+          <p className='text-2xl'>{props.title}</p>
           <p>Vite (French word for "quick", pronounced /vit/, like "veet") is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two major parts:</p>
           <div className='flex justify-between mt-3 gap-5 w-80'>
             <div className="flex">
@@ -71,7 +70,7 @@ const Card2 = (props) => {
             <button onClick={reset} className='text-5xl text-lime-600'><GrPowerReset />
             </button>          </div>
           <div className="flex gap-2 mt-3 border w-fit rounded">
-            <input className=" outline-0 rounded" id="input" type="text" value={commenttext} onChange={(e) => setCommenttext(e.target.value)} onKeyDown={handleevent} placeholder="Enter a comment" />
+            <input className=" outline-0 rounded" id="input2" type="text" value={commenttext} onChange={(e) => setCommenttext(e.target.value)} onKeyDown={handleevent} placeholder="Enter a comment" />
             <div className="text-2xl" onClick={buttons}><GiPlayButton /></div>
           </div>
           <div className='h-20 overflow-hidden overflow-y-scroll webkit'>
