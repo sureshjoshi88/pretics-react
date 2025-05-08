@@ -6,12 +6,6 @@ import "toastify-js/src/toastify.css"
 
 
 const Form = () => {
-//   function mainFull(){
-//     let main = document.getElementById("main")
-//     main.addEventListener("submit",(e)=>[
-//         e.preventDefault()
-//     ])
-//   }
 const mainFull=(event)=>{
 event.preventDefault();
 }
@@ -62,11 +56,13 @@ const sumbitButton=()=>{
     return (
         <div className='flex justify-center mt-10'>
             <div className=' p-2 rounded shadow-xl bg-white'>
-                <form action="" id='main' onSubmit={mainFull}>
+                <form action="" id='main' onSubmit={mainFull} className='p-2'>
                     <div>
+                        <label>UserName</label><br/>
                         <input className='border hover:border-green-300 mt-3 w-100 p-1 rounded cursor-pointer' value={value} onChange={(e)=>setValue(e.target.value)} type="email" placeholder='Username' required />
                     </div>
-                    <div>
+                    <div className='mt-2'>
+                    <label>Password</label><br/>
                         <input className='border  hover:border-green-300  mt-3 w-100 p-1 rounded cursor-pointer' value={value2}  onChange={(e)=>setValue2(e.target.value)} type="password" placeholder='Password' required />
                     </div>
                     <div>
