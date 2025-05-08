@@ -70,7 +70,7 @@ const sumbitButton=()=>{
                         <input className='border  hover:border-green-300  mt-3 w-100 p-1 rounded' value={value2}  onChange={(e)=>setValue2(e.target.value)} type="password" placeholder='Password' required />
                     </div>
                     <div>
-                        <button onClick={sumbitButton} className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3'>Sumbit</button>
+                        <button onClick={sumbitButton} className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3'>Login </button>
                     </div>
                 </form>
             </div>
