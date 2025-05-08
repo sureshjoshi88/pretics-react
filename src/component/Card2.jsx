@@ -75,7 +75,6 @@ const Card2 = (props) => {
           </div>
           <div className='h-20 overflow-hidden overflow-y-scroll webkit'>
             {comment2.map((value,index) =>
-
               <li className="p-1 cursor-pointer" key={index}>{value}</li>
 
             )}
