@@ -64,13 +64,13 @@ const sumbitButton=()=>{
             <div className=' p-2 rounded shadow-xl bg-white'>
                 <form action="" id='main' onSubmit={mainFull}>
                     <div>
-                        <input className='border hover:border-green-300 mt-3 w-100 p-1 rounded' value={value} onChange={(e)=>setValue(e.target.value)} type="email" placeholder='Username' required />
+                        <input className='border hover:border-green-300 mt-3 w-100 p-1 rounded cursor-pointer' value={value} onChange={(e)=>setValue(e.target.value)} type="email" placeholder='Username' required />
                     </div>
                     <div>
-                        <input className='border  hover:border-green-300  mt-3 w-100 p-1 rounded' value={value2}  onChange={(e)=>setValue2(e.target.value)} type="password" placeholder='Password' required />
+                        <input className='border  hover:border-green-300  mt-3 w-100 p-1 rounded cursor-pointer' value={value2}  onChange={(e)=>setValue2(e.target.value)} type="password" placeholder='Password' required />
                     </div>
                     <div>
-                        <button onClick={sumbitButton} className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3'>Login </button>
+                        <button onClick={sumbitButton} className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3 cursor-pointer'>Login </button>
                     </div>
                 </form>
             </div>
