@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
+import Tostyfiy from './Tostyfiy';
 
 
 
@@ -11,6 +12,8 @@ event.preventDefault();
 }
 const [value,setValue] = useState("");
 const [value2,setValue2] = useState("");
+const [error,setError] = useState("");
+
 const values = {
     username:"suresh@gmail.com",
     password:"joshi123"
@@ -34,28 +37,33 @@ const sumbitButton=()=>{
             },
             onClick: function(){} // Callback after click
           }).showToast();
+          setError("")
+         
     }else{
-        Toastify({
-            text: "Please correct username and password",
-            duration: 3000,
-            destination: "https://github.com/apvarun/toastify-js",
-            newWindow: true,
-            close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-              background: "linear-gradient(to right, #f02e0c, #f76f4d)",
-            },
-            onClick: function(){} // Callback after click
-          }).showToast();        setValue("")
+        setError("Please correct username and password");
+        
+        // Toastify({
+        //     text: "Please correct username and password",
+        //     duration: 3000,
+        //     destination: "https://github.com/apvarun/toastify-js",
+        //     newWindow: true,
+        //     close: true,
+        //     gravity: "top", // `top` or `bottom`
+        //     position: "right", // `left`, `center` or `right`
+        //     stopOnFocus: true, // Prevents dismissing of toast on hover
+        //     style: {
+        //       background: "linear-gradient(to right, #f02e0c, #f76f4d)",
+        //     },
+        //     onClick: function(){} // Callback after click
+        //   }).showToast();      
+            setValue("")
         setValue2("")
     }
 }
  
     return (
-        <div className='flex justify-center mt-10'>
-            <div className=' p-2 rounded shadow-xl bg-white'>
+        <div className='flex justify-center mt-10 mb-4'>
+            <div className=' p-2 rounded shadow-xl shadow-amber-300 bg-white'>
                 <form action="" id='main' onSubmit={mainFull} className='p-2'>
                     <div>
                         <label>UserName</label><br/>
@@ -68,6 +76,7 @@ const sumbitButton=()=>{
                     <div>
                         <button onClick={sumbitButton} className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3 cursor-pointer'>Login </button>
                     </div>
+                    <p className='text-red-500'>{error}</p>
                 </form>
             </div>
         </div>
