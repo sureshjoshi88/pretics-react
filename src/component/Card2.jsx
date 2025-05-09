@@ -50,7 +50,7 @@ const Card2 = (props) => {
       <div>
         <div className="bg-white rounded shadow-xl p-2 mt-3 ">
           <div>
-            <img className='cursor-pointer cursor-pointer' src={props.img} alt="" />
+            <img className='cursor-pointer' src={props.img} alt="" />
           </div>
           <p className='text-2xl'>{props.title}</p>
           <p>Vite (French word for "quick", pronounced /vit/, like "veet") is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two major parts:</p>

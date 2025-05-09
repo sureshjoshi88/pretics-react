@@ -2,9 +2,6 @@ import React from 'react'
 import { useState } from 'react';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
-import Tostyfiy from './Tostyfiy';
-import Card from './Card';
-import ProductCard from './ProductCard';
 
 
 
@@ -14,7 +11,7 @@ event.preventDefault();
 }
 const [value,setValue] = useState("");
 const [value2,setValue2] = useState("");
-const [error,setError] = useState(false);
+const [error,setError] = useState("");
 
 const values = {
     username:"suresh@gmail.com",
@@ -39,12 +36,10 @@ const sumbitButton=()=>{
             },
             onClick: function(){} // Callback after click
           }).showToast();
-          setError("");
           
          
     }else{
-        setError(true);
-        // localStorage.setItem("error",JSON.stringify("Please correct username and password"))
+        setError("Please correct username and password");
         // Toastify({
         //     text: "Please correct username and password",
         //     duration: 3000,
@@ -82,6 +77,7 @@ const sumbitButton=()=>{
                     </div>
                     <p className='text-red-500'>{error}</p>
                 </form>
+                    {/* <Toastify/> */}
             </div>
         </div>
 
