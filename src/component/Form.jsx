@@ -27,7 +27,7 @@ const values = {
 }
 
 const sumbitButton=()=>{
-    if(value===""&&value.length<=5 && value2===""&&value2.length<=8){
+    if(value===""||value.length<=5 && value2===""||value2.length<=8){
         setValue("")
         setValue2("")
         // Toastify({
@@ -76,12 +76,12 @@ const sumbitButton=()=>{
             <div className=' p-2 rounded shadow-xl shadow-amber-300 bg-white'>
                 <form action="" id='main' onSubmit={mainFull} className='p-2'>
                     <div>
-                        <label>Email</label><br/>
-                        <input className='border hover:border-green-300 mt-3 w-100 p-1 rounded cursor-pointer' value={value} onChange={(e)=>setValue(e.target.value)} type="text" placeholder='Email' required />
+                        <label for="101">Username</label><br/>
+                        <input id='101' name='name' className='border hover:border-green-300 mt-3 w-100 p-1 rounded cursor-pointer' value={value} onChange={(e)=>setValue(e.target.value)} type="text" placeholder='Username' required />
                     </div>
                     <div className='mt-2'>
-                    <label>Password</label><br/>
-                        <input className='border  hover:border-green-300  mt-3 w-100 p-1 rounded cursor-pointer' value={value2}  onChange={(e)=>setValue2(e.target.value)} type="password" placeholder='Password' required />
+                    <label for="102">Password</label><br/>
+                        <input id='102' name='name2' className='border  hover:border-green-300  mt-3 w-100 p-1 rounded cursor-pointer' value={value2}  onChange={(e)=>setValue2(e.target.value)} type="password" placeholder='Password' required />
                     </div>
                     <div>
                         <button onClick={sumbitButton} className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3 cursor-pointer'>Login </button>
