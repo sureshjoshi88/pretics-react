@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
+import ProductCard from './ProductCard';
+import Tostyfiy from './Tostyfiy';
 
 
 
@@ -9,37 +11,43 @@ const Form = () => {
 const mainFull=(event)=>{
 event.preventDefault();
 }
+
+setTimeout(() => {
+    setError("")
+}, 3000);
 const [value,setValue] = useState("");
 const [value2,setValue2] = useState("");
 const [error,setError] = useState("");
+const [login,setLogin] = useState(false);
+// const [tost,setTost] = useState(false);
 
 const values = {
-    username:"suresh@gmail.com",
+    username:"suresh",
     password:"joshi123"
 }
 
 const sumbitButton=()=>{
-    if(values.username===value && values.password===value2){
+    if(value===""&&value.length<=5 && value2===""&&value2.length<=8){
         setValue("")
         setValue2("")
-        Toastify({
-            text: "Welcome user you are login",
-            duration: 3000,
-            destination: "https://github.com/apvarun/toastify-js",
-            newWindow: true,
-            close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-              background: "linear-gradient(to right, #00b09b, #96c93d)",
-            },
-            onClick: function(){} // Callback after click
-          }).showToast();
-          
+        // Toastify({
+        //     text: "Welcome user you are login",
+        //     duration: 3000,
+        //     destination: "https://github.com/apvarun/toastify-js",
+        //     newWindow: true,
+        //     close: true,
+        //     gravity: "top", // `top` or `bottom`
+        //     position: "right", // `left`, `center` or `right`
+        //     stopOnFocus: true, // Prevents dismissing of toast on hover
+        //     style: {
+        //       background: "linear-gradient(to right, #00b09b, #96c93d)",
+        //     },
+        //     onClick: function(){} // Callback after click
+        //   }).showToast();
          
-    }else{
         setError("Please correct username and password");
+    }else{
+        setLogin(true)
         // Toastify({
         //     text: "Please correct username and password",
         //     duration: 3000,
@@ -61,12 +69,15 @@ const sumbitButton=()=>{
  
     return (
         <>
-        <div className='flex justify-center mt-10 mb-4'>
+            {/* <div className={error!=""?"":"hidden"}> */}
+              { error&& <Tostyfiy error ={error}/>}
+            {/* </div> */}
+       {login===false? <div className='flex justify-center mt-10 mb-4'>
             <div className=' p-2 rounded shadow-xl shadow-amber-300 bg-white'>
                 <form action="" id='main' onSubmit={mainFull} className='p-2'>
                     <div>
-                        <label>UserName</label><br/>
-                        <input className='border hover:border-green-300 mt-3 w-100 p-1 rounded cursor-pointer' value={value} onChange={(e)=>setValue(e.target.value)} type="email" placeholder='Username' required />
+                        <label>Email</label><br/>
+                        <input className='border hover:border-green-300 mt-3 w-100 p-1 rounded cursor-pointer' value={value} onChange={(e)=>setValue(e.target.value)} type="text" placeholder='Email' required />
                     </div>
                     <div className='mt-2'>
                     <label>Password</label><br/>
@@ -77,9 +88,9 @@ const sumbitButton=()=>{
                     </div>
                     <p className='text-red-500'>{error}</p>
                 </form>
-                    {/* <Toastify/> */}
             </div>
         </div>
+            :<ProductCard/>}
 
         </>
     )

@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Tostyfiy = () => {
+const Tostyfiy = (props) => {
   return (
     <div>
       <div className="bg-red-600 text-white absolute top-3.5 right-2.5">
-        <p>Please correct username and password</p>
+        <p>{props.error}</p>
       </div>
     </div>
   )
