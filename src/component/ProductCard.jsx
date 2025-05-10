@@ -19,10 +19,11 @@ const ProductCard = () => {
      {filterData.map((value)=>{
       return  <div className='border  rounded p-2'>
       <div className='w-full'>
-        <img className='w-96 ' src={value.img} alt="" />
+        <img className='w-96 h-60 object-contain' src={value.img} alt="" />
           <p >ID:{value.id}</p>
         <p>Name:{value.name}</p>
         <p>Price:{value.price}</p>
+        <button className=' rounded bg-red-400 h-8 w-30 p-1 mt-3'>Add to cart</button>
       </div>
       </div>
       })}
