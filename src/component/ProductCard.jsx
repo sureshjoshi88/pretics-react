@@ -30,7 +30,7 @@ const ProductCard = () => {
             <option value="vihicle">vihicle</option>
         </select>
     </div>
-    <div id='slider-bar' className='h-130 w-100 absolute bg-amber-200 rounded -left-100'>
+    <div id='slider-bar' className='h-130 w-100 absolute bg-white overflow-y-scroll flow-cart rounded -left-100'>
     <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer'>x</p>
     </div>
      <div className='flex  flex-wrap gap-4 mt-5 w-full p-2'>
@@ -41,7 +41,7 @@ const ProductCard = () => {
           <p >ID:{value.id}</p>
         <p>Name:{value.name}</p>
         <p>Price:{value.price}</p>
-        <button id='card-buton' className=' rounded bg-red-400 h-8 w-30 p-1 mt-3'>Add to cart</button>
+        <button id='card-buton' className=' rounded bg-red-400 h-8 w-30 p-1 mt-3 cursor-pointer'>Add to cart</button>
       </div>
       </div>
       })}

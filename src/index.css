@@ -77,3 +77,6 @@ body{
 .webkit::-webkit-scrollbar{
   background: transparent;
 }
+.flow-cart::-webkit-scrollbar{
+  background: transparent;
+}
