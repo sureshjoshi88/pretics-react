@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {products} from "../datas/products"
-const ProductCard = () => {
+const ProductCard = (props) => {
    const[ salected,setSalected]= useState("all");
    const filterData = salected==="all"?products:products.filter((item)=>{
     return item.catergory===salected
@@ -19,6 +19,7 @@ const ProductCard = () => {
     butons.style.left = "-100%";
     butons.style.transition = "1s 0.5s linear"
   }
+  
   return (
     <>
 
@@ -29,6 +30,7 @@ const ProductCard = () => {
             <option value="electric">electric</option>
             <option value="vihicle">vihicle</option>
         </select>
+        <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer'>Log-out</button>
     </div>
     <div id='slider-bar' className='h-130 w-100 absolute bg-white overflow-y-scroll flow-cart rounded -left-100'>
     <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer'>x</p>

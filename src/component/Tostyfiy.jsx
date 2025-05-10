@@ -3,7 +3,7 @@ import React from 'react'
 const Tostyfiy = (props) => {
   return (
     <div>
-      <div className="bg-red-600 text-white absolute top-3.5 right-2.5">
+      <div className="bg-red-600 text-white absolute top-3.5 right-2.5 p-3 rounded">
         <p>{props.error}</p>
       </div>
     </div>

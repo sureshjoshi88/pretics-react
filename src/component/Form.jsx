@@ -13,8 +13,8 @@ event.preventDefault();
 }
 
 setTimeout(() => {
-    setError("")
-}, 3000);
+    setError(null)
+}, 4000);
 const [value,setValue] = useState("");
 const [value2,setValue2] = useState("");
 const [error,setError] = useState("");
@@ -66,6 +66,9 @@ const sumbitButton=()=>{
         setValue2("")
     }
 }
+const logOut=()=>{
+    setLogin(false)
+}
  
     return (
         <>
@@ -90,7 +93,7 @@ const sumbitButton=()=>{
                 </form>
             </div>
         </div>
-            :<ProductCard/>}
+            :<ProductCard logout={logOut}/>}
 
         </>
     )
