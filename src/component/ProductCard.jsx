@@ -35,11 +35,11 @@ const ProductCard = (props) => {
 
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda hic fugiat sapiente minima excepturi eveniet voluptates consectetur officia aliquid laboriosam eius consequatur nemo quo, eaque laborum corporis, ut necessitatibus mollitia nulla, natus doloremque cum? Doloremque ratione qui excepturi vitae incidunt.</p>
     </div>
-     <div className='flex  flex-wrap gap-4 mt-5 w-full p-2'>
+     <div className=' grid md:grid-cols-3 gap-4 mt-5 w-full  p-2'>
      {filterData.map((value)=>{
-      return  <div className='border  rounded p-2'>
+      return  <div className='border w-full rounded p-2 '>
       <div className='w-full'>
-        <img className='w-96 h-60 object-contain' src={value.img} alt="" />
+        <img className='w-full h-60 object-contain' src={value.img} alt="" />
           <p >ID:{value.id}</p>
         <p>Name:{value.name}</p>
         <p>Price:{value.price}</p>
