@@ -6,18 +6,16 @@ const ProductCard = (props) => {
     return item.catergory===salected
    })
 
-  //  const [silder,setSlider] = useState([]);
-  //  const [sildervalue,setSlidervalue] = useState("");
 
   const slider=()=>{
     let butons = document.getElementById("slider-bar");
     butons.style.left = 0;
-    butons.style.transition = "1s 0.5s linear"
+    butons.style.transition = "1s 0.6s linear"
   }
   const removeSlider=()=>{
     let butons = document.getElementById("slider-bar");
     butons.style.left = "-100%";
-    butons.style.transition = "1s 0.5s linear"
+    butons.style.transition = "1s 0.6s linear"
   }
   
   return (
@@ -32,8 +30,10 @@ const ProductCard = (props) => {
         </select>
         <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer'>Log-out</button>
     </div>
-    <div id='slider-bar' className='h-130 w-100 absolute bg-white overflow-y-scroll flow-cart rounded -left-100'>
+    <div id='slider-bar' className='h-130 w-100 absolute  bg-white overflow-y-scroll flow-cart rounded -left-100'>
     <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer'>x</p>
+
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda hic fugiat sapiente minima excepturi eveniet voluptates consectetur officia aliquid laboriosam eius consequatur nemo quo, eaque laborum corporis, ut necessitatibus mollitia nulla, natus doloremque cum? Doloremque ratione qui excepturi vitae incidunt.</p>
     </div>
      <div className='flex  flex-wrap gap-4 mt-5 w-full p-2'>
      {filterData.map((value)=>{
