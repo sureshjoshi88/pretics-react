@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, {useState} from 'react'
 import {products} from "../datas/products"
 import Comment from './Comment';
 
@@ -32,6 +32,7 @@ const ProductCard = (props) => {
             <option value="all">all</option>
             <option value="electric">electric</option>
             <option value="vihicle">vihicle</option>
+            <option value="clothes">clothesl</option>
         </select>
         <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer'>Log-out</button>
     </div>
@@ -42,12 +43,12 @@ const ProductCard = (props) => {
     </div>
      <div className=' grid md:grid-cols-3 gap-4 mt-5 w-full  p-2'>
      {filterData.map((value)=>{
-      return  <div className='border w-full rounded p-2 '>
+      return  <div className='shadow-xl w-full rounded p-2 '>
       <div className='w-full'>
         <img className='w-full h-60 object-contain' src={value.img} alt="" />
-          <p >ID:{value.id}</p>
-        <p>Name:{value.name}</p>
-        <p>Price:{value.price}</p>
+          <p >ID: {value.id}</p>
+        <p>Name: {value.name}</p>
+        <p>Price: {value.price}</p>
         <button id='card-buton' className=' rounded bg-red-400 h-8 w-30 p-1 mt-3 cursor-pointer'>Add to cart</button>
         <div className='mt-3``'>
           <Comment/>
