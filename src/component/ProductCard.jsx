@@ -58,12 +58,12 @@ const ProductCard = (props) => {
     <div id='slider-bar' className='h-130 w-100 absolute  bg-white overflow-y-scroll flow-cart rounded -left-100'>
     <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer'>x</p>
 
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda hic fugiat sapiente minima excepturi eveniet voluptates consectetur officia aliquid laboriosam eius consequatur nemo quo, eaque laborum corporis, ut necessitatibus mollitia nulla, natus doloremque cum? Doloremque ratione qui excepturi vitae incidunt.</p>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
     {addcard.map((items)=>{
-      return <div>
-        <img className='w-30' src={items.img} alt="" />
-        <p>{items.name}</p>
-        <p>{items.price}</p>
+      return <div className='flex p-2 gap-2 items-center'>
+        <img className='w-40 rounded ' src={items.img} alt="" />
+        <p className='font-semibold '>{items.name}</p>
+        <p className='font-semibold '>{items.price}</p>
       </div>
     })}
     </div>
