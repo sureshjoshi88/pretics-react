@@ -1,6 +1,11 @@
 import React,{useState} from 'react'
 import {products} from "../datas/products"
+import Comment from './Comment';
+
+
 const ProductCard = (props) => {
+
+ 
    const[ salected,setSalected]= useState("all");
    const filterData = salected==="all"?products:products.filter((item)=>{
     return item.catergory===salected
@@ -44,6 +49,9 @@ const ProductCard = (props) => {
         <p>Name:{value.name}</p>
         <p>Price:{value.price}</p>
         <button id='card-buton' className=' rounded bg-red-400 h-8 w-30 p-1 mt-3 cursor-pointer'>Add to cart</button>
+        <div className='mt-3``'>
+          <Comment/>
+        </div>
       </div>
       </div>
       })}
