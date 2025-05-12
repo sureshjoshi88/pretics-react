@@ -64,7 +64,9 @@ const sumbitButton=()=>{
         //   }).showToast();      
             setValue("")
         setValue2("")
+        setError("congrass yor are logined")
     }
+
 }
 const logOut=()=>{
     setLogin(false)
