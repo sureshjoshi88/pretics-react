@@ -17,12 +17,12 @@ const ProductCard = (props) => {
   const slider=()=>{
     let butons = document.getElementById("slider-bar");
     butons.style.left = 0;
-    butons.style.transition = "1s 0.6s linear"
+    butons.style.transition = "0.7s 0.2s  linear"
   }
   const removeSlider=()=>{
     let butons = document.getElementById("slider-bar");
     butons.style.left = "-100%";
-    butons.style.transition = "1s 0.6s linear"
+    butons.style.transition = "1.4s 0.2s  linear"
   }
   
 
