@@ -73,6 +73,7 @@ const ProductCard = (props) => {
         <img className='w-40 rounded ' src={items.img} alt="" />
         <p className='font-semibold '>{items.name}</p>
         <p className='font-semibold '>{items.price}</p>
+        
       </div>
     })}
     </div>

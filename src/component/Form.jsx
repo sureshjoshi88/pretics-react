@@ -72,17 +72,20 @@ const Form = () => {
         setLogin(false)
     }
 
+    
     const ShowPassword=()=>{
         let inputPassword = document.getElementById("102");
         let buton_show = document.getElementById("buton-show")
         if(inputPassword.type==="password"){
             inputPassword.type = "text"
             buton_show.innerText = "Hide"
-        }else{
+        }else if(inputPassword.type==="text"){
             inputPassword.type = "password"
             buton_show.innerText = "Show"
         }
     }
+
+      
 
     return (
         <>
@@ -100,11 +103,11 @@ const Form = () => {
                             <label for="102">Password</label><br />
                             <div className='border  hover:border-green-300  mt-3 w-100 p-1 rounded cursor-pointer flex gap-1'>
                                 <input className='w-100 outline-0' id='102' name='name2'  value={value2} onChange={(e) => setValue2(e.target.value)} type="password" placeholder='Password' required />
-                                <button id='buton-show' onClick={ShowPassword}>Show</button>
+                                <button className='cursor-pointer outline-0 ' id='buton-show' type='button' onClick={ShowPassword}>Show</button>
                             </div>
                         </div>
                         <div>
-                            <button onClick={sumbitButton} className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3 cursor-pointer'>Login </button>
+                            <button onClick={sumbitButton}  className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3 cursor-pointer'>Login </button>
                         </div>
                         <p className='text-red-500'>{error}</p>
                     </form>
