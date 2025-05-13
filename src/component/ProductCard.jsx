@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import {products} from "../datas/products"
 import Comment from './Comment';
+import { IoCartSharp } from "react-icons/io5";
+
 
 
 const ProductCard = (props) => {
@@ -31,7 +33,6 @@ const ProductCard = (props) => {
   let ides = event.target.parentElement.parentElement.childNodes[1].innerText;
   let names = event.target.parentElement.parentElement.childNodes[2].innerText;
   let prices = event.target.parentElement.parentElement.childNodes[3].innerText;
-  // console.log(name);
     let data={
       img:imges,
       id:ides,
@@ -41,12 +42,17 @@ const ProductCard = (props) => {
     }
     setAddcard(pre=>[...pre,data]);
     console.log(addcard);
+ 
   }
   return (
     <>
 
-    <div className='flex flex-wrap justify-around bg'>
-       <button id="card" onClick={slider} className='border text-white rounded  p-1  bg-red-400 cursor-pointer'>Cart-product</button>
+  <div className='sticky top-0 bg-white p-3  z-40'>
+           <h2 className='font-bold text-3xl text-center'>My Social Feed</h2>
+
+      <div className='flex flex-wrap justify-around  '>
+       <button id="card" onClick={slider} className=' text-3xl text-black rounded  p-1 cursor-pointer relative'><IoCartSharp /><span style={{borderRadius:"50%",height:"24px",width:"24px",fontSize:"16px"}} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{1}</span>
+</button>
        <select  onChange={(e)=>setSalected(e.target.value)} name="" id="salect" className='border mt-2'>
             <option value="all">all</option>
             <option value="electric">electric</option>
@@ -55,7 +61,10 @@ const ProductCard = (props) => {
         </select>
         <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer'>Log-out</button>
     </div>
-    <div id='slider-bar' className='h-130 w-100 absolute  bg-white overflow-y-scroll flow-cart rounded -left-100'>
+  </div>
+
+   <div className='sticky top-10'>
+     <div id='slider-bar' className='h-130 w-100 absolute  bg-white overflow-y-scroll flow-cart rounded -left-100'>
     <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer'>x</p>
 
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
@@ -67,6 +76,7 @@ const ProductCard = (props) => {
       </div>
     })}
     </div>
+   </div>
      <div className=' grid md:grid-cols-3 gap-4 mt-5 w-full  p-2'>
      {filterData.map((value)=>{
       return  <div className='shadow-xl w-full rounded p-2 '>
