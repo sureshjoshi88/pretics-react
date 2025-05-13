@@ -72,6 +72,18 @@ const Form = () => {
         setLogin(false)
     }
 
+    const ShowPassword=()=>{
+        let inputPassword = document.getElementById("102");
+        let buton_show = document.getElementById("buton-show")
+        if(inputPassword.type==="password"){
+            inputPassword.type = "text"
+            buton_show.innerText = "Hide"
+        }else{
+            inputPassword.type = "password"
+            buton_show.innerText = "Show"
+        }
+    }
+
     return (
         <>
             {/* <div className={error!=""?"":"hidden"}> */}
@@ -86,9 +98,9 @@ const Form = () => {
                         </div>
                         <div className='mt-2'>
                             <label for="102">Password</label><br />
-                            <div>
-                                <input id='102' name='name2' className='border  hover:border-green-300  mt-3 w-100 p-1 rounded cursor-pointer' value={value2} onChange={(e) => setValue2(e.target.value)} type="password" placeholder='Password' required />
-                                <button>Show</button>
+                            <div className='border  hover:border-green-300  mt-3 w-100 p-1 rounded cursor-pointer flex gap-1'>
+                                <input className='w-100 outline-0' id='102' name='name2'  value={value2} onChange={(e) => setValue2(e.target.value)} type="password" placeholder='Password' required />
+                                <button id='buton-show' onClick={ShowPassword}>Show</button>
                             </div>
                         </div>
                         <div>
