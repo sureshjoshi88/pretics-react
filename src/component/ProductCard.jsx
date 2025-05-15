@@ -66,7 +66,7 @@ const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price),0)
       </div>
 
       <div className='sticky top-22'>
-        <div id='slider-bar' className='md:h-130 h-70 md:w-100 w-90 absolute  bg-white overflow-y-scroll flow-cart rounded -left-100'>
+        <div id='slider-bar' className='md:h-130 h-70 md:w-100 w-90 absolute   bg-white overflow-y-scroll flow-cart rounded -left-100'>
 
           <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer'>x</p>
            {addcard.length >0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {totalPrice}</p>}
