@@ -8,8 +8,8 @@ return (
            
                 <div className="border w-30 p-1">
                     <h3>Name:-{value.name}</h3>
-                    <h3>Name:-{value.age}</h3>
-                    <h3>Name:-{value.status}</h3>
+                    <h3>Age:-{value.age}</h3>
+                    <h3>Status:-{value.status}</h3>
                 </div>
            
         </div>
