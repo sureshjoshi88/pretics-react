@@ -40,9 +40,10 @@ const ProductCard = (props) => {
 }
 
 const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price),0);
-console.log(totalPrice);
-console.log(addcard);
-console.log(typeof addcard[0]?.price); // string ya number?
+
+// console.log(totalPrice);
+// console.log(addcard);
+// console.log(typeof addcard[0]?.price); // string ya number?
 
 
   return (
