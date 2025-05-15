@@ -4,7 +4,7 @@ import './App.css'
 // import Card2 from './component/Card2'
 import Form from './component/Form'
 // import Header from './component/Header'
-import Welcome from './component/Welcome'
+// import Welcome from './component/Welcome'
 
 // const user = [
 //   { name: "suresh", age: 20, status: "active" },
@@ -28,7 +28,7 @@ function App() {
         </div>
       </div>  */}
       <Form/>
-     <Welcome/>
+     {/* <Welcome/> */}
     </>
   )
 }

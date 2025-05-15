@@ -34,18 +34,27 @@ const ProductCard = (props) => {
   //   e.target.parentElement.remove();
   // }
   const removeitem = (id) => {
-  const updatedCart = addcard.filter(item => item.id !== id);
-  setAddcard(updatedCart);
-  setCardcount(updatedCart.length);
-}
+    const updatedCart = addcard.filter(item => item.id !== id);
+    setAddcard(updatedCart);
+    setCardcount(updatedCart.length);
+  }
 
-const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price),0);
+  const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price), 0);
 
-// console.log(totalPrice);
-// console.log(addcard);
-// console.log(typeof addcard[0]?.price); // string ya number?
+  // console.log(totalPrice);
+  // console.log(addcard);
+  // console.log(typeof addcard[0]?.price); // string ya number?
 
 
+  const [countincrement,setCountincrement]= useState(1);
+
+  const increament=()=>{
+    setCountincrement(countincrement+1);
+  }
+
+   const decrecreament=()=>{
+    setCountincrement(countincrement-1);
+  }
   return (
     <>
 
@@ -69,7 +78,7 @@ const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price),0)
         <div id='slider-bar' className='md:h-130 h-70 md:w-100 w-90 absolute   bg-white overflow-y-scroll flow-cart rounded -left-100'>
 
           <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer'>x</p>
-           {addcard.length >0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {totalPrice}</p>}
+          {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {totalPrice}</p>}
           {addcard.length > 0 ? "" : <p className='text-center top-20'>No data found</p>}
           {addcard.map((items) => {
             return <div>
@@ -77,7 +86,10 @@ const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price),0)
                 <img className='w-40 h-50 object-contain rounded ' src={items.img} alt="" />
                 <p className='font-semibold '>{items.name}</p>
                 <p className='font-semibold '>{items.price}</p>
-                <p className='ms-auto text-2xl cursor-pointer' onClick={()=>removeitem(items.id)}>X</p>
+                <p className='ms-auto text-2xl cursor-pointer' onClick={() => removeitem(items.id)}>X</p>
+              </div>
+              <div>
+                <button onClick={decrecreament}>-</button><button>{countincrement}</button><button onClick={increament}>+</button>
               </div>
             </div>
           })}
@@ -94,11 +106,11 @@ const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price),0)
               <p className='ps-4 font-semibold'>Price: {value.price}</p>
               <div className='flex gap-3 flex-wrap'>
                 <button onClick={() => {
-                  if(!addcard.find((item)=>item.id===value.id)){
-                    const newcart = [...addcard,value];
+                  if (!addcard.find((item) => item.id === value.id)) {
+                    const newcart = [...addcard, value];
                     setAddcard(newcart);
                     setCardcount(newcart.length);
-                  }else{
+                  } else {
                     alert("product is already added");
                   }
                 }} id='card-buton' className='text-white rounded bg-red-400 h-8 w-30 p-1 mt-3 cursor-pointer'>Add to Cart</button>
