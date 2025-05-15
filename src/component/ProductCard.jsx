@@ -39,22 +39,29 @@ const ProductCard = (props) => {
     setCardcount(updatedCart.length);
   }
 
-  const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price), 0);
-
-  // console.log(totalPrice);
-  // console.log(addcard);
-  // console.log(typeof addcard[0]?.price); // string ya number?
+  const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price)*item.quantity, 0);
 
 
-  const [countincrement,setCountincrement]= useState(1);
 
-  const increament=()=>{
-    setCountincrement(countincrement+1);
-  }
+ const incrementQuantity = (id) => {
+  const updatedCart = addcard.map(item => {
+    if (item.id === id) {
+      return { ...item, quantity: item.quantity + 1 };
+    }
+    return item;
+  });
+  setAddcard(updatedCart);
+};
 
-   const decrecreament=()=>{
-    setCountincrement(countincrement-1);
-  }
+  const decrementQuantity = (id) => {
+  const updatedCart = addcard.map(item => {
+    if (item.id === id && item.quantity > 1) {
+      return { ...item, quantity: item.quantity - 1 };
+    }
+    return item;
+  });
+  setAddcard(updatedCart);
+};
   return (
     <>
 
@@ -84,13 +91,20 @@ const ProductCard = (props) => {
             return <div>
               <div className='flex p-2 gap-3 items-center'>
                 <img className='w-40 h-50 object-contain rounded ' src={items.img} alt="" />
-                <p className='font-semibold '>{items.name}</p>
+               <div>
+                 <div className='flex gap-5 items-center'>
+                  <p className='font-semibold '>{items.name}</p>
                 <p className='font-semibold '>{items.price}</p>
                 <p className='ms-auto text-2xl cursor-pointer' onClick={() => removeitem(items.id)}>X</p>
+                </div>
+                 <div className='flex justify-center gap-1 mt-2'>
+                <button className='text-3xl flex justify-center items-center border rounded cursor-pointer  h-8  w-8' onClick={()=>decrementQuantity(items.id)}>- </button>
+                <button  className='text-3xl'> {items.quantity} </button>
+                <button  className='text-3xl  flex justify-center items-center border rounded cursor-pointer  h-8  w-8' onClick={()=>incrementQuantity(items.id)}> +</button>
               </div>
-              <div>
-                <button onClick={decrecreament}>-</button><button>{countincrement}</button><button onClick={increament}>+</button>
+               </div>
               </div>
+             
             </div>
           })}
 
@@ -107,7 +121,7 @@ const ProductCard = (props) => {
               <div className='flex gap-3 flex-wrap'>
                 <button onClick={() => {
                   if (!addcard.find((item) => item.id === value.id)) {
-                    const newcart = [...addcard, value];
+                    const newcart = [...addcard, {...value, quantity: 1 }];
                     setAddcard(newcart);
                     setCardcount(newcart.length);
                   } else {
