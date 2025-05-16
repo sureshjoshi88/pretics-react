@@ -3,11 +3,34 @@ import { products } from "../datas/products"
 import Comment from './Comment';
 import { IoCartSharp } from "react-icons/io5";
 import { MdDeleteForever } from "react-icons/md";
+import { CiDark } from "react-icons/ci";
+import { MdSunny } from "react-icons/md";
+
 
 
 
 const ProductCard = (props) => {
 
+
+  const [mode,setMode] = useState("light");
+
+  const colorMode=()=>{
+    if(mode==="light"){
+      document.body.style.backgroundColor = "black";
+      document.body.style.color = "white";
+      let heading = document.getElementById("main-heading");
+      heading.style.backgroundColor = "black";
+      heading.style.color = "white";
+      setMode("dark")
+    }else{
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+      let heading = document.getElementById("main-heading");
+       heading.style.backgroundColor = "white";
+      heading.style.color = "black";
+      setMode("light")
+    }
+  }
 
   const [salected, setSalected] = useState("all");
   const filterData = salected === "all" ? products : products.filter((item) => {
@@ -64,19 +87,21 @@ const ProductCard = (props) => {
   return (
     <>
 
-      <div className='sticky top-0 bg-white p-3  z-40'>
-        <h2 className='font-bold text-3xl text-center'>My Social Feed</h2>
+      <div className='sticky top-0 bg-white p-3  z-40' id='main-heading'>
+        <h2 className='font-bold md:text-3xl text-center'>My Social Feed</h2>
 
         <div className='flex flex-wrap justify-around  '>
-          <button id="card" onClick={slider} className=' text-3xl text-black rounded  p-1 cursor-pointer relative'><IoCartSharp /><span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{cardcount}</span>
+          <button id="card" onClick={slider} className={`text-3xl ${mode==="light"?'text-black':"text-white"} rounded  p-1 cursor-pointer relative`}><IoCartSharp /><span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{cardcount}</span>
           </button>
           <select onChange={(e) => setSalected(e.target.value)} name="" id="salect" className='border mt-2'>
             <option value="all">all</option>
             <option value="electric">electric</option>
             <option value="vihicle">vihicle</option>
-            <option value="clothes">clothesl</option>
+            <option value="clothes">clothes</option>
           </select>
           <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer'>Log-out</button>
+        { mode==="light"? <button onClick={colorMode} className='text-2xl text-black'><CiDark /></button>:
+          <button onClick={colorMode} className='text-2xl text-white'><MdSunny /></button>}
         </div>
       </div>
 
