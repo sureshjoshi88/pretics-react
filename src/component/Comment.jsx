@@ -7,16 +7,14 @@ const Comment = () => {
       const [like, setLike] = useState(0);
         const [dislike, setDislike] = useState(0);
         const [comment, setComment] = useState([]);
+        const [inputValue,setinputValue] = useState("");
       
         const button = () => {
-          let input = document.getElementById("input");
-          console.log(comment);
-          if (input.value == "") {
+          if (inputValue == "") {
             alert("please enter value")
           } else {
-            setComment([...comment, input.value]);
-            input.value = ""
-      
+            setComment([...comment, inputValue]);
+            setinputValue("")
           }
         }
         const handleevent = (event) => {
@@ -62,7 +60,7 @@ const Comment = () => {
                     </button>
                   </div>
                    <div className="flex gap-2 mt-3 border w-fit rounded">
-                              <input className=" outline-0 rounded cursor-pointer" id="input" type="text" onKeyDown={handleevent} placeholder="Enter a comment" />
+                              <input className=" outline-0 rounded cursor-pointer" value={inputValue} type="text" onChange={(e)=>setinputValue(e.target.value)} onKeyDown={handleevent} placeholder="Enter a comment" />
                               <div className="text-2xl  text-neutral-700 cursor-pointer" onClick={button}><GiPlayButton /></div>
                             </div>
                             <div className='h-20 overflow-hidden overflow-y-scroll webkit '>
