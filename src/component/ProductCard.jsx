@@ -31,38 +31,36 @@ const ProductCard = (props) => {
   const [cardcount, setCardcount] = useState(0);
 
 
-  // const removeitem = (e) => {
-  //   e.target.parentElement.remove();
-  // }
+
   const removeitem = (id) => {
     const updatedCart = addcard.filter(item => item.id !== id);
     setAddcard(updatedCart);
     setCardcount(updatedCart.length);
   }
 
-  const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price)*item.quantity, 0);
+  const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price) * item.quantity, 0);
 
 
 
- const incrementQuantity = (id) => {
-  const updatedCart = addcard.map(item => {
-    if (item.id === id) {
-      return { ...item, quantity: item.quantity + 1 };
-    }
-    return item;
-  });
-  setAddcard(updatedCart);
-};
+  const incrementQuantity = (id) => {
+    const updatedCart = addcard.map(item => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+    setAddcard(updatedCart);
+  };
 
   const decrementQuantity = (id) => {
-  const updatedCart = addcard.map(item => {
-    if (item.id === id && item.quantity > 1) {
-      return { ...item, quantity: item.quantity - 1 };
-    }
-    return item;
-  });
-  setAddcard(updatedCart);
-};
+    const updatedCart = addcard.map(item => {
+      if (item.id === id && item.quantity > 1) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+    setAddcard(updatedCart);
+  };
   return (
     <>
 
@@ -92,20 +90,20 @@ const ProductCard = (props) => {
             return <div>
               <div className='flex p-2 gap-3 items-center'>
                 <img className='w-40 h-50 object-contain rounded ' src={items.img} alt="" />
-               <div>
-                 <div className='flex gap-5  items-center'>
-                  <p className='font-semibold '>{items.name}</p>
-                <p className='font-semibold '>{items.price}</p>
-                <button className='ms-auto text-2xl cursor-pointer hover:bg-red-600  hover:text-white p-1 rounded ' onClick={() => removeitem(items.id)}><MdDeleteForever /></button>
+                <div>
+                  <div className='flex gap-5  items-center'>
+                    <p className='font-semibold '>{items.name}</p>
+                    <p className='font-semibold '>{items.price}</p>
+                    <button className='ms-auto text-2xl cursor-pointer hover:bg-red-600  hover:text-white p-1 rounded ' onClick={() => removeitem(items.id)}><MdDeleteForever /></button>
+                  </div>
+                  <div className='flex justify-center gap-1 mt-2'>
+                    <button className='text-3xl flex justify-center items-center border rounded cursor-pointer  h-8  w-8' onClick={() => decrementQuantity(items.id)}>- </button>
+                    <button className='text-3xl'> {items.quantity} </button>
+                    <button className='text-3xl  flex justify-center items-center border rounded cursor-pointer  h-8  w-8' onClick={() => incrementQuantity(items.id)}> +</button>
+                  </div>
                 </div>
-                 <div className='flex justify-center gap-1 mt-2'>
-                <button className='text-3xl flex justify-center items-center border rounded cursor-pointer  h-8  w-8' onClick={()=>decrementQuantity(items.id)}>- </button>
-                <button  className='text-3xl'> {items.quantity} </button>
-                <button  className='text-3xl  flex justify-center items-center border rounded cursor-pointer  h-8  w-8' onClick={()=>incrementQuantity(items.id)}> +</button>
               </div>
-               </div>
-              </div>
-             
+
             </div>
           })}
 
@@ -116,7 +114,7 @@ const ProductCard = (props) => {
           return <div className='shadow-xl  rounded p-2 '>
             <div className='w-full'>
               <div className='h-100'>
-                              <img className='w-full h-100 object-contain' src={value.img} alt="" />
+                <img className='w-full h-100 object-contain' src={value.img} alt="" />
               </div>
               <p className='ps-4 font-semibold'>ID: {value.id}</p>
               <p className='ps-4 font-semibold'>Name: {value.name}</p>
@@ -124,7 +122,7 @@ const ProductCard = (props) => {
               <div className='flex gap-3 flex-wrap'>
                 <button onClick={() => {
                   if (!addcard.find((item) => item.id === value.id)) {
-                    const newcart = [...addcard, {...value, quantity: 1 }];
+                    const newcart = [...addcard, { ...value, quantity: 1 }];
                     setAddcard(newcart);
                     setCardcount(newcart.length);
                   } else {

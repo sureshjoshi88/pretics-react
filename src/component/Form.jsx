@@ -35,7 +35,7 @@ const Form = () => {
         } else {
             setLogin(true)
             Toastify({
-                text: "congrass yor are logined",
+                text: "congrass you are logined",
                 duration: 3000,
                 destination: "https://github.com/apvarun/toastify-js",
                 newWindow: true,
