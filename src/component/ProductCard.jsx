@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { products } from "../datas/products"
 import Comment from './Comment';
 import { IoCartSharp } from "react-icons/io5";
+import { MdDeleteForever } from "react-icons/md";
 
 
 
@@ -92,10 +93,10 @@ const ProductCard = (props) => {
               <div className='flex p-2 gap-3 items-center'>
                 <img className='w-40 h-50 object-contain rounded ' src={items.img} alt="" />
                <div>
-                 <div className='flex gap-5 items-center'>
+                 <div className='flex gap-5  items-center'>
                   <p className='font-semibold '>{items.name}</p>
                 <p className='font-semibold '>{items.price}</p>
-                <p className='ms-auto text-2xl cursor-pointer' onClick={() => removeitem(items.id)}>X</p>
+                <button className='ms-auto text-2xl cursor-pointer hover:bg-red-600  hover:text-white p-1 rounded ' onClick={() => removeitem(items.id)}><MdDeleteForever /></button>
                 </div>
                  <div className='flex justify-center gap-1 mt-2'>
                 <button className='text-3xl flex justify-center items-center border rounded cursor-pointer  h-8  w-8' onClick={()=>decrementQuantity(items.id)}>- </button>
@@ -110,11 +111,13 @@ const ProductCard = (props) => {
 
         </div>
       </div>
-      <div className=' grid md:grid-cols-3 gap-4 mt-5 w-full  p-2'>
+      <div className=' grid  md:grid-cols-2 lg:grid-cols-3  gap-4 mt-5   p-2'>
         {filterData.map((value) => {
-          return <div className='shadow-xl w-full rounded p-2 '>
+          return <div className='shadow-xl  rounded p-2 '>
             <div className='w-full'>
-              <img className='w-full h-60 object-contain' src={value.img} alt="" />
+              <div className='h-100'>
+                              <img className='w-full h-100 object-contain' src={value.img} alt="" />
+              </div>
               <p className='ps-4 font-semibold'>ID: {value.id}</p>
               <p className='ps-4 font-semibold'>Name: {value.name}</p>
               <p className='ps-4 font-semibold'>Price: {value.price}</p>
