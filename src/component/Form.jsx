@@ -30,38 +30,24 @@ const Form = () => {
         if (value === "" || value.length <= 5 && value2 === "" || value2.length <= 8) {
             setValue("")
             setValue2("")
-            // Toastify({
-            //     text: "Welcome user you are login",
-            //     duration: 3000,
-            //     destination: "https://github.com/apvarun/toastify-js",
-            //     newWindow: true,
-            //     close: true,
-            //     gravity: "top", // `top` or `bottom`
-            //     position: "right", // `left`, `center` or `right`
-            //     stopOnFocus: true, // Prevents dismissing of toast on hover
-            //     style: {
-            //       background: "linear-gradient(to right, #00b09b, #96c93d)",
-            //     },
-            //     onClick: function(){} // Callback after click
-            //   }).showToast();
-
+          
             setError("Please correct username and password");
         } else {
             setLogin(true)
-            // Toastify({
-            //     text: "Please correct username and password",
-            //     duration: 3000,
-            //     destination: "https://github.com/apvarun/toastify-js",
-            //     newWindow: true,
-            //     close: true,
-            //     gravity: "top", // `top` or `bottom`
-            //     position: "right", // `left`, `center` or `right`
-            //     stopOnFocus: true, // Prevents dismissing of toast on hover
-            //     style: {
-            //       background: "linear-gradient(to right, #f02e0c, #f76f4d)",
-            //     },
-            //     onClick: function(){} // Callback after click
-            //   }).showToast();      
+            Toastify({
+                text: "congrass yor are logined",
+                duration: 3000,
+                destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: "linear-gradient(to right, green, #77ed7e)",
+                },
+                onClick: function(){} // Callback after click
+              }).showToast();      
             setValue("")
             setValue2("")
             setError("congrass yor are logined")
