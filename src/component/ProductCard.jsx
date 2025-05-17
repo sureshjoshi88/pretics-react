@@ -94,10 +94,10 @@ const ProductCard = (props) => {
           <button id="card" onClick={slider} className={`text-3xl ${mode==="light"?'text-black':"text-white"} rounded  p-1 cursor-pointer relative`}><IoCartSharp /><span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{cardcount}</span>
           </button>
           <select onChange={(e) => setSalected(e.target.value)} name="" id="salect" className={`${mode==="light"?"text-black ":"text-white"} border rounded mt-2`}>
-            <option className={`${mode==="light"?"text-black ":"text-white"}`} value="all">all</option>
-            <option className={`${mode==="light"?"text-black ":"text-white"}`} value="electric">electric</option>
-            <option  className={`${mode==="light"?"text-black ":"text-white"}`} value="vihicle">vihicle</option>
-            <option  className={`${mode==="light"?"text-black ":"text-white"}`} value="clothes">clothes</option>
+            <option className={`${mode==="light"?"text-black ":"text-white bg-black"}`} value="all">all</option>
+            <option className={`${mode==="light"?"text-black ":"text-white bg-black"}`} value="electric">electric</option>
+            <option  className={`${mode==="light"?"text-black ":"text-white bg-black"}`} value="vihicle">vihicle</option>
+            <option  className={`${mode==="light"?"text-black ":"text-white bg-black"}`} value="clothes">clothes</option>
           </select>
           <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer'>Log-out</button>
         { mode==="light"? <button onClick={colorMode} className='text-2xl text-black'><CiDark /></button>:
