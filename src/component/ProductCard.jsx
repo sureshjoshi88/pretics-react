@@ -12,21 +12,21 @@ import { MdSunny } from "react-icons/md";
 const ProductCard = (props) => {
 
 
-  const [mode,setMode] = useState("light");
+  const [mode, setMode] = useState("light");
 
-  const colorMode=()=>{
-    if(mode==="light"){
+  const colorMode = () => {
+    if (mode === "light") {
       document.body.style.backgroundColor = "black";
       document.body.style.color = "white";
       let heading = document.getElementById("main-heading");
       heading.style.backgroundColor = "black";
       heading.style.color = "white";
       setMode("dark")
-    }else{
+    } else {
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
       let heading = document.getElementById("main-heading");
-       heading.style.backgroundColor = "white";
+      heading.style.backgroundColor = "white";
       heading.style.color = "black";
       setMode("light")
     }
@@ -91,22 +91,22 @@ const ProductCard = (props) => {
         <h2 className='font-bold md:text-3xl text-center'>My Social Feed</h2>
 
         <div className='flex flex-wrap justify-around  '>
-          <button id="card" onClick={slider} className={`text-3xl ${mode==="light"?'text-black':"text-white"} rounded  p-1 cursor-pointer relative`}><IoCartSharp /><span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{cardcount}</span>
+          <button id="card" onClick={slider} className={`text-3xl ${mode === "light" ? 'text-black' : "text-white"} rounded  p-1 cursor-pointer relative`}><IoCartSharp /><span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{cardcount}</span>
           </button>
-          <select onChange={(e) => setSalected(e.target.value)} name="" id="salect" className={`${mode==="light"?"text-black ":"text-white"} border rounded mt-2`}>
-            <option className={`${mode==="light"?"text-black ":"text-white bg-black"}`} value="all">all</option>
-            <option className={`${mode==="light"?"text-black ":"text-white bg-black"}`} value="electric">electric</option>
-            <option  className={`${mode==="light"?"text-black ":"text-white bg-black"}`} value="vihicle">vihicle</option>
-            <option  className={`${mode==="light"?"text-black ":"text-white bg-black"}`} value="clothes">clothes</option>
+          <select onChange={(e) => setSalected(e.target.value)} name="" id="salect" className={`${mode === "light" ? "text-black " : "text-white"} border rounded mt-2`}>
+            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="all">all</option>
+            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="electric">electric</option>
+            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="vihicle">vihicle</option>
+            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="clothes">clothes</option>
           </select>
           <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer'>Log-out</button>
-        { mode==="light"? <button onClick={colorMode} className='text-2xl text-black'><CiDark /></button>:
-          <button onClick={colorMode} className='text-2xl text-white'><MdSunny /></button>}
+          {mode === "light" ? <button onClick={colorMode} className='text-2xl text-black'><CiDark /></button> :
+            <button onClick={colorMode} className='text-2xl text-white'><MdSunny /></button>}
         </div>
       </div>
 
       <div className='sticky top-22 '>
-        <div id='slider-bar' className={`md:h-130 h-70 md:w-100 w-90 absolute   overflow-y-scroll flow-cart rounded -left-100  ${mode==="light" ? "text-black bg-white":"text-white bg-black"}`}>
+        <div id='slider-bar' className={`md:h-130 h-70 md:w-100 w-90 absolute   overflow-y-scroll flow-cart rounded -left-100  ${mode === "light" ? "text-black bg-white" : "text-white bg-black"}`}>
 
           <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer'>x</p>
           {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {totalPrice}</p>}
