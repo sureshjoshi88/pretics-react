@@ -12,26 +12,24 @@ const Form = () => {
         event.preventDefault();
     }
 
-    setTimeout(() => {
-        setError(null)
-    }, 4000);
+  
     const [value, setValue] = useState("");
     const [value2, setValue2] = useState("");
     const [error, setError] = useState("");
     const [login, setLogin] = useState(false);
-    // const [tost,setTost] = useState(false);
 
-    const values = {
-        username: "suresh",
-        password: "joshi123"
-    }
-
+   
+const showAlert=(msg)=>{
+    setError(msg)
+      setTimeout(() => {
+        setError(null)
+    }, 4000);
+}
     const sumbitButton = () => {
-        if (value === "" || value.length <= 5 && value2 === "" || value2.length <= 8) {
+        if (value.trim() === "" || value.length <= 5) {
             setValue("")
             setValue2("")
-          
-            setError("Please correct username and password");
+          showAlert("Please correct username(min 5 char) and password(min 8 char)")
         } else {
             setLogin(true)
             Toastify({
@@ -93,7 +91,7 @@ const Form = () => {
                             </div>
                         </div>
                         <div>
-                            <button onClick={sumbitButton}  className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3 cursor-pointer'>Login </button>
+                            <button onClick={sumbitButton} type='submit' className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3 cursor-pointer'>Login </button>
                         </div>
                         <p className='text-red-500'>{error}</p>
                     </form>
