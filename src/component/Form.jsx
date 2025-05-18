@@ -73,9 +73,7 @@ const showAlert=(msg)=>{
 
     return (
         <>
-            {/* <div className={error!=""?"":"hidden"}> */}
             {error && <Tostyfiy error={error} />}
-            {/* </div> */}
             {login === false ? <div className='flex justify-center mt-10 mb-4'>
                 <div className=' p-2 rounded shadow-xl shadow-amber-300 bg-white'>
                     <form action="" id='main' onSubmit={mainFull} className='p-2'>
