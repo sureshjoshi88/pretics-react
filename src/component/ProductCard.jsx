@@ -157,7 +157,7 @@ const ProductCard = (props) => {
                 <button id='card-buton' className='text-white rounded bg-green-600 h-8 w-30 p-1 mt-3 cursor-pointer'>Buy Now</button>
               </div>
               <div className='mt-3'>
-                <Comment />
+                <Comment modes={mode} />
               </div>
             </div>
           </div>

@@ -79,7 +79,7 @@ const showAlert=(msg)=>{
                     <form action="" id='main' onSubmit={mainFull} className='p-2'>
                         <div>
                             <label for="101">Username</label><br />
-                            <input id='101' name='name' className='border hover:border-green-300 mt-3 w-100 p-1 rounded cursor-pointer' value={value} onChange={(e) => setValue(e.target.value)} type="text" placeholder='Username' required />
+                            <input id='101' autoFocus name='name' className='border hover:border-green-300 mt-3 w-100 p-1 rounded cursor-pointer' value={value} onChange={(e) => setValue(e.target.value)} type="text" placeholder='Username' required />
                         </div>
                         <div className='mt-2'>
                             <label for="102">Password</label><br />
