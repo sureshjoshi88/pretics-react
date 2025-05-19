@@ -31,11 +31,14 @@ const ProductCard = (props) => {
       setMode("light")
     }
   }
+  const [salectprice,setSalectprice] = useState("all")
 
   const [salected, setSalected] = useState("all");
-  const filterData = salected === "all" ? products : products.filter((item) => {
+  const filterData = salected === "all"? products : products.filter((item) => {
     return item.catergory === salected
   })
+
+ 
 
 
   const slider = () => {
@@ -99,6 +102,15 @@ const ProductCard = (props) => {
             <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="vihicle">vihicle</option>
             <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="clothes">clothes</option>
           </select>
+
+           {/* <select onChange={(e) => setSalectprice(e.target.value)} name="" id="salect1" className={`${mode === "light" ? "text-black " : "text-white"} border rounded mt-2`}>
+            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="all">all</option>
+            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="0-50000">0-50000</option>
+            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="50001-1000000">50001-1000000</option>
+            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="1000000-10000000">1000000-10000000</option>
+          </select> */}
+
+          
           <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer'>Log-out</button>
           {mode === "light" ? <button onClick={colorMode} className='text-2xl text-black'><CiDark /></button> :
             <button onClick={colorMode} className='text-2xl text-white'><MdSunny /></button>}
