@@ -64,6 +64,7 @@ const ProductCard = (props) => {
     const updatedCart = addcard.filter(item => item.id !== id);
     setAddcard(updatedCart);
     setCardcount(updatedCart.length);
+    alert("product is succedfully delete");
 
   }
 
