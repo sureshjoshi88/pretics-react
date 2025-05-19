@@ -6,6 +6,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { CiDark } from "react-icons/ci";
 import { MdSunny } from "react-icons/md";
 import Fetchapi from './Fetchapi';
+import Tostyfiy from './Tostyfiy';
 
 
 
@@ -63,6 +64,7 @@ const ProductCard = (props) => {
     const updatedCart = addcard.filter(item => item.id !== id);
     setAddcard(updatedCart);
     setCardcount(updatedCart.length);
+
   }
 
   const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price) * item.quantity, 0);
@@ -127,7 +129,6 @@ const ProductCard = (props) => {
 
       <div className='sticky top-22 '>
         <div id='slider-bar' className={`md:h-130 h-70 md:w-100 w-90 absolute   overflow-y-scroll flow-cart rounded -left-100  ${mode === "light" ? "text-black bg-white" : "text-white bg-black"}`}>
-
           <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer'>x</p>
           {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {totalPrice}</p>}
           {addcard.length > 0 ? "" : <p className='text-center top-20'>No data found</p>}
@@ -170,10 +171,13 @@ const ProductCard = (props) => {
                     const newcart = [...addcard, { ...value, quantity: 1 }];
                     setAddcard(newcart);
                     setCardcount(newcart.length);
+                    alert("product is successfully added");
+
                   } else {
                     alert("product is already added");
                   }
-                }} id='card-buton' className='text-white rounded bg-red-400 h-8 w-30 p-1 mt-3 cursor-pointer'>Add to Cart</button>
+                }}  id='card-buton' className='text-white rounded bg-red-400 h-8 w-30 p-1 mt-3 cursor-pointer'>Add to Cart</button>
+                
                 <button id='card-buton' className='text-white rounded bg-green-600 h-8 w-30 p-1 mt-3 cursor-pointer'>Buy Now</button>
               </div>
               <div className='mt-3'>

@@ -53,7 +53,7 @@ const Form = () => {
 
     }
     const logOut = () => {
-        setLogin(false)
+        localStorage.removeItem("login");
     }
 
 
