@@ -12,26 +12,26 @@ const Form = () => {
         event.preventDefault();
     }
 
-  
+
     const [value, setValue] = useState("");
     const [value2, setValue2] = useState("");
     const [error, setError] = useState("");
     const [login, setLogin] = useState(false);
 
-   
-const showAlert=(msg)=>{
-    setError(msg)
-      setTimeout(() => {
-        setError(null)
-    }, 4000);
-}
+
+    const showAlert = (msg) => {
+        setError(msg)
+        setTimeout(() => {
+            setError(null)
+        }, 4000);
+    }
     const sumbitButton = () => {
         if (value.trim() === "" || value.length <= 5) {
             setValue("")
             setValue2("")
-          showAlert("Please correct username(min 5 char) and password(min 8 char)")
+            showAlert("Please correct username(min 5 char) and password(min 8 char)")
         } else {
-            setLogin(true)
+            localStorage.setItem("login", true);
             Toastify({
                 text: "congrass you are logined",
                 duration: 3000,
@@ -42,10 +42,10 @@ const showAlert=(msg)=>{
                 position: "right", // `left`, `center` or `right`
                 stopOnFocus: true, // Prevents dismissing of toast on hover
                 style: {
-                  background: "linear-gradient(to right, green, #77ed7e)",
+                    background: "linear-gradient(to right, green, #77ed7e)",
                 },
-                onClick: function(){} // Callback after click
-              }).showToast();      
+                onClick: function () { } // Callback after click
+            }).showToast();
             setValue("")
             setValue2("")
             setError("congrass yor are logined")
@@ -56,25 +56,27 @@ const showAlert=(msg)=>{
         setLogin(false)
     }
 
-    
-    const ShowPassword=()=>{
+
+    const ShowPassword = () => {
         let inputPassword = document.getElementById("102");
         let buton_show = document.getElementById("buton-show")
-        if(inputPassword.type==="password"){
+        if (inputPassword.type === "password") {
             inputPassword.type = "text"
             buton_show.innerText = "Hide"
-        }else if(inputPassword.type==="text"){
+        } else if (inputPassword.type === "text") {
             inputPassword.type = "password"
             buton_show.innerText = "Show"
         }
     }
 
-      
+    let localdata = JSON.parse(localStorage.getItem("login"))
+
+    console.log(localdata);
 
     return (
         <>
             {error && <Tostyfiy error={error} />}
-            {login === false ? <div className='flex justify-center mt-10 mb-4'>
+            {!localdata  ? <div className='flex justify-center mt-10 mb-4'>
                 <div className=' p-2 rounded shadow-xl shadow-amber-300 bg-white'>
                     <form action="" id='main' onSubmit={mainFull} className='p-2'>
                         <div>
@@ -84,7 +86,7 @@ const showAlert=(msg)=>{
                         <div className='mt-2'>
                             <label for="102">Password</label><br />
                             <div className='border  hover:border-green-300  mt-3 w-100 p-1 rounded cursor-pointer flex gap-1'>
-                                <input className='w-100 outline-0' id='102' name='name2'  value={value2} onChange={(e) => setValue2(e.target.value)} type="password" placeholder='Password' required />
+                                <input className='w-100 outline-0' id='102' name='name2' value={value2} onChange={(e) => setValue2(e.target.value)} type="password" placeholder='Password' required />
                                 <button className='cursor-pointer outline-0 ' id='buton-show' type='button' onClick={ShowPassword}>Show</button>
                             </div>
                         </div>

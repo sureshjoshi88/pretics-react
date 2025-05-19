@@ -5,6 +5,7 @@ import { IoCartSharp } from "react-icons/io5";
 import { MdDeleteForever } from "react-icons/md";
 import { CiDark } from "react-icons/ci";
 import { MdSunny } from "react-icons/md";
+import Fetchapi from './Fetchapi';
 
 
 
@@ -87,6 +88,13 @@ const ProductCard = (props) => {
     });
     setAddcard(updatedCart);
   };
+
+
+  let localkey = localStorage.getItem("key");
+  if(localkey){
+    
+  }
+  
   return (
     <>
 
@@ -175,6 +183,7 @@ const ProductCard = (props) => {
           </div>
         })}
       </div>
+      <Fetchapi/>
     </>
 
   )
