@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
@@ -26,6 +26,7 @@ const Form = () => {
         }, 4000);
     }
     const sumbitButton = () => {
+       
         if (value.trim() === "" || value.length <= 5 ) {
             setValue("")
             setValue2("")
@@ -36,6 +37,7 @@ const Form = () => {
             showAlert("Please correct password(min 8 char)")
         } else {
             localStorage.setItem("login", true);
+            setLogin(true)
             Toastify({
                 text: "congrass you are logined",
                 duration: 3000,
@@ -56,9 +58,7 @@ const Form = () => {
         }
 
     }
-    const logOut = () => {
-        localStorage.removeItem("login");
-    }
+   
 
 
     const ShowPassword = () => {
@@ -73,14 +73,24 @@ const Form = () => {
         }
     }
 
-    let localdata = JSON.parse(localStorage.getItem("login"))
+    useEffect(()=>{
 
-    console.log(localdata);
+        const localdata = JSON.parse(localStorage.getItem("login"));
+        if(localdata){
+            setLogin(true);
+        }
+    },[]);
+
+     const logOut = () => {
+        localStorage.removeItem("login");
+        setLogin(false)
+    
+    }
 
     return (
         <>
             {error && <Tostyfiy error={error} />}
-            {!localdata  ? <div className='flex justify-center mt-10 mb-4'>
+            {!login  ? <div className='flex justify-center mt-10 mb-4'>
                 <div className=' p-2 rounded shadow-xl shadow-amber-300 bg-white'>
                     <form action="" id='main' onSubmit={mainFull} className='p-2'>
                         <div>

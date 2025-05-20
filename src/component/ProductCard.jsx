@@ -6,7 +6,6 @@ import { MdDeleteForever } from "react-icons/md";
 import { CiDark } from "react-icons/ci";
 import { MdSunny } from "react-icons/md";
 import Fetchapi from './Fetchapi';
-import Tostyfiy from './Tostyfiy';
 
 
 
@@ -93,10 +92,7 @@ const ProductCard = (props) => {
   };
 
 
-  let localkey = localStorage.getItem("key");
-  if(localkey){
-    
-  }
+  
   
   return (
     <>
