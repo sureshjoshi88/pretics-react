@@ -34,14 +34,14 @@ const ProductCard = (props) => {
       setMode("light")
     }
   }
-  const [salectprice,setSalectprice] = useState("all")
+  const [salectprice, setSalectprice] = useState("all")
 
   const [salected, setSalected] = useState("all");
-  const filterData = salected === "all"? products : products.filter((item) => {
+  const filterData = salected === "all" ? products : products.filter((item) => {
     return item.catergory === salected
   })
 
- 
+
 
 
   const slider = () => {
@@ -65,20 +65,20 @@ const ProductCard = (props) => {
     const updatedCart = addcard.filter(item => item.id !== id);
     setAddcard(updatedCart);
     setCardcount(updatedCart.length);
-     Toastify({
-                    text: `product is succedfully delete`,
-                    duration: 3000,
-                    destination: "https://github.com/apvarun/toastify-js",
-                    newWindow: true,
-                    close: true,
-                    gravity: "top", // `top` or `bottom`
-                    position: "right", // `left`, `center` or `right`
-                    stopOnFocus: true, // Prevents dismissing of toast on hover
-                    style: {
-                        background: "linear-gradient(to right, #d12a3d, red)",
-                    },
-                    onClick: function () { } // Callback after click
-                }).showToast();
+    Toastify({
+      text: `product is succedfully delete`,
+      duration: 3000,
+      destination: "https://github.com/apvarun/toastify-js",
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "right", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(to right, #d12a3d, red)",
+      },
+      onClick: function () { } // Callback after click
+    }).showToast();
 
   }
 
@@ -107,8 +107,8 @@ const ProductCard = (props) => {
   };
 
 
-  
-  
+
+
   return (
     <>
 
@@ -125,14 +125,14 @@ const ProductCard = (props) => {
             <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="clothes">clothes</option>
           </select>
 
-           {/* <select onChange={(e) => setSalectprice(e.target.value)} name="" id="salect1" className={`${mode === "light" ? "text-black " : "text-white"} border rounded mt-2`}>
+          {/* <select onChange={(e) => setSalectprice(e.target.value)} name="" id="salect1" className={`${mode === "light" ? "text-black " : "text-white"} border rounded mt-2`}>
             <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="all">all</option>
             <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="0-50000">0-50000</option>
             <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="50001-1000000">50001-1000000</option>
             <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="1000000-10000000">1000000-10000000</option>
           </select> */}
 
-          
+
           <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer'>Log-out</button>
           {mode === "light" ? <button onClick={colorMode} className='text-2xl text-black'><CiDark /></button> :
             <button onClick={colorMode} className='text-2xl text-white'><MdSunny /></button>}
@@ -141,7 +141,7 @@ const ProductCard = (props) => {
 
       <div className='sticky top-22 '>
         <div id='slider-bar' className={`md:h-130 h-70 md:w-100 w-90 absolute   overflow-y-scroll flow-cart rounded -left-100  ${mode === "light" ? "text-black bg-white" : "text-white bg-black"}`}>
-          <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer'>x</p>
+          <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer sticky top-2.5'>x</p>
           {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {totalPrice}</p>}
           {addcard.length > 0 ? "" : <p className='text-center top-20'>No data found</p>}
           {addcard.map((items) => {
@@ -183,38 +183,38 @@ const ProductCard = (props) => {
                     const newcart = [...addcard, { ...value, quantity: 1 }];
                     setAddcard(newcart);
                     setCardcount(newcart.length);
-                      Toastify({
-                    text: `product is succedfully added `,
-                    duration: 3000,
-                    destination: "https://github.com/apvarun/toastify-js",
-                    newWindow: true,
-                    close: true,
-                    gravity: "top", // `top` or `bottom`
-                    position: "right", // `left`, `center` or `right`
-                    stopOnFocus: true, // Prevents dismissing of toast on hover
-                    style: {
+                    Toastify({
+                      text: `product is succedfully added `,
+                      duration: 3000,
+                      destination: "https://github.com/apvarun/toastify-js",
+                      newWindow: true,
+                      close: true,
+                      gravity: "top", // `top` or `bottom`
+                      position: "right", // `left`, `center` or `right`
+                      stopOnFocus: true, // Prevents dismissing of toast on hover
+                      style: {
                         background: "linear-gradient(to right, #17e335, #76deab)",
-                    },
-                    onClick: function () { } // Callback after click
-                }).showToast();
+                      },
+                      onClick: function () { } // Callback after click
+                    }).showToast();
                   } else {
-                     Toastify({
-                    text: `product is already added`,
-                    duration: 3000,
-                    destination: "https://github.com/apvarun/toastify-js",
-                    newWindow: true,
-                    close: true,
-                    gravity: "top", // `top` or `bottom`
-                    position: "right", // `left`, `center` or `right`
-                    stopOnFocus: true, // Prevents dismissing of toast on hover
-                    style: {
+                    Toastify({
+                      text: `product is already added`,
+                      duration: 3000,
+                      destination: "https://github.com/apvarun/toastify-js",
+                      newWindow: true,
+                      close: true,
+                      gravity: "top", // `top` or `bottom`
+                      position: "right", // `left`, `center` or `right`
+                      stopOnFocus: true, // Prevents dismissing of toast on hover
+                      style: {
                         background: "linear-gradient(to right, #d12a3d, red)",
-                    },
-                    onClick: function () { } // Callback after click
-                }).showToast();
+                      },
+                      onClick: function () { } // Callback after click
+                    }).showToast();
                   }
-                }}  id='card-buton' className='text-white rounded bg-red-400 h-8 w-30 p-1 mt-3 cursor-pointer'>Add to Cart</button>
-                
+                }} id='card-buton' className='text-white rounded bg-red-400 h-8 w-30 p-1 mt-3 cursor-pointer'>Add to Cart</button>
+
                 <button id='card-buton' className='text-white rounded bg-green-600 h-8 w-30 p-1 mt-3 cursor-pointer'>Buy Now</button>
               </div>
               <div className='mt-3'>
@@ -224,7 +224,7 @@ const ProductCard = (props) => {
           </div>
         })}
       </div>
-      <Fetchapi/>
+      <Fetchapi />
     </>
 
   )

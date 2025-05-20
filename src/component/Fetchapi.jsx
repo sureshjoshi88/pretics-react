@@ -14,9 +14,10 @@ const Fetchapi = () => {
    },[]);
   return (
     <div>
-      <div className='grid grid-cols-3 gap-3 '>
+      <div className='grid grid-cols-3 gap-3 p-1'>
       {data.map((item)=>{
-      return <div className='border mt-2 p-1 rounded'>
+      return <div className=' mt-2 p-2 rounded shadow shadow-blue-400'>
+        <p>ID: {item.id}</p>
         <p className='text-2xl font-medium'>{item.title}</p>
         <p>{item.body}</p>
       </div>
