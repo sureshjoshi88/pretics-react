@@ -17,7 +17,7 @@ const Fetchapi = () => {
       <div className='grid grid-cols-3 gap-3 '>
       {data.map((item)=>{
       return <div className='border mt-2 p-1 rounded'>
-        <p>{item.title}</p>
+        <p className='text-2xl font-medium'>{item.title}</p>
         <p>{item.body}</p>
       </div>
       })}

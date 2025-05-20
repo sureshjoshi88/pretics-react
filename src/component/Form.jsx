@@ -26,10 +26,14 @@ const Form = () => {
         }, 4000);
     }
     const sumbitButton = () => {
-        if (value.trim() === "" || value.length <= 5) {
+        if (value.trim() === "" || value.length <= 5 ) {
             setValue("")
             setValue2("")
-            showAlert("Please correct username(min 5 char) and password(min 8 char)")
+            showAlert("Please correct username(min 5 char)")
+        } else if(value2.trim() === "" || value2.length <= 8 ){
+             setValue("")
+            setValue2("")
+            showAlert("Please correct password(min 8 char)")
         } else {
             localStorage.setItem("login", true);
             Toastify({
