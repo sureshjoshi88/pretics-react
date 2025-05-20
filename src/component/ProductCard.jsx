@@ -6,6 +6,8 @@ import { MdDeleteForever } from "react-icons/md";
 import { CiDark } from "react-icons/ci";
 import { MdSunny } from "react-icons/md";
 import Fetchapi from './Fetchapi';
+import Toastify from 'toastify-js'
+import "toastify-js/src/toastify.css"
 
 
 
@@ -63,7 +65,20 @@ const ProductCard = (props) => {
     const updatedCart = addcard.filter(item => item.id !== id);
     setAddcard(updatedCart);
     setCardcount(updatedCart.length);
-    alert("product is succedfully delete");
+     Toastify({
+                    text: `product is succedfully delete`,
+                    duration: 3000,
+                    destination: "https://github.com/apvarun/toastify-js",
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: "linear-gradient(to right, #d12a3d, red)",
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
 
   }
 
@@ -168,10 +183,35 @@ const ProductCard = (props) => {
                     const newcart = [...addcard, { ...value, quantity: 1 }];
                     setAddcard(newcart);
                     setCardcount(newcart.length);
-                    alert("product is successfully added");
-
+                      Toastify({
+                    text: `product is succedfully added `,
+                    duration: 3000,
+                    destination: "https://github.com/apvarun/toastify-js",
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: "linear-gradient(to right, #17e335, #76deab)",
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
                   } else {
-                    alert("product is already added");
+                     Toastify({
+                    text: `product is already added`,
+                    duration: 3000,
+                    destination: "https://github.com/apvarun/toastify-js",
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: "linear-gradient(to right, #d12a3d, red)",
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
                   }
                 }}  id='card-buton' className='text-white rounded bg-red-400 h-8 w-30 p-1 mt-3 cursor-pointer'>Add to Cart</button>
                 
