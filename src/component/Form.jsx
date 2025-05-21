@@ -26,13 +26,13 @@ const Form = () => {
         }, 4000);
     }
     const sumbitButton = () => {
-       
-        if (value.trim() === "" || value.length <= 5 ) {
+
+        if (value.trim() === "" || value.length <= 5) {
             setValue("")
             setValue2("")
             showAlert("Please correct username(min 5 char)")
-        } else if(value2.trim() === "" || value2.length <= 8 ){
-             setValue("")
+        } else if (value2.trim() === "" || value2.length <= 8) {
+            setValue("")
             setValue2("")
             showAlert("Please correct password(min 8 char)")
         } else {
@@ -58,7 +58,7 @@ const Form = () => {
         }
 
     }
-   
+
 
 
     const ShowPassword = () => {
@@ -73,24 +73,24 @@ const Form = () => {
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
 
         const localdata = JSON.parse(localStorage.getItem("login"));
-        if(localdata){
+        if (localdata) {
             setLogin(true);
         }
-    },[]);
+    }, []);
 
-     const logOut = () => {
+    const logOut = () => {
         localStorage.removeItem("login");
         setLogin(false)
-    
+
     }
 
     return (
         <>
             {error && <Tostyfiy error={error} />}
-            {!login  ? <div className='flex justify-center mt-10 mb-4'>
+            {!login ? <div className='flex justify-center mt-10 mb-4'>
                 <div className=' p-2 rounded shadow-xl shadow-amber-300 bg-white'>
                     <form action="" id='main' onSubmit={mainFull} className='p-2'>
                         <div>
