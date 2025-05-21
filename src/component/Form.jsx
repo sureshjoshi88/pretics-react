@@ -54,7 +54,6 @@ const Form = () => {
             }).showToast();
             setValue("")
             setValue2("")
-            setError("congrass yor are logined")
         }
 
     }

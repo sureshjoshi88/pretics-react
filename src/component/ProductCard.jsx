@@ -8,6 +8,7 @@ import { MdSunny } from "react-icons/md";
 import Fetchapi from './Fetchapi';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
+import Foter from './Foter';
 
 
 
@@ -219,6 +220,7 @@ const formateTotal = totalPrice.toLocaleString("en-IN");
         })}
       </div>
       <Fetchapi />
+      <Foter/>
     </>
   )
 }
