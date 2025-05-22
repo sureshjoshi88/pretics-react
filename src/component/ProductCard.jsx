@@ -65,6 +65,10 @@ const ProductCard = (props) => {
     const updatedCart = addcard.filter(item => item.id !== id);
     setAddcard(updatedCart);
     setCardcount(updatedCart.length);
+    let totalproduct =  localStorage.setItem("cart",JSON.stringify(updatedCart));
+    let totalLength = localStorage.setItem("length",JSON.stringify(updatedCart.length))
+
+
     Toastify({
       text: `product is succedfully delete`,
       duration: 3000,
@@ -106,7 +110,8 @@ const formateTotal = totalPrice.toLocaleString("en-IN");
     setAddcard(updatedCart);
   };
 
-
+let cart = JSON.parse(localStorage.getItem("cart"))||[];
+let length = JSON.parse(localStorage.getItem("length"))||0
 
 
   return (
@@ -116,7 +121,7 @@ const formateTotal = totalPrice.toLocaleString("en-IN");
         <h2 className='font-bold md:text-3xl text-center'>My Social Feed</h2>
 
         <div className='flex flex-wrap justify-around  '>
-          <button id="card" onClick={slider} className={`text-3xl ${mode === "light" ? 'text-black' : "text-white"} rounded  p-1 cursor-pointer relative`}><IoCartSharp /><span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{cardcount}</span>
+          <button id="card" onClick={slider} className={`text-3xl ${mode === "light" ? 'text-black' : "text-white"} rounded  p-1 cursor-pointer relative`}><IoCartSharp /><span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{length}</span>
           </button>
           <select onChange={(e) => setSalected(e.target.value)} name="" id="salect" className={`${mode === "light" ? "text-black " : "text-white"} border rounded mt-2`}>
             <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="all">all</option>
@@ -139,7 +144,8 @@ const formateTotal = totalPrice.toLocaleString("en-IN");
           <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer sticky top-2.5'>x</p>
           {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {formateTotal}</p>}
           {addcard.length > 0 ? "" : <p className='text-center top-20'>No data found</p>}
-          {addcard.map((items) => {
+          {
+          cart.map((items) => {
             return <div>
               <div className='flex p-2 gap-3 items-center'>
                 <img className='w-40 h-50 object-contain rounded ' src={items.img} alt="" />
@@ -177,7 +183,9 @@ const formateTotal = totalPrice.toLocaleString("en-IN");
                   if (!addcard.find((item) => item.id === value.id)) {
                     const newcart = [...addcard, { ...value, quantity: 1 }];
                     setAddcard(newcart);
+                    let totalproduct =  localStorage.setItem("cart",JSON.stringify(newcart));
                     setCardcount(newcart.length);
+                    let totalLength = localStorage.setItem("length",JSON.stringify(newcart.length))
                     Toastify({
                       text: `product is succedfully added `,
                       duration: 3000,
