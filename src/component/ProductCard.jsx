@@ -62,11 +62,11 @@ const ProductCard = (props) => {
 
 
   const removeitem = (id) => {
-    const updatedCart = addcard.filter(item => item.id !== id);
-    setAddcard(updatedCart);
-    setCardcount(updatedCart.length);
+    const updatedCart = cart.filter(item => item.id !== id);
     let totalproduct =  localStorage.setItem("cart",JSON.stringify(updatedCart));
     let totalLength = localStorage.setItem("length",JSON.stringify(updatedCart.length))
+    setAddcard(updatedCart);
+    setCardcount(totalLength);
 
 
     Toastify({
@@ -86,7 +86,10 @@ const ProductCard = (props) => {
 
   }
 
-  const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price.replace(/,/g, "")) * item.quantity, 0);
+
+  let cart = JSON.parse(localStorage.getItem("cart"))||[];
+let length = JSON.parse(localStorage.getItem("length"))||0
+  const totalPrice = cart.reduce((acc, item) => acc + parseFloat(item.price.replace(/,/g, "")) * item.quantity, 0);
 
 const formateTotal = totalPrice.toLocaleString("en-IN");
 
@@ -110,8 +113,8 @@ const formateTotal = totalPrice.toLocaleString("en-IN");
     setAddcard(updatedCart);
   };
 
-let cart = JSON.parse(localStorage.getItem("cart"))||[];
-let length = JSON.parse(localStorage.getItem("length"))||0
+
+
 
 
   return (
@@ -142,11 +145,11 @@ let length = JSON.parse(localStorage.getItem("length"))||0
       <div className='sticky top-22 '>
         <div id='slider-bar' className={`md:h-130 h-70 md:w-100 w-90 absolute   overflow-y-scroll flow-cart rounded -left-100  ${mode === "light" ? "text-black bg-white" : "text-white bg-black"}`}>
           <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer sticky top-2.5'>x</p>
-          {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {formateTotal}</p>}
-          {addcard.length > 0 ? "" : <p className='text-center top-20'>No data found</p>}
+          {cart.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {formateTotal}</p>}
+          {cart.length > 0 ? "" : <p className='text-center top-20'>No data found</p>}
           {
-          cart.map((items) => {
-            return <div>
+          cart.map((items,index) => {
+            return <div key={index}>
               <div className='flex p-2 gap-3 items-center'>
                 <img className='w-40 h-50 object-contain rounded ' src={items.img} alt="" />
                 <div>
@@ -169,8 +172,8 @@ let length = JSON.parse(localStorage.getItem("length"))||0
         </div>
       </div>
       <div className=' grid  md:grid-cols-2 lg:grid-cols-3  gap-4 mt-5   p-2'>
-        {filterData.map((value) => {
-          return <div className='shadow-xl  rounded p-2 '>
+        {filterData.map((value,index) => {
+          return <div className='shadow-xl  rounded p-2 'key={index}>
             <div className='w-full'>
               <div className='h-100'>
                 <img className='w-full h-100 object-contain' src={value.img} alt="" />
@@ -180,8 +183,8 @@ let length = JSON.parse(localStorage.getItem("length"))||0
               <p className='ps-4 font-semibold'>Price: {value.price}</p>
               <div className='flex gap-3 flex-wrap'>
                 <button onClick={() => {
-                  if (!addcard.find((item) => item.id === value.id)) {
-                    const newcart = [...addcard, { ...value, quantity: 1 }];
+                  if (!cart.find((item) => item.id === value.id)) {
+                    const newcart = [...cart, { ...value, quantity: 1 }];
                     setAddcard(newcart);
                     let totalproduct =  localStorage.setItem("cart",JSON.stringify(newcart));
                     setCardcount(newcart.length);

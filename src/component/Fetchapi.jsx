@@ -7,7 +7,6 @@ const Fetchapi = () => {
     .then((datas)=>{
       return datas.json();
     }).then((datas)=>{
-      console.log(datas);
       setData(datas)
     })
     
@@ -15,8 +14,8 @@ const Fetchapi = () => {
   return (
     <div>
       <div className='grid grid-cols-3 gap-3 p-1'>
-      {data.map((item)=>{
-      return <div className=' mt-2 p-2 rounded shadow shadow-blue-400'>
+      {data.map((item,index)=>{
+      return <div className=' mt-2 p-2 rounded shadow shadow-blue-400' key={index}>
         <p>ID: {item.id}</p>
         <p className='text-2xl font-medium'>{item.title}</p>
         <p>{item.body}</p>
