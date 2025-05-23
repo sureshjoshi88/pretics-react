@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { products } from "../datas/products"
 import Comment from './Comment';
 import { FaCartShopping } from "react-icons/fa6";
@@ -56,12 +56,12 @@ const ProductCard = (props) => {
   }
 
 
-  const [addcard, setAddcard] = useState(()=>{
-      return JSON.parse(localStorage.getItem("addcard")) || [];
+  const [addcard, setAddcard] = useState(() => {
+    return JSON.parse(localStorage.getItem("addcard")) || [];
 
   });
-  const [cardcount, setCardcount] = useState(()=>{
-      return JSON.parse(localStorage.getItem("length")) || 0;
+  const [cardcount, setCardcount] = useState(() => {
+    return JSON.parse(localStorage.getItem("length")) || 0;
 
   });
 
@@ -69,11 +69,11 @@ const ProductCard = (props) => {
 
   const removeitem = (id) => {
     const updatedaddcard = addcard.filter(item => item.id !== id);
-    let totalproduct =  localStorage.setItem("addcard",JSON.stringify(updatedaddcard));
-    let totalLength = localStorage.setItem("length",JSON.stringify(updatedaddcard.length))
+    let totalproduct = localStorage.setItem("addcard", JSON.stringify(updatedaddcard));
+    let totalLength = localStorage.setItem("length", JSON.stringify(updatedaddcard.length))
     setAddcard(updatedaddcard);
     setCardcount(totalLength);
-     totalLength = updatedaddcard.length;
+    totalLength = updatedaddcard.length;
     setCardcount(totalLength);
     Toastify({
       text: `product is succedfully delete`,
@@ -94,13 +94,13 @@ const ProductCard = (props) => {
 
 
 
-useEffect(() => {
-  localStorage.setItem("cart", JSON.stringify(addcard));
-  localStorage.setItem("length", JSON.stringify(addcard.length));
-}, [addcard]);
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(addcard));
+    localStorage.setItem("length", JSON.stringify(addcard.length));
+  }, [addcard]);
   const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price.replace(/,/g, "")) * item.quantity, 0);
 
-const formateTotal = totalPrice.toLocaleString("en-IN");
+  const formateTotal = totalPrice.toLocaleString("en-IN");
 
   const incrementQuantity = (id) => {
     const updatedaddcard = addcard.map(item => {
@@ -134,7 +134,7 @@ const formateTotal = totalPrice.toLocaleString("en-IN");
 
         <div className='flex flex-wrap justify-around  '>
           <button id="card" onClick={slider} className={`text-3xl ${mode === "light" ? 'text-black' : "text-white"} rounded  p-1 cursor-pointer relative`}><FaCartShopping />
-<span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{cardcount}</span>
+            <span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{cardcount}</span>
           </button>
           <select onChange={(e) => setSalected(e.target.value)} name="" id="salect" className={`${mode === "light" ? "text-black " : "text-white"} border rounded mt-2`}>
             <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="all">all</option>
@@ -158,32 +158,32 @@ const formateTotal = totalPrice.toLocaleString("en-IN");
           {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {formateTotal}</p>}
           {addcard.length > 0 ? "" : <p className='text-center top-20'>No data found</p>}
           {
-          addcard.map((items,index) => {
-            return <div key={index}>
-              <div className='flex p-2 gap-3 items-center'>
-                <img className='w-40 h-50 object-contain rounded ' src={items.img} alt="" />
-                <div>
-                  <div className='flex gap-5  items-center'>
-                    <p className=' font-semibold'>{items.name}</p>
-                    <p className='font-semibold '>{items.price}</p>
-                    <button className='ms-auto text-2xl cursor-pointer hover:bg-red-600  hover:text-white p-1 rounded ' onClick={() => removeitem(items.id)}><MdDeleteForever /></button>
-                  </div>
-                  <div className='flex justify-center gap-1 mt-2'>
-                    <button className='text-3xl flex justify-center items-center border rounded cursor-pointer  h-8  w-8' onClick={() => decrementQuantity(items.id)}>- </button>
-                    <button className='text-3xl'> {items.quantity} </button>
-                    <button className='text-3xl  flex justify-center items-center border rounded cursor-pointer  h-8  w-8' onClick={() => incrementQuantity(items.id)}> +</button>
+            addcard.map((items, index) => {
+              return <div key={index}>
+                <div className='flex p-2 gap-3 items-center'>
+                  <img className='w-40 h-50 object-contain rounded ' src={items.img} alt="" />
+                  <div>
+                    <div className='flex gap-5  items-center'>
+                      <p className=' font-semibold'>{items.name}</p>
+                      <p className='font-semibold '>{items.price}</p>
+                      <button className='ms-auto text-2xl cursor-pointer hover:bg-red-600  hover:text-white p-1 rounded ' onClick={() => removeitem(items.id)}><MdDeleteForever /></button>
+                    </div>
+                    <div className='flex justify-center gap-1 mt-2'>
+                      <button className='text-3xl flex justify-center items-center border rounded cursor-pointer  h-8  w-8' onClick={() => decrementQuantity(items.id)}>- </button>
+                      <button className='text-3xl'> {items.quantity} </button>
+                      <button className='text-3xl  flex justify-center items-center border rounded cursor-pointer  h-8  w-8' onClick={() => incrementQuantity(items.id)}> +</button>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-            </div>
-          })}
+              </div>
+            })}
 
         </div>
       </div>
       <div className=' grid  md:grid-cols-2 lg:grid-cols-3  gap-4 mt-5   p-2'>
-        {filterData.map((value,index) => {
-          return <div className='shadow-xl  rounded p-2 'key={index}>
+        {filterData.map((value, index) => {
+          return <div className='shadow-xl  rounded p-2 ' key={index}>
             <div className='w-full'>
               <div className='h-100'>
                 <img className='w-full h-100 object-contain' src={value.img} alt="" />
@@ -196,9 +196,9 @@ const formateTotal = totalPrice.toLocaleString("en-IN");
                   if (!addcard.find((item) => item.id === value.id)) {
                     const newaddcard = [...addcard, { ...value, quantity: 1 }];
                     setAddcard(newaddcard);
-                    let totalproduct =  localStorage.setItem("cart",JSON.stringify(newaddcard));
+                    let totalproduct = localStorage.setItem("cart", JSON.stringify(newaddcard));
                     setCardcount(newaddcard.length);
-                    let totalLength = localStorage.setItem("length",JSON.stringify(newaddcard.length))
+                    let totalLength = localStorage.setItem("length", JSON.stringify(newaddcard.length))
                     Toastify({
                       text: `product is succedfully added `,
                       duration: 3000,
@@ -229,9 +229,9 @@ const formateTotal = totalPrice.toLocaleString("en-IN");
                       onClick: function () { } // Callback after click
                     }).showToast();
                   }
-                }} id='card-buton' className='text-white rounded bg-red-400 h-8 w-30 p-1 mt-3 cursor-pointer'>Add to addcard</button>
+                }} id='card-buton' className='text-white rounded bg-blend-luminosity bg-blue-600 hover:bg-blue-500 font-semibold h-8 w-30 p-1 mt-3 cursor-pointer'>Add to cart</button>
 
-                <button id='card-buton' className='text-white rounded bg-green-600 h-8 w-30 p-1 mt-3 cursor-pointer'>Buy Now</button>
+                <button id='card-buton' className='text-white rounded bg-green-600 font-semibold hover:bg-green-500 h-8 w-30 p-1 mt-3 cursor-pointer'>Buy Now</button>
               </div>
               <div className='mt-3'>
                 <Comment modes={mode} />
@@ -241,7 +241,7 @@ const formateTotal = totalPrice.toLocaleString("en-IN");
         })}
       </div>
       <Fetchapi />
-      <Foter/>
+      <Foter />
     </>
   )
 }
