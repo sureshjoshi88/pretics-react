@@ -3,7 +3,7 @@ import React,{useState,useEffect} from 'react'
 const Fetchapi = () => {
   const [data,setData] = useState([]);
    useEffect(()=>{
-     const response =   fetch("https://jsonplaceholder.typicode.com/posts")
+     fetch("https://jsonplaceholder.typicode.com/posts")
     .then((datas)=>{
       return datas.json();
     }).then((datas)=>{

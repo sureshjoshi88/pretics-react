@@ -57,7 +57,7 @@ const ProductCard = (props) => {
 
 
   const [addcard, setAddcard] = useState(() => {
-    return JSON.parse(localStorage.getItem("addcard")) || [];
+    return JSON.parse(localStorage.getItem("cart")) || [];
 
   });
   const [cardcount, setCardcount] = useState(() => {
@@ -69,7 +69,7 @@ const ProductCard = (props) => {
 
   const removeitem = (id) => {
     const updatedaddcard = addcard.filter(item => item.id !== id);
-    let totalproduct = localStorage.setItem("addcard", JSON.stringify(updatedaddcard));
+    let totalproduct = localStorage.setItem("cart", JSON.stringify(updatedaddcard));
     let totalLength = localStorage.setItem("length", JSON.stringify(updatedaddcard.length))
     setAddcard(updatedaddcard);
     setCardcount(totalLength);
