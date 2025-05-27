@@ -159,13 +159,15 @@ const ProductCard = (props) => {
           {
             addcard.map((items, index) => {
               return <div key={index}>
-                <div className='flex p-2 gap-3 items-center'>
+                <div className='flex p-2 gap-4 items-center'>
                   <img className='w-40 h-50 object-contain rounded ' src={items.img} alt="" />
-                  <div>
-                    <div className='flex gap-5  items-center'>
-                      <p className=' font-semibold'>{items.name}</p>
-                      <p className='font-semibold '>{items.price}</p>
-                      <p>quaninty:{items.quantity}</p>
+                  <div className='flex gap-3 items-center'>
+                    <div className='p-2'>
+                      <p className=' font-semibold cursor-pointer'>Name :- {items.name}</p>
+                      <p className='font-semibold cursor-pointer'>Price :- {items.price}</p>
+                      <p className='font-semibold cursor-pointer'>quaninty :- {items.quantity}</p>
+                    </div>
+                    <div>
                       <button className='ms-auto text-2xl cursor-pointer hover:bg-red-600  hover:text-white p-1 rounded ' onClick={() => removeitem(items.id,items.name)}><MdDeleteForever /></button>
                     </div>
                    
