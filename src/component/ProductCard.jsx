@@ -67,16 +67,15 @@ const ProductCard = (props) => {
 
 
 
-  const removeitem = (id) => {
+  const removeitem = (id,name) => {
     const updatedaddcard = addcard.filter(item => item.id !== id);
     let totalproduct = localStorage.setItem("cart", JSON.stringify(updatedaddcard));
     let totalLength = localStorage.setItem("length", JSON.stringify(updatedaddcard.length))
     setAddcard(updatedaddcard);
-    setCardcount(totalLength);
     totalLength = updatedaddcard.length;
     setCardcount(totalLength);
     Toastify({
-      text: `product is succedfully delete`,
+      text: `${name} is succedfully delete`,
       duration: 3000,
       destination: "https://github.com/apvarun/toastify-js",
       newWindow: true,
@@ -102,25 +101,25 @@ const ProductCard = (props) => {
 
   const formateTotal = totalPrice.toLocaleString("en-IN");
 
-  const incrementQuantity = (id) => {
-    const updatedaddcard = addcard.map(item => {
-      if (item.id === id) {
-        return { ...item, quantity: item.quantity + 1 };
-      }
-      return item;
-    });
-    setAddcard(updatedaddcard);
-  };
+  // const incrementQuantity = (id) => {
+  //   const updatedaddcard = addcard.map(item => {
+  //     if (item.id === id) {
+  //       return { ...item, quantity: item.quantity + 1 };
+  //     }
+  //     return item;
+  //   });
+  //   setAddcard(updatedaddcard);
+  // };
 
-  const decrementQuantity = (id) => {
-    const updatedaddcard = addcard.map(item => {
-      if (item.id === id && item.quantity > 1) {
-        return { ...item, quantity: item.quantity - 1 };
-      }
-      return item;
-    });
-    setAddcard(updatedaddcard);
-  };
+  // const decrementQuantity = (id) => {
+  //   const updatedaddcard = addcard.map(item => {
+  //     if (item.id === id && item.quantity > 1) {
+  //       return { ...item, quantity: item.quantity - 1 };
+  //     }
+  //     return item;
+  //   });
+  //   setAddcard(updatedaddcard);
+  // };
 
 
 
@@ -166,13 +165,10 @@ const ProductCard = (props) => {
                     <div className='flex gap-5  items-center'>
                       <p className=' font-semibold'>{items.name}</p>
                       <p className='font-semibold '>{items.price}</p>
-                      <button className='ms-auto text-2xl cursor-pointer hover:bg-red-600  hover:text-white p-1 rounded ' onClick={() => removeitem(items.id)}><MdDeleteForever /></button>
+                      <p>quaninty:{items.quantity}</p>
+                      <button className='ms-auto text-2xl cursor-pointer hover:bg-red-600  hover:text-white p-1 rounded ' onClick={() => removeitem(items.id,items.name)}><MdDeleteForever /></button>
                     </div>
-                    <div className='flex justify-center gap-1 mt-2'>
-                      <button className='text-3xl flex justify-center items-center border rounded cursor-pointer  h-8  w-8' onClick={() => decrementQuantity(items.id)}>- </button>
-                      <button className='text-3xl'> {items.quantity} </button>
-                      <button className='text-3xl  flex justify-center items-center border rounded cursor-pointer  h-8  w-8' onClick={() => incrementQuantity(items.id)}> +</button>
-                    </div>
+                   
                   </div>
                 </div>
 
@@ -193,14 +189,15 @@ const ProductCard = (props) => {
               <p className='ps-4 font-semibold'>Price: {value.price}</p>
               <div className='flex gap-3 flex-wrap'>
                 <button onClick={() => {
-                  if (!addcard.find((item) => item.id === value.id)) {
+                  let index = addcard.findIndex((item) => item.id === value.id)
+                  if (index===-1) {
                     const newaddcard = [...addcard, { ...value, quantity: 1 }];
                     setAddcard(newaddcard);
                     let totalproduct = localStorage.setItem("cart", JSON.stringify(newaddcard));
                     setCardcount(newaddcard.length);
                     let totalLength = localStorage.setItem("length", JSON.stringify(newaddcard.length))
                     Toastify({
-                      text: `product is succedfully added `,
+                      text: `${value.name} is succedfully added `,
                       duration: 3000,
                       destination: "https://github.com/apvarun/toastify-js",
                       newWindow: true,
@@ -214,8 +211,13 @@ const ProductCard = (props) => {
                       onClick: function () { } // Callback after click
                     }).showToast();
                   } else {
+
+                    const updateQuantity = [...addcard];
+                    updateQuantity[index].quantity+=1;
+                    setAddcard(updateQuantity)
+                    localStorage.setItem("cart",JSON.stringify(updateQuantity))
                     Toastify({
-                      text: `product is already added`,
+                      text: `${value.name} is quantity increase`,
                       duration: 3000,
                       destination: "https://github.com/apvarun/toastify-js",
                       newWindow: true,
@@ -224,14 +226,14 @@ const ProductCard = (props) => {
                       position: "right", // `left`, `center` or `right`
                       stopOnFocus: true, // Prevents dismissing of toast on hover
                       style: {
-                        background: "linear-gradient(to right, #d12a3d, red)",
+                        background: "linear-gradient(to right, #navyblue, blue)",
                       },
                       onClick: function () { } // Callback after click
                     }).showToast();
                   }
-                }} id='card-buton' className='text-white rounded bg-blend-luminosity bg-blue-600 hover:bg-blue-500 font-semibold h-8 w-30 p-1 mt-3 cursor-pointer'>Add to cart</button>
+                }}  className='text-white rounded bg-blend-luminosity bg-blue-600 hover:bg-blue-500 font-semibold h-8 w-30 p-1 mt-3 cursor-pointer'>Add to cart</button>
 
-                <button id='card-buton' className='text-white rounded bg-green-600 font-semibold hover:bg-green-500 h-8 w-30 p-1 mt-3 cursor-pointer'>Buy Now</button>
+                <button  className='text-white rounded bg-green-600 font-semibold hover:bg-green-500 h-8 w-30 p-1 mt-3 cursor-pointer'>Buy Now</button>
               </div>
               <div className='mt-3'>
                 <Comment modes={mode} />

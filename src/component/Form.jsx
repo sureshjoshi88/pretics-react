@@ -39,7 +39,7 @@ const Form = () => {
             localStorage.setItem("login", true);
             setLogin(true)
             Toastify({
-                text: "congrass you are logined",
+                text:  ` congrass ${value} you are login`,
                 duration: 3000,
                 destination: "https://github.com/apvarun/toastify-js",
                 newWindow: true,
