@@ -151,8 +151,8 @@ const ProductCard = (props) => {
         </div>
       </div>
 
-      <div className='sticky top-22 '>
-        <div id='slider-bar' className={`md:h-130 h-70 md:w-100 w-90 absolute   overflow-y-scroll flow-addcard rounded -left-100  ${mode === "light" ? "text-black bg-white" : "text-white bg-black"}`}>
+      <div id='slider-bar' className={`flow-cart fixed top-20  md:h-[90vh] h-70 md:w-100 w-90 overflow-y-scroll rounded -left-100 ${mode === "light" ? "text-black bg-white" : "text-white bg-black"} z-50`}>
+        <div >
           <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer sticky top-2.5'>x</p>
           {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {formateTotal}</p>}
           {addcard.length > 0 ? "" : <p className='text-center top-20'>No data found</p>}
@@ -219,7 +219,7 @@ const ProductCard = (props) => {
                     setAddcard(updateQuantity)
                     localStorage.setItem("cart",JSON.stringify(updateQuantity))
                     Toastify({
-                      text: `${value.name} is quantity increase`,
+                      text: `${value.name} quantity increase`,
                       duration: 3000,
                       destination: "https://github.com/apvarun/toastify-js",
                       newWindow: true,
@@ -244,8 +244,8 @@ const ProductCard = (props) => {
           </div>
         })}
       </div>
-      <Fetchapi />
-      <Foter />
+      <Fetchapi modes={mode}/>
+      <Foter modes={mode} />
     </>
   )
 }
