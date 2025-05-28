@@ -47,7 +47,7 @@ const Card = (props) => {
     setDislike(0);
 
   }
- 
+
   return (
     <div className='mt-4'>
       <div>
@@ -80,8 +80,8 @@ const Card = (props) => {
             <div className="text-2xl  text-neutral-700 cursor-pointer" onClick={button}><GiPlayButton /></div>
           </div>
           <div className='h-20 overflow-hidden overflow-y-scroll webkit '>
-            {comment.map((value,index) =>
-                <li className="p-1 cursor-pointer"  key={index}>{value}</li>
+            {comment.map((value, index) =>
+              <li className="p-1 cursor-pointer" key={index}>{value}</li>
             )
             }
           </div>

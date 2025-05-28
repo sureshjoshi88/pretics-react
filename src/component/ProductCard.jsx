@@ -67,7 +67,7 @@ const ProductCard = (props) => {
 
 
 
-  const removeitem = (id,name) => {
+  const removeitem = (id, name) => {
     const updatedaddcard = addcard.filter(item => item.id !== id);
     let totalproduct = localStorage.setItem("cart", JSON.stringify(updatedaddcard));
     let totalLength = localStorage.setItem("length", JSON.stringify(updatedaddcard.length))
@@ -133,7 +133,7 @@ const ProductCard = (props) => {
 
         <div className='flex flex-wrap justify-around  '>
           <button id="card" onClick={slider} className={`text-3xl ${mode === "light" ? 'text-black' : "text-white"} rounded  p-1 cursor-pointer relative`}><FaCartShopping />
-           {cardcount >0&& <span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{cardcount}</span>}
+            {cardcount > 0 && <span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{cardcount}</span>}
           </button>
           <select onChange={(e) => setSalected(e.target.value)} name="" id="salect" className={`${mode === "light" ? "text-black " : "text-white"} border rounded mt-2`}>
             <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="all">all</option>
@@ -168,9 +168,9 @@ const ProductCard = (props) => {
                       <p className='font-semibold cursor-pointer'>quaninty :- {items.quantity}</p>
                     </div>
                     <div>
-                      <button className='ms-auto text-2xl cursor-pointer hover:bg-red-600  hover:text-white p-1 rounded ' onClick={() => removeitem(items.id,items.name)}><MdDeleteForever /></button>
+                      <button className='ms-auto text-2xl cursor-pointer hover:bg-red-600  hover:text-white p-1 rounded ' onClick={() => removeitem(items.id, items.name)}><MdDeleteForever /></button>
                     </div>
-                   
+
                   </div>
                 </div>
 
@@ -192,7 +192,7 @@ const ProductCard = (props) => {
               <div className='flex gap-3 flex-wrap'>
                 <button onClick={() => {
                   let index = addcard.findIndex((item) => item.id === value.id)
-                  if (index===-1) {
+                  if (index === -1) {
                     const newaddcard = [...addcard, { ...value, quantity: 1 }];
                     setAddcard(newaddcard);
                     let totalproduct = localStorage.setItem("cart", JSON.stringify(newaddcard));
@@ -215,9 +215,9 @@ const ProductCard = (props) => {
                   } else {
 
                     const updateQuantity = [...addcard];
-                    updateQuantity[index].quantity+=1;
+                    updateQuantity[index].quantity += 1;
                     setAddcard(updateQuantity)
-                    localStorage.setItem("cart",JSON.stringify(updateQuantity))
+                    localStorage.setItem("cart", JSON.stringify(updateQuantity))
                     Toastify({
                       text: `${value.name} quantity increase`,
                       duration: 3000,
@@ -233,9 +233,9 @@ const ProductCard = (props) => {
                       onClick: function () { } // Callback after click
                     }).showToast();
                   }
-                }}  className='text-white rounded bg-blend-luminosity bg-blue-600 hover:bg-blue-500 font-semibold h-8 w-30 p-1 mt-3 cursor-pointer'>Add to cart</button>
+                }} className='text-white rounded bg-blend-luminosity bg-blue-600 hover:bg-blue-500 font-semibold h-8 w-30 p-1 mt-3 cursor-pointer'>Add to cart</button>
 
-                <button  className='text-white rounded bg-green-600 font-semibold hover:bg-green-500 h-8 w-30 p-1 mt-3 cursor-pointer'>Buy Now</button>
+                <button className='text-white rounded bg-green-600 font-semibold hover:bg-green-500 h-8 w-30 p-1 mt-3 cursor-pointer'>Buy Now</button>
               </div>
               <div className='mt-3'>
                 <Comment modes={mode} />
@@ -244,7 +244,7 @@ const ProductCard = (props) => {
           </div>
         })}
       </div>
-      <Fetchapi modes={mode}/>
+      <Fetchapi modes={mode} />
       <Foter modes={mode} />
     </>
   )

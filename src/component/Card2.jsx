@@ -71,15 +71,15 @@ const Card2 = (props) => {
             </button>          </div>
           <div className="flex gap-2 mt-3 border w-fit rounded">
             <input className=" outline-0 rounded cursor-pointer" id="input2" type="text" value={commenttext} onChange={(e) => setCommenttext(e.target.value)} onKeyDown={handleevent} placeholder="Enter a comment" />
-            <div className="text-2xl text-neutral-700 cursor-pointer"  onClick={buttons}><GiPlayButton /></div>
+            <div className="text-2xl text-neutral-700 cursor-pointer" onClick={buttons}><GiPlayButton /></div>
           </div>
           <div className='h-20 overflow-hidden overflow-y-scroll webkit'>
-            {comment2.map((value,index) =>
+            {comment2.map((value, index) =>
               <li className="p-1 cursor-pointer" key={index}>{value}</li>
 
             )}
           </div>
-         
+
         </div>
       </div>
     </div>
