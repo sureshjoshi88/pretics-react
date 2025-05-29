@@ -142,6 +142,9 @@ const ProductCard = (props) => {
             <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="electric">electric</option>
             <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="vihicle">vihicle</option>
             <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="clothes">clothes</option>
+            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="books">books</option>
+            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="toys">toys</option>
+            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="furniture">furniture</option>
           </select>
 
 

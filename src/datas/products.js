@@ -70,41 +70,41 @@ export const products = [
         name: "Rich Dad Poor Dad",
         price: "₹450",
         img: "https://m.media-amazon.com/images/I/81BE7eeKzAL.jpg",
-        category: "books",
+        catergory: "books",
     },
     {
         id: 13,
         name: "Atomic Habits",
         price: "₹500",
         img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f",
-        category: "books",
+        catergory: "books",
     },
     {
         id: 14,
         name: "Remote Car",
         price: "₹1,500",
         img: "https://m.media-amazon.com/images/I/5156vdTtaRL._SY300_SX300_QL70_FMwebp_.jpg",
-        category: "toys",
+        catergory: "toys",
     },
     {
         id: 15,
         name: "Lego Blocks",
         price: "₹1,800",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbGf-37upr73XtAEGBkk7g2Amu5w-8vhZiRw&s",
-        category: "toys",
+        catergory: "toys",
     }, {
         id: 10,
         name: "Wooden Table",
         price: "₹5,500",
         img: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4",
-        category: "furniture",
+        catergory: "furniture",
     },
     {
         id: 11,
         name: "Office Chair",
         price: "₹3,200",
         img: "https://thesleepcompany.in/cdn/shop/files/1_86ee36eb-042d-4d7d-aafc-c505fcc204e2.webp?v=1747593557&width=860",
-        category: "furniture",
+        catergory: "furniture",
     }
 
 ]
