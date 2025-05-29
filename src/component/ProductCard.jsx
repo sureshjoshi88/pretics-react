@@ -9,6 +9,7 @@ import Fetchapi from './Fetchapi';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
 import Foter from './Foter';
+import Tostyfiy from './Tostyfiy';
 
 
 
@@ -127,7 +128,8 @@ const ProductCard = (props) => {
 
   return (
     <>
-
+          {props.error && <Tostyfiy error={props.error} />}
+        
       <div className='sticky top-0 bg-white p-3  z-40' id='main-heading'>
         <h2 className='font-bold md:text-3xl text-center'>My Social Feed</h2>
 

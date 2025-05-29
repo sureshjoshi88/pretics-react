@@ -38,20 +38,22 @@ const Form = () => {
         } else {
             localStorage.setItem("login", true);
             setLogin(true)
-            Toastify({
-                text:  ` congrass ${value} you are login`,
-                duration: 3000,
-                destination: "https://github.com/apvarun/toastify-js",
-                newWindow: true,
-                close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
-                style: {
-                    background: "linear-gradient(to right, green, #77ed7e)",
-                },
-                onClick: function () { } // Callback after click
-            }).showToast();
+            showAlert("congrass yor are logined")
+
+            // Toastify({
+            //     text:  ` congrass ${value} you are login`,
+            //     duration: 3000,
+            //     destination: "https://github.com/apvarun/toastify-js",
+            //     newWindow: true,
+            //     close: true,
+            //     gravity: "top", // `top` or `bottom`
+            //     position: "right", // `left`, `center` or `right`
+            //     stopOnFocus: true, // Prevents dismissing of toast on hover
+            //     style: {
+            //         background: "linear-gradient(to right, green, #77ed7e)",
+            //     },
+            //     onClick: function () { } // Callback after click
+            // }).showToast();
             setValue("")
             setValue2("")
         }
@@ -109,7 +111,7 @@ const Form = () => {
                     </form>
                 </div>
             </div>
-                : <ProductCard logout={logOut} />}
+                : <ProductCard logout={logOut} error={error} />}
 
         </>
     )
