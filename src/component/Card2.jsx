@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
 import { GiPlayButton } from "react-icons/gi";
 import { GrPowerReset } from "react-icons/gr";
+import Card from './Card'
 
 
 
@@ -46,8 +47,11 @@ const Card2 = (props) => {
 
   }
   return (
-    <div className='mt-4 '>
-      <div>
+    <div className='mt-1'>
+      <div className='grid md:grid-cols-2 gap-4 p-1'>
+        <div>
+          <Card title="React app" img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ04HyzQ1x41KdCCV9KCHaeRdVvRszAP2Zc9A&s"} />
+        </div>
         <div className="bg-white rounded shadow-xl p-2 mt-3 ">
           <div>
             <img className='cursor-pointer' src={props.img} alt="" />

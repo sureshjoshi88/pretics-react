@@ -1,8 +1,11 @@
 
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
-import Fetchapi from './component/Fetchapi'
-
+// import Fetchapi from './component/Fetchapi'
 import Form from './component/Form'
+import ProductCard from './component/ProductCard'
+import Navbar from './component/Navbar'
+import Card2 from './component/Card2'
 
 
 
@@ -13,7 +16,7 @@ function App() {
     
       {/* <div className=' gap-5 md:flex w-full'>
         <div>
-          <Card title="React app" img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ04HyzQ1x41KdCCV9KCHaeRdVvRszAP2Zc9A&s"} />
+          <Card  />
 
         </div>
         <div >
@@ -21,7 +24,13 @@ function App() {
 
         </div>
       </div>  */}
-      <Form/>
+
+      {/* <Form/> */}
+      <Navbar/>
+      <Routes>
+        <Route path='/product' element={<ProductCard/>}/>
+        <Route path='/cart' element={<Card2 title="React vite" img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6EAHvdbel54bf0pizpGJS2ZkDVfkcoEpuQ&s"} />}/>
+      </Routes>
 
     </>
   )
