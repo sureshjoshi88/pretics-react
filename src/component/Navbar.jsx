@@ -11,7 +11,7 @@ const Navbar = (props) => {
             <img className='w-16 h-16 rounded-full' src="https://marketplace.canva.com/EAGQ1aYlOWs/1/0/1600w/canva-blue-colorful-illustrative-e-commerce-online-shop-logo-bHiX_0QpJxE.jpg" alt="" />
         </div>
         <ul className='flex gap-10'>
-            <li className='hover:underline cursor-pointer hover:text-blue-600 font-semibold'><Link to="/product">
+            <li className='hover:underline cursor-pointer hover:text-blue-600 font-semibold'><Link to="/">
            Home </Link></li>
             <li className='hover:underline cursor-pointer hover:text-blue-600 font-semibold'><Link to="/">
            Product </Link></li>
@@ -21,6 +21,9 @@ const Navbar = (props) => {
         <div>
               {props.mode === "light" ? <button onClick={props.colorMode} className='text-2xl text-black pe-2'><CiDark /></button> :
             <button onClick={props.colorMode} className='text-2xl text-white pe-2'><MdSunny /></button>}
+        </div>
+        <div>
+             <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer'>Log-out</button>
         </div>
       </nav>
     </div>

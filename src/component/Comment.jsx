@@ -60,7 +60,7 @@ const Comment = (props) => {
         </button>
       </div>
       <div className="flex gap-2 mt-3 border w-fit rounded">
-        <input className={`} outline-0 rounded cursor-pointer ${props.modes === "light" ? " text-black" : "text-white"}`} value={inputValue} type="text" onChange={(e) => setinputValue(e.target.value)} onKeyDown={handleevent} placeholder="Enter a comment" />
+        <input className={` outline-0 rounded cursor-pointer ${props.modes === "light" ? " text-black" : "text-white"}`}  value={inputValue} type="text" name='comment' onChange={(e) => setinputValue(e.target.value)} onKeyDown={handleevent} placeholder="Enter a comment" />
         <div className={`text-2xl   cursor-pointer ${props.modes === "light" ? "text-neutral-700" : "text-white"}`} onClick={button}><GiPlayButton /></div>
       </div>
       <div className='h-20 overflow-hidden overflow-y-scroll webkit '>

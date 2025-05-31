@@ -110,7 +110,7 @@ const ProductCard = (props) => {
           {props.error && <Tostyfiy error={props.error} />}
         
       <div className='p-3' >
-        <div className='flex flex-wrap justify-around  '>
+        <div className='flex flex-wrap justify-around  mt-3'>
           <button id="card" onClick={slider} className={`text-3xl ${props.mode === "light" ? 'text-black' : "text-white"} rounded  p-1 cursor-pointer relative`}><FaCartShopping />
             {cardcount > 0 && <span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{cardcount}</span>}
           </button>
@@ -124,11 +124,6 @@ const ProductCard = (props) => {
             <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="furniture">furniture</option>
           </select>
 
-
-
-
-          <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer'>Log-out</button>
-    
         </div>
       </div>
 

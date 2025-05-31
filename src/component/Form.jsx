@@ -7,7 +7,7 @@ import Tostyfiy from './Tostyfiy';
 
 
 
-const Form = () => {
+const Form = (props) => {
     const mainFull = (event) => {
         event.preventDefault();
     }
@@ -15,14 +15,12 @@ const Form = () => {
 
     const [value, setValue] = useState("");
     const [value2, setValue2] = useState("");
-    const [error, setError] = useState("");
-    const [login, setLogin] = useState(false);
 
 
     const showAlert = (msg) => {
-        setError(msg)
+        props.setError(msg)
         setTimeout(() => {
-            setError(null)
+            props.setError(null)
         }, 4000);
     }
     const sumbitButton = () => {
@@ -37,23 +35,8 @@ const Form = () => {
             showAlert("Please correct password(min 8 char)")
         } else {
             localStorage.setItem("login", true);
-            setLogin(true)
+            props.setLogin(true)
             showAlert("congrass yor are logined")
-
-            // Toastify({
-            //     text:  ` congrass ${value} you are login`,
-            //     duration: 3000,
-            //     destination: "https://github.com/apvarun/toastify-js",
-            //     newWindow: true,
-            //     close: true,
-            //     gravity: "top", // `top` or `bottom`
-            //     position: "right", // `left`, `center` or `right`
-            //     stopOnFocus: true, // Prevents dismissing of toast on hover
-            //     style: {
-            //         background: "linear-gradient(to right, green, #77ed7e)",
-            //     },
-            //     onClick: function () { } // Callback after click
-            // }).showToast();
             setValue("")
             setValue2("")
         }
@@ -74,44 +57,35 @@ const Form = () => {
         }
     }
 
-    useEffect(() => {
-        const localdata = JSON.parse(localStorage.getItem("login"));
-        if (localdata) {
-            setLogin(true);
-        }
-    }, []);
+   
 
-    const logOut = () => {
-        localStorage.removeItem("login");
-        setLogin(false)
-
-    }
+  
 
     return (
         <>
-            {error && <Tostyfiy error={error} />}
-            {!login ? <div className='flex justify-center mt-10 mb-4'>
+            {props.error && <Tostyfiy error={props.error} />}
+             <div className='flex justify-center mt-10 mb-4'>
                 <div className=' p-2 rounded shadow-xl shadow-amber-300 bg-white'>
                     <form action="" id='main' onSubmit={mainFull} className='p-2'>
                         <div>
                             <label htmlFor="101">Username</label><br />
-                            <input id='101' autoFocus name='name' className='border hover:border-green-300 mt-3 w-100 p-1 rounded cursor-pointer' value={value} onChange={(e) => setValue(e.target.value)} type="text" placeholder='Username' required />
+                            <input id='101' autoFocus name='username' className='border hover:border-green-300 mt-3 w-100 p-1 rounded cursor-pointer' value={value} onChange={(e) => setValue(e.target.value)} type="text" placeholder='Username' required />
                         </div>
                         <div className='mt-2'>
                             <label htmlFor="102">Password</label><br />
                             <div className='border  hover:border-green-300  mt-3 w-100 p-1 rounded cursor-pointer flex gap-1'>
-                                <input className='w-100 outline-0' id='102' name='name2' value={value2} onChange={(e) => setValue2(e.target.value)} type="password" placeholder='Password' required />
-                                <button className='cursor-pointer outline-0 ' id='buton-show' type='button' onClick={ShowPassword}>Show</button>
+                                <input className='w-100 outline-0' id='102' name='password'  value={value2} onChange={(e) => setValue2(e.target.value)} type="password" placeholder='Password' required />
+                                <button className='cursor-pointer outline-0 '  id='buton-show' type='button' onClick={ShowPassword}>Show</button>
                             </div>
                         </div>
                         <div>
                             <button onClick={sumbitButton} type='submit' className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3 cursor-pointer'>Login </button>
                         </div>
-                        <p className='text-red-500'>{error}</p>
+                        <p className='text-red-500'>{props.error}</p>
                     </form>
                 </div>
             </div>
-                : <ProductCard logout={logOut} error={error} />}
+                
 
         </>
     )
