@@ -3,8 +3,7 @@ import { products } from "../datas/products"
 import Comment from './Comment';
 import { FaCartShopping } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
-import { CiDark } from "react-icons/ci";
-import { MdSunny } from "react-icons/md";
+
 import Fetchapi from './Fetchapi';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
@@ -16,26 +15,6 @@ import Tostyfiy from './Tostyfiy';
 
 const ProductCard = (props) => {
 
-
-  const [mode, setMode] = useState("light");
-
-  const colorMode = () => {
-    if (mode === "light") {
-      document.body.style.backgroundColor = "black";
-      document.body.style.color = "white";
-      let heading = document.getElementById("main-heading");
-      heading.style.backgroundColor = "black";
-      heading.style.color = "white";
-      setMode("dark")
-    } else {
-      document.body.style.backgroundColor = "white";
-      document.body.style.color = "black";
-      let heading = document.getElementById("main-heading");
-      heading.style.backgroundColor = "white";
-      heading.style.color = "black";
-      setMode("light")
-    }
-  }
 
   const [salected, setSalected] = useState("all");
   const filterData = salected === "all" ? products : products.filter((item) => {
@@ -130,33 +109,30 @@ const ProductCard = (props) => {
     <>
           {props.error && <Tostyfiy error={props.error} />}
         
-      <div className='sticky top-0 bg-white p-3  z-40' id='main-heading'>
-        <h2 className='font-bold md:text-3xl text-center'>My Social Feed</h2>
-
+      <div className='p-3' >
         <div className='flex flex-wrap justify-around  '>
-          <button id="card" onClick={slider} className={`text-3xl ${mode === "light" ? 'text-black' : "text-white"} rounded  p-1 cursor-pointer relative`}><FaCartShopping />
+          <button id="card" onClick={slider} className={`text-3xl ${props.mode === "light" ? 'text-black' : "text-white"} rounded  p-1 cursor-pointer relative`}><FaCartShopping />
             {cardcount > 0 && <span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{cardcount}</span>}
           </button>
-          <select onChange={(e) => setSalected(e.target.value)} name="" id="salect" className={`${mode === "light" ? "text-black " : "text-white"} border rounded mt-2`}>
-            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="all">all</option>
-            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="electric">electric</option>
-            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="vihicle">vihicle</option>
-            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="clothes">clothes</option>
-            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="books">books</option>
-            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="toys">toys</option>
-            <option className={`${mode === "light" ? "text-black " : "text-white bg-black"}`} value="furniture">furniture</option>
+          <select onChange={(e) => setSalected(e.target.value)} name="" id="salect" className={`${props.mode === "light" ? "text-black " : "text-white"} border rounded mt-2`}>
+            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="all">all</option>
+            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="electric">electric</option>
+            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="vihicle">vihicle</option>
+            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="clothes">clothes</option>
+            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="books">books</option>
+            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="toys">toys</option>
+            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="furniture">furniture</option>
           </select>
 
 
 
 
           <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer'>Log-out</button>
-          {mode === "light" ? <button onClick={colorMode} className='text-2xl text-black'><CiDark /></button> :
-            <button onClick={colorMode} className='text-2xl text-white'><MdSunny /></button>}
+    
         </div>
       </div>
 
-      <div id='slider-bar' className={`flow-cart fixed top-20  md:h-[90vh] h-70 md:w-100 w-90 overflow-y-scroll rounded -left-100 ${mode === "light" ? "text-black bg-white" : "text-white bg-black"} z-50`}>
+      <div id='slider-bar' className={`flow-cart fixed top-20  md:h-[90vh] h-70 md:w-100 w-90 overflow-y-scroll rounded -left-100 ${props.mode === "light" ? "text-black bg-white" : "text-white bg-black"} z-50`}>
         <div >
           <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer sticky top-2.5'>x</p>
           {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {formateTotal}</p>}
@@ -243,14 +219,14 @@ const ProductCard = (props) => {
                 <button className='text-white rounded bg-green-600 font-semibold hover:bg-green-500 h-8 w-30 p-1 mt-3 cursor-pointer'>Buy Now</button>
               </div>
               <div className='mt-3'>
-                <Comment modes={mode} />
+                <Comment modes={props.mode} />
               </div>
             </div>
           </div>
         })}
       </div>
-      <Fetchapi modes={mode} />
-      <Foter modes={mode} />
+      <Fetchapi modes={props.mode} />
+      <Foter modes={props.mode} />
     </>
   )
 }
