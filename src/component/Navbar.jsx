@@ -19,8 +19,8 @@ const Navbar = (props) => {
            Cart </Link></li>
         </ul>
         <div>
-              {props.mode === "light" ? <button onClick={props.colorMode} className='text-2xl text-black pe-2'><CiDark /></button> :
-            <button onClick={props.colorMode} className='text-2xl text-white pe-2'><MdSunny /></button>}
+              {props.mode === "light" ? <button onClick={props.colorMode} className='text-2xl text-black pe-2 cursor-pointer'><CiDark /></button> :
+            <button onClick={props.colorMode} className='text-2xl text-white pe-2 cursor-pointer'><MdSunny /></button>}
         </div>
         <div>
              <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer'>Log-out</button>

@@ -3,11 +3,8 @@ import { products } from "../datas/products"
 import Comment from './Comment';
 import { FaCartShopping } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
-
-import Fetchapi from './Fetchapi';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
-import Foter from './Foter';
 import Tostyfiy from './Tostyfiy';
 
 
@@ -107,8 +104,8 @@ const ProductCard = (props) => {
 
   return (
     <>
-          {props.error && <Tostyfiy error={props.error} />}
-        
+      {props.error && <Tostyfiy error={props.error} />}
+
       <div className='p-3' >
         <div className='flex flex-wrap justify-around  mt-3'>
           <button id="card" onClick={slider} className={`text-3xl ${props.mode === "light" ? 'text-black' : "text-white"} rounded  p-1 cursor-pointer relative`}><FaCartShopping />
@@ -220,8 +217,7 @@ const ProductCard = (props) => {
           </div>
         })}
       </div>
-      <Fetchapi modes={props.mode} />
-      <Foter modes={props.mode} />
+
     </>
   )
 }
