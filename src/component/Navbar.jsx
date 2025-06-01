@@ -13,8 +13,8 @@ const Navbar = (props) => {
         <ul className='flex gap-10'>
             <li className='hover:underline cursor-pointer hover:text-blue-600 font-semibold'><Link to="/">
            Home </Link></li>
-            <li className='hover:underline cursor-pointer hover:text-blue-600 font-semibold'><Link to="/">
-           Product </Link></li>
+            <li className='hover:underline cursor-pointer hover:text-blue-600 font-semibold'><Link to="/about">
+           About </Link></li>
             <li className='hover:underline cursor-pointer hover:text-blue-600 font-semibold'><Link to="/cart">
            Cart </Link></li>
         </ul>
