@@ -8,6 +8,7 @@ import Card2 from './component/Card2'
 import { useState, useEffect } from 'react'
 import Fetchapi from './component/Fetchapi'
 import Foter from './component/Foter'
+import DefaulPage from './component/DefaulPage'
 
 
 
@@ -57,6 +58,7 @@ function App() {
           <div>
             <Navbar mode={mode} colorMode={colorMode} logout={logOut} />
             <Routes>
+              <Route path='*' element={<DefaulPage/>}/>
               <Route path='/' element={< ProductCard mode={mode} error={error} />} />
               <Route path='/cart' element={<Card2 title="React vite" img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6EAHvdbel54bf0pizpGJS2ZkDVfkcoEpuQ&s"} />} />
               <Route path='/about' element={<Fetchapi modes={mode} />} />
