@@ -4,6 +4,8 @@ import { AiFillLike, AiFillDislike } from "react-icons/ai";
 import { GiPlayButton } from "react-icons/gi";
 import { GrPowerReset } from "react-icons/gr";
 import Card from './Card'
+import Navbar from './Navbar';
+import Foter from './Foter';
 
 
 
@@ -47,7 +49,11 @@ const Card2 = (props) => {
 
   }
   return (
-    <div className='mt-1'>
+    <>         
+         <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} />
+
+      
+      <div className='mt-1'>
       <div className='grid md:grid-cols-2 gap-4 p-1'>
         <div>
           <Card title="React app" img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ04HyzQ1x41KdCCV9KCHaeRdVvRszAP2Zc9A&s"} />
@@ -87,6 +93,9 @@ const Card2 = (props) => {
         </div>
       </div>
     </div>
+    <Foter/>
+    </>
+
   )
 }
 

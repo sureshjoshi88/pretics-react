@@ -6,6 +6,8 @@ import { MdDeleteForever } from "react-icons/md";
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
 import Tostyfiy from './Tostyfiy';
+import Navbar from './Navbar';
+import Foter from './Foter';
 
 
 
@@ -105,6 +107,8 @@ const ProductCard = (props) => {
   return (
     <>
       {props.error && <Tostyfiy error={props.error} />}
+        <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} />
+
 
       <div className='p-3' >
         <div className='flex flex-wrap justify-around  mt-3'>
@@ -217,7 +221,7 @@ const ProductCard = (props) => {
           </div>
         })}
       </div>
-
+        <Foter/>
     </>
   )
 }

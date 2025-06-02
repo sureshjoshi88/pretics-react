@@ -56,14 +56,12 @@ function App() {
         login === false ?
           <Form setLogin={setLogin} error={error} setError={setError} /> :
           <div>
-            <Navbar mode={mode} colorMode={colorMode} logout={logOut} />
             <Routes>
               <Route path='*' element={<DefaulPage/>}/>
-              <Route path='/' element={< ProductCard mode={mode} error={error} />} />
-              <Route path='/cart' element={<Card2 title="React vite" img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6EAHvdbel54bf0pizpGJS2ZkDVfkcoEpuQ&s"} />} />
-              <Route path='/about' element={<Fetchapi modes={mode} />} />
+              <Route path='/' element={< ProductCard mode={mode} error={error}  colorMode={colorMode} logOut={logOut}  />} />
+              <Route path='/cart' element={<Card2 title="React vite" img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6EAHvdbel54bf0pizpGJS2ZkDVfkcoEpuQ&s"} mode={mode} colorMode={colorMode} logOut={logOut}  />} />
+              <Route path='/about' element={<Fetchapi mode={mode} colorMode={colorMode} logOut={logOut} />} />
             </Routes>
-            <Foter modes={mode} />
           </div>
       }
 
