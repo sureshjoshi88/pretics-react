@@ -107,7 +107,7 @@ const ProductCard = (props) => {
   return (
     <>
       {props.error && <Tostyfiy error={props.error} />}
-        <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} />
+      <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} />
 
 
       <div className='p-3' >
@@ -221,7 +221,7 @@ const ProductCard = (props) => {
           </div>
         })}
       </div>
-        <Foter/>
+      <Foter />
     </>
   )
 }
