@@ -64,15 +64,15 @@ const Form = (props) => {
     return (
         <>
             {props.error && <Tostyfiy error={props.error} />}
-             <div className='flex justify-center mt-10 mb-4'>
-                <div className=' p-2 rounded shadow-xl shadow-amber-300 bg-white'>
+             <div className='flex justify-center mt-14 mb-4'>
+                <div className='p-3 rounded shadow-xl shadow-blue-300 bg-white'>
                     <form action="" id='main' onSubmit={mainFull} className='p-2'>
                         <div>
-                            <label htmlFor="101">Username</label><br />
+                            <label className='font-medium' htmlFor="101">Username</label><br />
                             <input id='101' autoFocus name='username' className='border hover:border-green-300 mt-3 w-100 p-1 rounded cursor-pointer' value={value} onChange={(e) => setValue(e.target.value)} type="text" placeholder='Username' required />
                         </div>
                         <div className='mt-2'>
-                            <label htmlFor="102">Password</label><br />
+                            <label className='font-medium' htmlFor="102">Password</label><br />
                             <div className='border  hover:border-green-300  mt-3 w-100 p-1 rounded cursor-pointer flex gap-1'>
                                 <input className='w-100 outline-0' id='102' name='password'  value={value2} onChange={(e) => setValue2(e.target.value)} type="password" placeholder='Password' required />
                                 <button className='cursor-pointer outline-0 '  id='buton-show' type='button' onClick={ShowPassword}>Show</button>
@@ -81,7 +81,7 @@ const Form = (props) => {
                         <div>
                             <button onClick={sumbitButton} type='submit' className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3 cursor-pointer'>Login </button>
                         </div>
-                        <p className='text-red-500'>{props.error}</p>
+                        <p className='text-red-500 font-semibold'>{props.error}</p>
                     </form>
                 </div>
             </div>
