@@ -51,7 +51,7 @@ const Card = (props) => {
   return (
     <div className='mt-4'>
       <div>
-        <div className="bg-white rounded shadow-xl p-2 mt-3 ">
+        <div className=" rounded shadow-xl p-2 mt-3 ">
           <div>
             <img className="cursor-pointer" src={props.img} alt="" />
           </div>
