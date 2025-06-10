@@ -4,8 +4,8 @@ import Navbar from './Navbar';
 
 const Fetchapi = (props) => {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
+  useEffect( () => {
+     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((datas) => {
         return datas.json();
       }).then((datas) => {
