@@ -1,4 +1,4 @@
-import React, { Suspense,lazy } from 'react'
+import React, { Suspense, lazy } from 'react';
 
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react'
 // import Foter from './component/Foter'
 import DefaulPage from './component/DefaulPage'
 const Card2  = React.lazy(()=>import('./component/Card2'));
-const Fetchapi  = React.lazy(()=>import('./component/Fetchapi'));
+const Fetchapi  = lazy(()=>import('./component/Fetchapi'));
 
 
 
@@ -28,16 +28,10 @@ function App() {
     if (mode === "light") {
       document.body.style.backgroundColor = "black";
       document.body.style.color = "white";
-      let heading = document.getElementById("main-heading");
-      heading.style.backgroundColor = "black";
-      heading.style.color = "white";
       setMode("dark")
     } else {
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
-      let heading = document.getElementById("main-heading");
-      heading.style.backgroundColor = "white";
-      heading.style.color = "black";
       setMode("light")
     }
   }
