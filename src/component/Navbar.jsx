@@ -5,7 +5,7 @@ import { MdSunny } from "react-icons/md";
 
 const Navbar = (props) => {
   return (
-    <div className='sticky top-0 bg-white z-50' id='main-heading'>
+    <div className={`sticky top-0  z-50 ${props.mode==='light'?'bg-white':'bg-black'}`}>
       <nav className='flex  justify-between p-2 items-center'>
         <div>
           <img className='w-16 h-16 rounded-full' src="https://marketplace.canva.com/EAGQ1aYlOWs/1/0/1600w/canva-blue-colorful-illustrative-e-commerce-online-shop-logo-bHiX_0QpJxE.jpg" alt="" />
