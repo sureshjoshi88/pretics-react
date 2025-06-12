@@ -3,7 +3,7 @@ import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Form from './component/Form'
-import ProductCard from './component/ProductCard'
+// import ProductCard from './component/ProductCard'
 // import Navbar from './component/Navbar'
 // import Card2 from './component/Card2'
 import { useState, useEffect } from 'react'
@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react'
 import DefaulPage from './component/DefaulPage'
 const Card2  = React.lazy(()=>import('./component/Card2'));
 const Fetchapi  = lazy(()=>import('./component/Fetchapi'));
+const ProductCard = lazy(()=>import('./component/ProductCard'))
 
 
 
@@ -54,17 +55,17 @@ function App() {
         login === false ?
           <Form setLogin={setLogin} error={error} setError={setError} /> :
           <div>
+              <Suspense fallback={<div className='flex justify-center items-center text-7xl h-200'>Loading...</div>}>
             <Routes>
               <Route path='*' element={<DefaulPage />} />
               <Route path='/' element={< ProductCard mode={mode} error={error} colorMode={colorMode} logOut={logOut} />} />
               <Route path='/cart' element={
                 <Card2 title="React vite" img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6EAHvdbel54bf0pizpGJS2ZkDVfkcoEpuQ&s"} mode={mode} colorMode={colorMode} logOut={logOut} />} />
               <Route path='/about' element={
-                <Suspense fallback={<div className='flex justify-center items-center text-7xl h-100'>Loading...</div>}>
                   <Fetchapi mode={mode} colorMode={colorMode} logOut={logOut} />
-                </Suspense>
                 } />
             </Routes>
+                </Suspense>
           </div>
       }
 
