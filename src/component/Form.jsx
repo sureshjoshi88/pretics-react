@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react'
 import { useState } from 'react';
-import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
-import ProductCard from './ProductCard';
 import Tostyfiy from './Tostyfiy';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 
 const Form = (props) => {
+
+    const navigate = useNavigate();
+
     const mainFull = (event) => {
         event.preventDefault();
     }
@@ -39,6 +40,7 @@ const Form = (props) => {
             showAlert("congrass yor are logined")
             setValue("")
             setValue2("")
+            navigate('/')
         }
 
     }
