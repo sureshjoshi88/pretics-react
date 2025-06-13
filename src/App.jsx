@@ -5,6 +5,7 @@ import './App.css'
 import Form from './component/Form'
 import { useState, useEffect } from 'react'
 import DefaulPage from './component/DefaulPage'
+import ProtectRoute from './component/ProtectRoute';
 const Card2 = React.lazy(() => import('./component/Card2'));
 const Fetchapi = lazy(() => import('./component/Fetchapi'));
 const ProductCard = lazy(() => import('./component/ProductCard'))
@@ -61,12 +62,16 @@ function App() {
 }>
             <Routes>
               <Route path='*' element={<DefaulPage />} />
-              <Route path='/' element={< ProductCard mode={mode} error={error} colorMode={colorMode} logOut={logOut} />} />
+              <Route path='/' element={
+                <ProtectRoute>
+                < ProductCard mode={mode} error={error} colorMode={colorMode} logOut={logOut} /> </ProtectRoute>} />
               <Route path='/cart' element={
                 <Card2 title="React vite" img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6EAHvdbel54bf0pizpGJS2ZkDVfkcoEpuQ&s"} mode={mode} colorMode={colorMode} logOut={logOut} />} />
               <Route path='/about' element={
                 <Fetchapi mode={mode} colorMode={colorMode} logOut={logOut} />
               } />
+       
+              <Route path='/form' element={<Form setLogin={setLogin} error={error} setError={setError} />  }/>
             </Routes>
           </Suspense>
         </div>
