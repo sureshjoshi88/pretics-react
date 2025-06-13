@@ -1,33 +1,89 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CiDark } from "react-icons/ci";
 import { MdSunny } from "react-icons/md";
+import { HiMenu, HiX } from "react-icons/hi";
 
 const Navbar = (props) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinkClass = "block py-2 px-4 hover:text-blue-600 font-semibold";
+
   return (
-    <div className={`sticky top-0  z-50 ${props.mode==='light'?'bg-white':'bg-black'}`}>
-      <nav className='flex  justify-between p-2 items-center'>
-        <div>
-          <img className='w-16 h-16 rounded-full' src="https://marketplace.canva.com/EAGQ1aYlOWs/1/0/1600w/canva-blue-colorful-illustrative-e-commerce-online-shop-logo-bHiX_0QpJxE.jpg" alt="" />
+    <div className={`sticky top-0 z-50 ${props.mode === 'light' ? 'bg-white' : 'bg-black '} shadow-md`}>
+      <nav className="flex justify-between items-center px-4 md:px-10 py-3">
+
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <img
+            className="w-10 h-10 rounded-full"
+            src="https://marketplace.canva.com/EAGQ1aYlOWs/1/0/1600w/canva-blue-colorful-illustrative-e-commerce-online-shop-logo-bHiX_0QpJxE.jpg"
+            alt="Logo"
+          />
+          <span className={`font-bold text-xl ${props.mode === 'light' ? 'text-black' : 'text-white'}`}>
+            MyShop
+          </span>
         </div>
-        <ul className='flex gap-10'>
-          <li className='hover:underline cursor-pointer hover:text-blue-600 font-semibold'><Link to="/">
-            Home </Link></li>
-          <li className='hover:underline cursor-pointer hover:text-blue-600 font-semibold'><Link to="/about">
-            About </Link></li>
-          <li className='hover:underline cursor-pointer hover:text-blue-600 font-semibold'><Link to="/cart">
-            Cart </Link></li>
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-8 items-center">
+          <li><Link to="/" className={navLinkClass}>Home</Link></li>
+          <li><Link to="/about" className={navLinkClass}>About</Link></li>
+          <li><Link to="/cart" className={navLinkClass}>Cart</Link></li>
+          <li>
+            {props.mode === 'light' ? (
+              <button onClick={props.colorMode} className="text-2xl text-black">
+                <CiDark />
+              </button>
+            ) : (
+              <button onClick={props.colorMode} className="text-2xl text-white">
+                <MdSunny />
+              </button>
+            )}
+          </li>
+          <li>
+            <button
+              onClick={props.logout}
+              className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"
+            >
+              Log-out
+            </button>
+          </li>
         </ul>
-        <div>
-          {props.mode === "light" ? <button onClick={props.colorMode} className='text-2xl text-black pe-2 cursor-pointer'><CiDark /></button> :
-            <button onClick={props.colorMode} className='text-2xl text-white pe-2 cursor-pointer'><MdSunny /></button>}
-        </div>
-        <div>
-          <button onClick={props.logout} className='border rounded  p-1 ps-2 pe-2  bg-red-600 text-white cursor-pointer font-medium'>Log-out</button>
+
+        {/* Mobile Toggle Button */}
+        <div className="md:hidden text-3xl text-gray-800 dark:text-white" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <HiX /> : <HiMenu />}
         </div>
       </nav>
-    </div>
-  )
-}
 
-export default Navbar
+      {/* Mobile Menu Dropdown */}
+      {menuOpen && (
+        <div className={`md:hidden flex flex-col items-start px-6 py-4 gap-3 ${props.mode === 'light' ? 'bg-white' : 'bg-black'}`}>
+          <Link to="/" className={navLinkClass} onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link to="/about" className={navLinkClass} onClick={() => setMenuOpen(false)}>About</Link>
+          <Link to="/cart" className={navLinkClass} onClick={() => setMenuOpen(false)}>Cart</Link>
+          <div className="pt-2 flex items-center gap-4">
+            {props.mode === 'light' ? (
+              <button onClick={props.colorMode} className="text-2xl text-black">
+                <CiDark />
+              </button>
+            ) : (
+              <button onClick={props.colorMode} className="text-2xl text-white">
+                <MdSunny />
+              </button>
+            )}
+            <button
+              onClick={props.logout}
+              className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"
+            >
+              Log-out
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Navbar;
