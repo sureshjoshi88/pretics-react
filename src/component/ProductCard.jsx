@@ -145,7 +145,11 @@ const ProductCard = (props) => {
           return <div className='shadow-xl  rounded p-2 ' key={index}>
             <div className='w-full'>
               <div className='h-100'>
-                <img className='w-full h-100 object-contain' src={value.img} alt="" />
+                <img className='w-full h-100 object-contain' src={value.img} alt=""  onError={(e) => {
+    e.target.onerror = null;
+    e.target.src =
+      "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg";
+  }} />
               </div>
               <p className='ps-4 font-semibold'>ID: {value.id}</p>
               <p className='ps-4 font-semibold'>Name: {value.name}</p>

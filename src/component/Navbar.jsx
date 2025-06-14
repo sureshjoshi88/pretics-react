@@ -52,7 +52,7 @@ const Navbar = (props) => {
         </ul>
 
         {/* Mobile Toggle Button */}
-        <div className="md:hidden text-3xl text-gray-800 dark:text-white" onClick={() => setMenuOpen(!menuOpen)}>
+        <div className="md:hidden text-3xl" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <HiX /> : <HiMenu />}
         </div>
       </nav>
