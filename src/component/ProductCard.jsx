@@ -112,9 +112,9 @@ const ProductCard = (props) => {
 
       <div id='slider-bar' className={`flow-cart fixed top-20  md:h-[90vh] h-70 md:w-100 w-90 overflow-y-scroll rounded -left-100 ${props.mode === "light" ? "text-black bg-white" : "text-white bg-black"} z-50`}>
         <div >
-       <div className='flex justify-end'>
-           <span onClick={removeSlider} className='text-2xl font-medium text-end ps-1 pe-1 cursor-pointer sticky top-2.5 hover:bg-red-600 hover:text-white rounded'>X</span>
-       </div>
+          <div className='flex justify-end'>
+            <span onClick={removeSlider} className='text-2xl font-medium text-end ps-1 pe-1 cursor-pointer sticky top-2.5 hover:bg-red-600 hover:text-white rounded'>X</span>
+          </div>
           {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {formateTotal}</p>}
           {addcard.length > 0 ? "" : <p className='text-center top-20'>No data found</p>}
           {
@@ -145,11 +145,11 @@ const ProductCard = (props) => {
           return <div className='shadow-xl  rounded p-2 ' key={index}>
             <div className='w-full'>
               <div className='h-100'>
-                <img className='w-full h-100 object-contain' src={value.img} alt=""  onError={(e) => {
-    e.target.onerror = null;
-    e.target.src =
-      "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg";
-  }} />
+                <img className='w-full h-100 object-contain' src={value.img} alt="" onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src =
+                    "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg";
+                }} />
               </div>
               <p className='ps-4 font-semibold'>ID: {value.id}</p>
               <p className='ps-4 font-semibold'>Name: {value.name}</p>
@@ -211,7 +211,7 @@ const ProductCard = (props) => {
       </div>
       <Foter />
     </>
-    
+
   )
 }
 
