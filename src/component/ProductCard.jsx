@@ -80,25 +80,7 @@ const ProductCard = (props) => {
 
   const formateTotal = totalPrice.toLocaleString("en-IN");
 
-  // const incrementQuantity = (id) => {
-  //   const updatedaddcard = addcard.map(item => {
-  //     if (item.id === id) {
-  //       return { ...item, quantity: item.quantity + 1 };
-  //     }
-  //     return item;
-  //   });
-  //   setAddcard(updatedaddcard);
-  // };
 
-  // const decrementQuantity = (id) => {
-  //   const updatedaddcard = addcard.map(item => {
-  //     if (item.id === id && item.quantity > 1) {
-  //       return { ...item, quantity: item.quantity - 1 };
-  //     }
-  //     return item;
-  //   });
-  //   setAddcard(updatedaddcard);
-  // };
 
 
 
@@ -130,7 +112,9 @@ const ProductCard = (props) => {
 
       <div id='slider-bar' className={`flow-cart fixed top-20  md:h-[90vh] h-70 md:w-100 w-90 overflow-y-scroll rounded -left-100 ${props.mode === "light" ? "text-black bg-white" : "text-white bg-black"} z-50`}>
         <div >
-          <p onClick={removeSlider} className='text-4xl text-end pe-3 cursor-pointer sticky top-2.5'>x</p>
+       <div className='flex justify-end'>
+           <span onClick={removeSlider} className='text-2xl font-medium text-end ps-1 pe-1 cursor-pointer sticky top-2.5 hover:bg-red-600 hover:text-white rounded'>X</span>
+       </div>
           {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {formateTotal}</p>}
           {addcard.length > 0 ? "" : <p className='text-center top-20'>No data found</p>}
           {
