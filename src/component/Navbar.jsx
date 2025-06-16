@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink,Link} from 'react-router-dom';
 import { CiDark } from "react-icons/ci";
 import { MdSunny } from "react-icons/md";
 import { HiMenu, HiX } from "react-icons/hi";
@@ -27,9 +27,9 @@ const Navbar = (props) => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 items-center">
-          <li><Link to="/" className={navLinkClass}>Home</Link></li>
-          <li><Link to="/about" className={navLinkClass}>About</Link></li>
-          <li><Link to="/cart" className={navLinkClass}>Cart</Link></li>
+          <li><NavLink to="/" className={({isActive})=>isActive?'text-blue-400':""}>Home</NavLink></li>
+          <li><NavLink to="/about" className={({isActive})=>isActive?'text-blue-400':""}>About</NavLink></li>
+          <li><NavLink to="/cart" className={({isActive})=>isActive?'text-blue-400':""}>Cart</NavLink></li>
           <li>
             {props.mode === 'light' ? (
               <button onClick={props.colorMode} className="text-2xl text-black cursor-pointer">
@@ -60,9 +60,9 @@ const Navbar = (props) => {
       {/* Mobile Menu Dropdown */}
       {menuOpen && (
         <div className={`md:hidden flex flex-col items-start px-6 py-4 gap-3 ${props.mode === 'light' ? 'bg-white' : 'bg-black'}`}>
-          <Link to="/" className={navLinkClass} onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link to="/about" className={navLinkClass} onClick={() => setMenuOpen(false)}>About</Link>
-          <Link to="/cart" className={navLinkClass} onClick={() => setMenuOpen(false)}>Cart</Link>
+          <NavLink to="/" className={({isActive})=>isActive?'text-blue-400':""} onClick={() => setMenuOpen(false)}>Home</NavLink>
+          <NavLink to="/about" className={({isActive})=>isActive?'text-blue-400':""} onClick={() => setMenuOpen(false)}>About</NavLink>
+          <NavLink to="/cart" className={({isActive})=>isActive?'text-blue-400':""} onClick={() => setMenuOpen(false)}>Cart</NavLink>
           <div className="pt-2 flex items-center gap-4">
             {props.mode === 'light' ? (
               <button onClick={props.colorMode} className="text-2xl text-black">
