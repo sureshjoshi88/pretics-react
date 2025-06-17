@@ -6,7 +6,7 @@ import Form from './component/Form'
 import { useState, useEffect } from 'react'
 import DefaulPage from './component/DefaulPage'
 import ProtectRoute from './component/ProtectRoute';
-const Card2 = React.lazy(() => import('./component/Card2'));
+const Card2 = lazy(() => import('./component/Card2'));
 const Fetchapi = lazy(() => import('./component/Fetchapi'));
 const ProductCard = lazy(() => import('./component/ProductCard'))
 
@@ -42,12 +42,9 @@ function App() {
       setLogin(true);
     }
   }, []);
-  return (
 
-    <>
-      {
-        // login === false ?
-        //   <Form setLogin={setLogin} error={error} setError={setError} /> :
+  return (
+    <>  
         <div>
           <Suspense fallback={
 <div role="status" className='flex justify-center items-center h-100 '>
@@ -75,7 +72,7 @@ function App() {
             </Routes>
           </Suspense>
         </div>
-      }
+      
 
     </>
   )

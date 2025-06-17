@@ -178,7 +178,6 @@ const ProductCard = (props) => {
                       onClick: function () { } // Callback after click
                     }).showToast();
                   } else {
-
                     const updateQuantity = [...addcard];
                     updateQuantity[index].quantity += 1;
                     setAddcard(updateQuantity)
