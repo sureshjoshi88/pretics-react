@@ -6,6 +6,8 @@ import { GrPowerReset } from "react-icons/gr";
 import Card from './Card'
 import Navbar from './Navbar';
 import Foter from './Foter';
+import { MdDeleteForever } from "react-icons/md";
+
 
 
 
@@ -48,12 +50,45 @@ const Card2 = (props) => {
     setDislike(0);
 
   }
+
+
+   const [addcard, setAddcard] = useState(() => {
+      return JSON.parse(localStorage.getItem("cart")) || [];
+  
+    });
+
+    const removeitem = (id, name) => {
+      const updatedaddcard = addcard.filter(item => item.id !== id);
+      let totalproduct = localStorage.setItem("cart", JSON.stringify(updatedaddcard));
+      let totalLength = localStorage.setItem("length", JSON.stringify(updatedaddcard.length))
+      setAddcard(updatedaddcard);
+      totalLength = updatedaddcard.length;
+      setCardcount(totalLength);
+      Toastify({
+        text: `${name} is succedfully delete`,
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #d12a3d, red)",
+        },
+        onClick: function () { } // Callback after click
+      }).showToast();
+  
+    }
+
+      // const addcard =  JSON.parse(localStorage.getItem("cart")) || [];
+
   return (
     <>
       <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} />
 
 
-      <div className='mt-1'>
+      {/* <div className='mt-1'>
         <div className='grid md:grid-cols-2 gap-4 p-1'>
           <div>
             <Card title="React app" img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ04HyzQ1x41KdCCV9KCHaeRdVvRszAP2Zc9A&s"} />
@@ -93,7 +128,28 @@ const Card2 = (props) => {
 
           </div>
         </div>
-      </div>
+      </div> */}
+
+      { addcard.map((items, index) => {
+                    return <div key={index}>
+                      <div className='flex p-2 gap-4 items-center'>
+                        <img className='w-40 h-50 object-contain rounded ' src={items.img} alt="" />
+                        <div className='flex gap-3 items-center'>
+                          <div className='p-2'>
+                            <p className=' font-semibold cursor-pointer'>Name :- {items.name}</p>
+                            <p className='font-semibold cursor-pointer'>Price :- {items.price}</p>
+                            <p className='font-semibold cursor-pointer'>quaninty :- {items.quantity}</p>
+                          </div>
+                          <div>
+                            <button className='ms-auto text-2xl cursor-pointer hover:bg-red-600  hover:text-white p-1 rounded ' onClick={() => removeitem(items.id, items.name)}><MdDeleteForever /></button>
+                          </div>
+      
+                        </div>
+                      </div>
+      
+                    </div>
+                  })}
+      
       <Foter />
     </>
 
