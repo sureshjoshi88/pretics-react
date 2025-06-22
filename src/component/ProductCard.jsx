@@ -86,9 +86,9 @@ const ProductCard = (props) => {
 
       <div className='p-3' >
         <div className='flex flex-wrap justify-around  mt-3'>
-          <button id="card" onClick={slider} className={`text-3xl ${props.mode === "light" ? 'text-black' : "text-white"} rounded  p-1 cursor-pointer relative`}><FaCartShopping />
+          {/* <button id="card" onClick={slider} className={`text-3xl ${props.mode === "light" ? 'text-black' : "text-white"} rounded  p-1 cursor-pointer relative`}><FaCartShopping />
             {cardcount > 0 && <span style={{ borderRadius: "50%", height: "24px", width: "24px", fontSize: "16px" }} className='absolute -top-4.5  -right-2 bg-red-500 font-semibold rounded-b-full text-white'>{cardcount}</span>}
-          </button>
+          </button> */}
           <select onChange={(e) => setSalected(e.target.value)} name="" id="salect" className={`${props.mode === "light" ? "text-black " : "text-white"} border rounded mt-2`}>
             <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="all">all</option>
             <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="electric">electric</option>
