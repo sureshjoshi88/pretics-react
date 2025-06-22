@@ -2,30 +2,20 @@ import { useState } from 'react';
 
 import Navbar from './Navbar';
 import Foter from './Foter';
-import { MdDeleteForever } from "react-icons/md";
 import { ToastContainer, toast } from 'react-toastify';
 import Tostyfiy from './Tostyfiy';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
 
-
-
-
-
 const Card2 = (props) => {
-
-
   const [addcard, setAddcard] = useState(() => {
     return JSON.parse(localStorage.getItem("cart")) || [];
-
   });
 
    const [cardcount, setCardcount] = useState(() => {
       return JSON.parse(localStorage.getItem("length")) || 0;
-  
     });
   
-
   const removeitem = (id, name) => {
     const updatedaddcard = addcard.filter(item => item.id !== id);
     let totalproduct = localStorage.setItem("cart", JSON.stringify(updatedaddcard));
@@ -50,7 +40,6 @@ const Card2 = (props) => {
   }
 
    const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price.replace(/,/g, "")) * item.quantity, 0);
-
   const formateTotal = totalPrice.toLocaleString("en-IN");
 
   return (

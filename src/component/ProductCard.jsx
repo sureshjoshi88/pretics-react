@@ -76,15 +76,7 @@ const ProductCard = (props) => {
     localStorage.setItem("cart", JSON.stringify(addcard));
     localStorage.setItem("length", JSON.stringify(addcard.length));
   }, [addcard]);
-  const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price.replace(/,/g, "")) * item.quantity, 0);
-
-  const formateTotal = totalPrice.toLocaleString("en-IN");
-
-
-
-
-
-
+ 
 
   return (
     <>
@@ -110,7 +102,7 @@ const ProductCard = (props) => {
         </div>
       </div>
 
-      <div id='slider-bar' className={`flow-cart fixed top-20  md:h-[90vh] h-70 md:w-100 w-90 overflow-y-scroll rounded -left-100 ${props.mode === "light" ? "text-black bg-white" : "text-white bg-black"} z-50`}>
+      {/* <div id='slider-bar' className={`flow-cart fixed top-20  md:h-[90vh] h-70 md:w-100 w-90 overflow-y-scroll rounded -left-100 ${props.mode === "light" ? "text-black bg-white" : "text-white bg-black"} z-50`}>
         <div >
           <div className='flex justify-end'>
             <span onClick={removeSlider} className='text-2xl font-medium text-end ps-1 pe-1 cursor-pointer sticky top-2.5 hover:bg-red-600 hover:text-white rounded'>X</span>
@@ -139,7 +131,7 @@ const ProductCard = (props) => {
             })}
 
         </div>
-      </div>
+      </div> */}
       <div className=' grid  md:grid-cols-2 lg:grid-cols-3  gap-4 mt-5   p-2'>
         {filterData.map((value, index) => {
           return <div className='shadow-xl  rounded p-2 ' key={index}>
