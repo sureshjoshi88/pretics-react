@@ -63,7 +63,7 @@ function App() {
               <ProtectRoute>
                 < ProductCard mode={mode} error={error} colorMode={colorMode} logOut={logOut} /> </ProtectRoute>} />
             <Route path='cart' element={
-              <Card2 title="React vite" img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6EAHvdbel54bf0pizpGJS2ZkDVfkcoEpuQ&s"} mode={mode} colorMode={colorMode} logOut={logOut} />} />
+              <Card2 error={error} mode={mode} colorMode={colorMode} logOut={logOut} />} />
             <Route path='about' element={
               <Fetchapi mode={mode} colorMode={colorMode} logOut={logOut} />
             } />
