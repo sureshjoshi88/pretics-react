@@ -5,8 +5,8 @@ import Foter from './Foter';
 import { MdDeleteForever } from "react-icons/md";
 import { ToastContainer, toast } from 'react-toastify';
 import Tostyfiy from './Tostyfiy';
-// import Toastify from 'toastify-js'
-// import "toastify-js/src/toastify.css"
+import Toastify from 'toastify-js'
+import "toastify-js/src/toastify.css"
 
 
 
@@ -14,12 +14,17 @@ import Tostyfiy from './Tostyfiy';
 
 const Card2 = (props) => {
 
-  const notify = () => toast("product is succedfully delete");
 
   const [addcard, setAddcard] = useState(() => {
     return JSON.parse(localStorage.getItem("cart")) || [];
 
   });
+
+   const [cardcount, setCardcount] = useState(() => {
+      return JSON.parse(localStorage.getItem("length")) || 0;
+  
+    });
+  
 
   const removeitem = (id, name) => {
     const updatedaddcard = addcard.filter(item => item.id !== id);
@@ -29,7 +34,7 @@ const Card2 = (props) => {
     totalLength = updatedaddcard.length;
     setCardcount(totalLength);
     Toastify({
-      text: `${value.name} is succedfully added `,
+      text: `${name} is succedfully deleted `,
       duration: 3000,
       destination: "https://github.com/apvarun/toastify-js",
       newWindow: true,
@@ -42,11 +47,11 @@ const Card2 = (props) => {
       },
       onClick: function () { } // Callback after click
     }).showToast();
-
-    // notify
-
   }
 
+   const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price.replace(/,/g, "")) * item.quantity, 0);
+
+  const formateTotal = totalPrice.toLocaleString("en-IN");
 
   return (
     <>
@@ -54,18 +59,19 @@ const Card2 = (props) => {
         <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} />
         {props.error && <  Tostyfiy error={props.error} />}
 
-        {addcard.map((items, index) => {
+         {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {formateTotal}</p>}
+          {addcard.length > 0 ? "" : <p className='text-center top-20'>No data found</p>}
+       <div className='grid md:grid-cols-3 gap-3'>
+         {addcard.map((items, index) => {
           return <div key={index}>
-            <div className='flex p-2 gap-4 items-center'>
-              <img className='w-40 h-50 object-contain rounded ' src={items.img} alt="" />
-              <div className='flex gap-3 items-center'>
-                <div className='p-2'>
+            <div className=' p-2 shadow-2xl'>
+              <img className=' h-100 object-center rounded w-full' src={items.img} alt="" />
+              <div className='p-2'>
                   <p className=' font-semibold cursor-pointer'>Name :- {items.name}</p>
                   <p className='font-semibold cursor-pointer'>Price :- {items.price}</p>
                   <p className='font-semibold cursor-pointer'>quaninty :- {items.quantity}</p>
-                </div>
                 <div>
-                  <button className='ms-auto text-2xl cursor-pointer hover:bg-red-600  hover:text-white p-1 rounded ' onClick={() => removeitem(items.id, items.name)}><MdDeleteForever />   </button>
+                  <button className=' cursor-pointer hover:bg-red-400 bg-red-600 text-white font-medium mt-3 p-1 rounded ' onClick={() => removeitem(items.id, items.name)}>Remove</button>
 
                   <ToastContainer />
                 </div>
@@ -74,6 +80,7 @@ const Card2 = (props) => {
 
           </div>
         })}
+       </div>
 
         <Foter />
       </div>
