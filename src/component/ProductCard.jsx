@@ -130,9 +130,9 @@ const [count,setCount] = useState(3);
           </div>
         })}
       </div>
-      <div className='p-3 flex justify-center'>
+      {count < products.length &&(<div className='p-3 flex justify-center'>
         <button onClick={handleCount} className='bg-amber-300 rounded font-medium p-2'>View More</button>
-      </div>
+      </div>)}
       <Foter />
     </>
 
