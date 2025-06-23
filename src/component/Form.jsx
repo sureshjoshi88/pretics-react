@@ -83,7 +83,8 @@ const Form = (props) => {
                         <div>
                             <button onClick={sumbitButton} type='submit' className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3 cursor-pointer'>Login </button>
                         </div>
-                        <p className='text-red-500 font-semibold'>{props.error}</p>
+                        {props.error==='congrass yor are logined'?<p className='text-green-700 font-semibold text-lg'>{props.error}</p>:
+                        <p className='text-red-500 font-semibold text-lg'>{props.error}</p>}
                     </form>
                 </div>
             </div>
