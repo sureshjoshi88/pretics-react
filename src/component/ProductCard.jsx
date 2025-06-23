@@ -12,9 +12,13 @@ import Foter from './Foter';
 
 const ProductCard = (props) => {
 
-
+const [count,setCount] = useState(3);
   const [salected, setSalected] = useState("all");
-  const filterData = salected === "all" ? products : products.filter((item) => {
+  const handleCount = () =>{
+    setCount(count+3)
+  }
+  const finalArray = products.slice(0,count)
+  const filterData = salected === "all" ? finalArray : products.filter((item) => {
     return item.catergory === salected
   })
 
@@ -28,11 +32,6 @@ const ProductCard = (props) => {
     return JSON.parse(localStorage.getItem("length")) || 0;
 
   });
-
-
-
-
-
 
 
 
@@ -130,6 +129,9 @@ const ProductCard = (props) => {
             </div>
           </div>
         })}
+      </div>
+      <div className='p-3 flex justify-center'>
+        <button onClick={handleCount} className='bg-amber-300 rounded font-medium p-2'>View More</button>
       </div>
       <Foter />
     </>
