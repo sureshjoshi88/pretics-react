@@ -33,12 +33,55 @@ const ProductCard = (props) => {
 
 
 
-  useEffect(() => {
+
+
+
+  const handleAddCard = (value) => {
+    let index = addcard.findIndex((item) => item.id === value.id)
+    if (index === -1) {
+      const newaddcard = [...addcard, { ...value, quantity: 1 }];
+      setAddcard(newaddcard);
+      setCardcount(newaddcard.length);
+      Toastify({
+        text: `${value.name} is succedfully added `,
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #17e335, #76deab)",
+        },
+        onClick: function () { } // Callback after click
+      }).showToast();
+    } else {
+      const updateQuantity = [...addcard];
+      updateQuantity[index].quantity += 1;
+      setAddcard(updateQuantity)
+      Toastify({
+        text: `${value.name} quantity increase`,
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #navyblue, blue)",
+        },
+        onClick: function () { } // Callback after click
+      }).showToast();
+    }
+  }
+
+
+    useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(addcard));
     localStorage.setItem("length", JSON.stringify(addcard.length));
   }, [addcard]);
-
-
   return (
     <>
       {/* {props.error && <Tostyfiy error={props.error} />}/ */}
@@ -77,49 +120,7 @@ const ProductCard = (props) => {
               <p className='ps-4 font-semibold'>Name: {value.name}</p>
               <p className='ps-4 font-semibold'>Price: {value.price}</p>
               <div className='flex gap-3 flex-wrap'>
-                <button onClick={() => {
-                  let index = addcard.findIndex((item) => item.id === value.id)
-                  if (index === -1) {
-                    const newaddcard = [...addcard, { ...value, quantity: 1 }];
-                    setAddcard(newaddcard);
-                    let totalproduct = localStorage.setItem("cart", JSON.stringify(newaddcard));
-                    setCardcount(newaddcard.length);
-                    let totalLength = localStorage.setItem("length", JSON.stringify(newaddcard.length))
-                    Toastify({
-                      text: `${value.name} is succedfully added `,
-                      duration: 3000,
-                      destination: "https://github.com/apvarun/toastify-js",
-                      newWindow: true,
-                      close: true,
-                      gravity: "top", // `top` or `bottom`
-                      position: "right", // `left`, `center` or `right`
-                      stopOnFocus: true, // Prevents dismissing of toast on hover
-                      style: {
-                        background: "linear-gradient(to right, #17e335, #76deab)",
-                      },
-                      onClick: function () { } // Callback after click
-                    }).showToast();
-                  } else {
-                    const updateQuantity = [...addcard];
-                    updateQuantity[index].quantity += 1;
-                    setAddcard(updateQuantity)
-                    localStorage.setItem("cart", JSON.stringify(updateQuantity))
-                    Toastify({
-                      text: `${value.name} quantity increase`,
-                      duration: 3000,
-                      destination: "https://github.com/apvarun/toastify-js",
-                      newWindow: true,
-                      close: true,
-                      gravity: "top", // `top` or `bottom`
-                      position: "right", // `left`, `center` or `right`
-                      stopOnFocus: true, // Prevents dismissing of toast on hover
-                      style: {
-                        background: "linear-gradient(to right, #navyblue, blue)",
-                      },
-                      onClick: function () { } // Callback after click
-                    }).showToast();
-                  }
-                }} className='text-white rounded bg-blend-luminosity bg-blue-600 hover:bg-blue-500 font-semibold h-8 w-30 p-1 mt-3 cursor-pointer'>Add to cart</button>
+                <button onClick={()=>handleAddCard(value)} className='text-white rounded bg-blend-luminosity bg-blue-600 hover:bg-blue-500 font-semibold h-8 w-30 p-1 mt-3 cursor-pointer'>Add to cart</button>
 
                 <button className='text-white rounded bg-green-600 font-semibold hover:bg-green-500 h-8 w-30 p-1 mt-3 cursor-pointer'>Buy Now</button>
               </div>

@@ -2,12 +2,14 @@ import { useState } from 'react';
 
 import Navbar from './Navbar';
 import Foter from './Foter';
-import { ToastContainer, toast } from 'react-toastify';
 import Tostyfiy from './Tostyfiy';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
 
 const Card2 = (props) => {
+
+  
+
   const [addcard, setAddcard] = useState(() => {
     return JSON.parse(localStorage.getItem("cart")) || [];
   });
@@ -39,8 +41,21 @@ const Card2 = (props) => {
     }).showToast();
   }
 
-   const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price.replace(/,/g, "")) * item.quantity, 0);
+  //  const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price.replace(/,/g, "")) * item.quantity, 0);
+  // const formateTotal = totalPrice.toLocaleString("en-IN");
+  // // setCardcount(formateTotal)
+  // console.log(totalPrice);
+  // console.log(formateTotal);
+  const totalPrice = addcard.reduce((acc, item) => {
+  const price = parseFloat(item?.price?.replace(/,/g, "") || 0);
+  return acc + price * item.quantity;
+}, 0);
+
   const formateTotal = totalPrice.toLocaleString("en-IN");
+
+
+
+  
 
   return (
     <>
@@ -54,22 +69,29 @@ const Card2 = (props) => {
          {addcard.map((items, index) => {
           return <div key={index}>
             <div className=' p-2 shadow-2xl'>
-              <img className=' h-100 object-center rounded w-full' src={items.img} alt="" />
-              <div className='p-2'>
+             <div className='w-full'>
+                <div className='h-100'>
+                <img className='w-full h-100 object-contain' src={items.img} alt="" onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src =
+                    "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg";
+                }} />
+              </div>              <div className='p-2'>
                   <p className=' font-semibold cursor-pointer'>Name :- {items.name}</p>
                   <p className='font-semibold cursor-pointer'>Price :- {items.price}</p>
                   <p className='font-semibold cursor-pointer'>quaninty :- {items.quantity}</p>
                 <div>
                   <button className=' cursor-pointer hover:bg-red-400 bg-red-600 text-white font-medium mt-3 p-1 rounded ' onClick={() => removeitem(items.id, items.name)}>Remove</button>
-
-                  <ToastContainer />
                 </div>
               </div>
+             </div>
             </div>
 
           </div>
         })}
        </div>
+       <div>
+         </div>
 
         <Foter />
       </div>
