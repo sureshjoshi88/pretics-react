@@ -48,7 +48,7 @@ const Navbar = (props) => {
               Log-out
             </button>:
              <button
-              
+              onClick={props.sigin}
               className="bg-blue-500 text-white px-3 py-1 rounded font-medium  hover:bg-blue-700 transition"
             >
               Sign Up
@@ -77,12 +77,18 @@ const Navbar = (props) => {
                 <MdSunny />
               </button>
             )}
-            <button
+            { token? <button
               onClick={props.logout}
-              className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"
+              className="bg-red-600 text-white px-3 py-1 font-medium rounded hover:bg-red-700 transition"
             >
               Log-out
-            </button>
+            </button>:
+             <button
+              onClick={props.sigin}
+              className="bg-blue-500 text-white px-3 py-1 rounded font-medium  hover:bg-blue-700 transition"
+            >
+              Sign Up
+            </button>}
            
           </div>
         </div>

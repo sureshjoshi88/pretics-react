@@ -48,7 +48,7 @@ const Card2 = (props) => {
   return (
     <>
       <div>
-        <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} />
+        <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} sigin={props.sigin} />
         {props.error && <  Tostyfiy error={props.error} />}
 
         {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {formateTotal}</p>}

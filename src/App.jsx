@@ -9,6 +9,7 @@ import ProtectRoute from './component/ProtectRoute';
 const Card2 = lazy(() => import('./component/Card2'));
 const Fetchapi = lazy(() => import('./component/Fetchapi'));
 const ProductCard = lazy(() => import('./component/ProductCard'))
+import { useNavigate } from 'react-router-dom';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   const [mode, setMode] = useState("light");
   const [login, setLogin] = useState(false);
   const [error, setError] = useState("");
+
 
 
 
@@ -34,7 +36,11 @@ function App() {
   const logOut = () => {
     localStorage.removeItem("login");
     setLogin(false)
+  }
 
+  const navigate = useNavigate();
+  const sigin = ()=>{
+    navigate('/form')
   }
   useEffect(() => {
     const localdata = JSON.parse(localStorage.getItem("login"));
@@ -61,11 +67,11 @@ function App() {
             <Route path='*' element={<DefaulPage />} />
             <Route path='/' element={
               <ProtectRoute>
-                < ProductCard mode={mode} error={error} colorMode={colorMode} logOut={logOut} /> </ProtectRoute>} />
+                < ProductCard mode={mode} error={error} colorMode={colorMode} logOut={logOut} sigin={sigin} /> </ProtectRoute>} />
             <Route path='cart' element={
-              <Card2 error={error} mode={mode} colorMode={colorMode} logOut={logOut} />} />
+              <Card2 error={error} mode={mode} colorMode={colorMode} logOut={logOut} sigin={sigin} />} />
             <Route path='about' element={
-              <Fetchapi mode={mode} colorMode={colorMode} logOut={logOut} />
+              <Fetchapi mode={mode} colorMode={colorMode} logOut={logOut} sigin={sigin} />
             } />
 
             <Route path='form' element={<Form setLogin={setLogin} error={error} setError={setError} />} />

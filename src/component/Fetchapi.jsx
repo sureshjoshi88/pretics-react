@@ -15,7 +15,7 @@ const Fetchapi = (props) => {
   }, []);
   return (
     <div>
-      <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} />
+      <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} sigin={props.sigin} />
 
       <div className='grid grid-cols-3 gap-3 p-1'>
         {data.map((item, index) => {

@@ -84,7 +84,7 @@ const [count,setCount] = useState(3);
   return (
     <>
       {/* {props.error && <Tostyfiy error={props.error} />}/ */}
-      <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} />
+      <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} sigin={props.sigin} />
 
 
       <div className='p-3'>
