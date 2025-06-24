@@ -106,7 +106,7 @@ const [count,setCount] = useState(3);
 
       <div className=' grid  md:grid-cols-2 lg:grid-cols-3  gap-4 mt-5   p-2'>
         {filterData.map((value, index) => {
-          return <div className='shadow-xl  rounded p-2 ' key={index}>
+          return <div className={`shadow-xl  rounded p-2 ${props.mode==='light'?'shadow-xl':"border"}`} key={index}>
             <div className='w-full'>
               <div className='h-100'>
                 <img className='w-full h-100 object-contain' src={value.img} alt="" onError={(e) => {

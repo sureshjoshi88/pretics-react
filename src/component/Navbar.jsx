@@ -6,6 +6,8 @@ import { HiMenu, HiX } from "react-icons/hi";
 
 const Navbar = (props) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const token = JSON.parse(localStorage.getItem('login'))
+
   return (
     <div className={`sticky top-0 z-50 ${props.mode === 'light' ? 'bg-white' : 'bg-black '} shadow-md`}>
       <nav className="flex justify-between items-center px-4 md:px-10 py-3">
@@ -38,14 +40,19 @@ const Navbar = (props) => {
               </button>
             )}
           </li>
-          <li>
-            <button
+         
+          { token? <button
               onClick={props.logout}
-              className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"
+              className="bg-red-600 text-white px-3 py-1 font-medium rounded hover:bg-red-700 transition"
             >
               Log-out
-            </button>
-          </li>
+            </button>:
+             <button
+              
+              className="bg-blue-500 text-white px-3 py-1 rounded font-medium  hover:bg-blue-700 transition"
+            >
+              Sign Up
+            </button>}
         </ul>
 
         {/* Mobile Toggle Button */}
@@ -76,6 +83,7 @@ const Navbar = (props) => {
             >
               Log-out
             </button>
+           
           </div>
         </div>
       )}

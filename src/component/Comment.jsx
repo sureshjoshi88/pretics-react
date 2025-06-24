@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
 import { GiPlayButton } from "react-icons/gi";
 import { GrPowerReset } from "react-icons/gr";
+import { MdDeleteForever } from "react-icons/md";
 
 const Comment = (props) => {
   const [like, setLike] = useState(0);
@@ -39,6 +40,12 @@ const Comment = (props) => {
     setDislike(0);
 
   }
+  const handleDelete = (ind)=>{
+    const filterComent = comment.filter((item,index)=>{
+      return ind!==index;
+    })
+    setComment(filterComent)
+  }
   return (
     <div>
       <div className='flex justify-between mt-3 gap-5 w-80'>
@@ -65,7 +72,10 @@ const Comment = (props) => {
       </div>
       <div className='h-20 overflow-hidden overflow-y-scroll webkit '>
         {comment.map((value, index) =>
+        <div className='flex gap-5 p-1 items-center'>
           <li className="p-1 cursor-pointer" key={index}>{value}</li>
+          <button onClick={()=>handleDelete(index)} className='text-red-600 text-lg font-medium rounded cursor-pointer'><MdDeleteForever /></button>
+        </div> 
         )
         }
       </div>
