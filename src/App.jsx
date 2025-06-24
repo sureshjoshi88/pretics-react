@@ -10,6 +10,7 @@ const Card2 = lazy(() => import('./component/Card2'));
 const Fetchapi = lazy(() => import('./component/Fetchapi'));
 const ProductCard = lazy(() => import('./component/ProductCard'))
 import { useNavigate } from 'react-router-dom';
+import { usetheme } from './hooks/usetheame';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
   const [mode, setMode] = useState("light");
   const [login, setLogin] = useState(false);
   const [error, setError] = useState("");
+  const [theme,setTheme] = usetheme();
 
 
 

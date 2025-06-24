@@ -3,13 +3,15 @@ import { NavLink,Link} from 'react-router-dom';
 import { CiDark } from "react-icons/ci";
 import { MdSunny } from "react-icons/md";
 import { HiMenu, HiX } from "react-icons/hi";
+import { usetheme } from '../hooks/usetheame';
 
 const Navbar = (props) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const token = JSON.parse(localStorage.getItem('login'))
+  const [theme,setTheme] = usetheme()
 
   return (
-    <div className={`sticky top-0 z-50 ${props.mode === 'light' ? 'bg-white' : 'bg-black '} shadow-md`}>
+    <div className={`sticky top-0 z-50 ${theme=== 'light' ? 'bg-white' : 'bg-black '} shadow-md`}>
       <nav className="flex justify-between items-center px-4 md:px-10 py-3">
 
         {/* Logo */}
@@ -19,7 +21,7 @@ const Navbar = (props) => {
             src="https://marketplace.canva.com/EAGQ1aYlOWs/1/0/1600w/canva-blue-colorful-illustrative-e-commerce-online-shop-logo-bHiX_0QpJxE.jpg"
             alt="Logo"
           />
-          <span className={`font-bold text-xl ${props.mode === 'light' ? 'text-black' : 'text-white'}`}>
+          <span className={`font-bold text-xl ${theme=== 'light' ? 'text-black' : 'text-white'}`}>
             MyShop
           </span>
         </div>
@@ -30,7 +32,7 @@ const Navbar = (props) => {
           <li><NavLink to="/about" className={({isActive})=>isActive?'text-blue-500 border-b-2 font-medium ':"hover:text-blue-500 font-medium"}>About</NavLink></li>
           <li><NavLink to="/cart" className={({isActive})=>isActive?'text-blue-500 border-b-2 font-medium ':"hover:text-blue-500 font-medium"}>Cart</NavLink></li>
           <li>
-            {props.mode === 'light' ? (
+            {theme=== 'light' ? (
               <button onClick={props.colorMode} className="text-2xl text-black cursor-pointer">
                 <CiDark />
               </button>
@@ -63,12 +65,12 @@ const Navbar = (props) => {
 
       {/* Mobile Menu Dropdown */}
       {menuOpen && (
-        <div className={`md:hidden flex flex-col items-start px-6 py-4 gap-3 ${props.mode === 'light' ? 'bg-white' : 'bg-black'}`}>
+        <div className={`md:hidden flex flex-col items-start px-6 py-4 gap-3 ${theme=== 'light' ? 'bg-white' : 'bg-black'}`}>
           <NavLink to="/" className={({isActive})=>isActive?'text-blue-500 border-b-2 font-medium':""} onClick={() => setMenuOpen(false)}>Home</NavLink>
           <NavLink to="/about" className={({isActive})=>isActive?'text-blue-500 border-b-2 font-medium':""} onClick={() => setMenuOpen(false)}>About</NavLink>
           <NavLink to="/cart" className={({isActive})=>isActive?'text-blue-500 border-b-2 font-medium':""} onClick={() => setMenuOpen(false)}>Cart</NavLink>
           <div className="pt-2 flex items-center gap-4">
-            {props.mode === 'light' ? (
+            {theme=== 'light' ? (
               <button onClick={props.colorMode} className="text-2xl text-black">
                 <CiDark />
               </button>
