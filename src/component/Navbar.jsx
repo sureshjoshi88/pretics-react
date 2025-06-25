@@ -11,7 +11,7 @@ const Navbar = (props) => {
   const {theme,setTheme} = useTheme();
  const colorMode = () => {
     if (theme === "light") {
-      document.body.style.backgroundColor = "black";
+      document.body.style.backgroundColor = "#10152e";
       document.body.style.color = "white";
       setTheme("dark")
     } else {

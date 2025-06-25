@@ -2,10 +2,13 @@ import { useState } from 'react';
 import "toastify-js/src/toastify.css"
 import Tostyfiy from './Tostyfiy';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { useTheme } from '../hooks/usetheame';
 
 
 
 const Form = (props) => {
+
+    const {theme,setTheme} = useTheme();
 
     const navigate = useNavigate();
 
@@ -67,7 +70,7 @@ const Form = (props) => {
         <>
             {props.error && <Tostyfiy error={props.error} />}
              <div className='flex justify-center mt-14 mb-4'>
-                <div className='p-3 rounded shadow-xl shadow-blue-300 bg-white'>
+                <div className={`p-3 rounded shadow-xl shadow-blue-300 ${theme==='light'?'bg-white':'bg-gray-200 text-black'}`}>
                     <form action="" id='main' onSubmit={mainFull} className='p-2'>
                         <div>
                             <label className='font-medium' htmlFor="101">Username</label><br />
@@ -81,7 +84,7 @@ const Form = (props) => {
                             </div>
                         </div>
                         <div>
-                            <button onClick={sumbitButton} type='submit' className='p-1 bg-green-400 font-semibold  rounded w-100 mt-3 cursor-pointer'>Login </button>
+                            <button onClick={sumbitButton} type='submit' className='p-1 bg-green-400 font-medium  rounded w-100 mt-3 cursor-pointer'>Sign Up</button>
                         </div>
                         {props.error==='congrass yor are logined'?<p className='text-green-700 font-semibold text-lg'>{props.error}</p>:
                         <p className='text-red-500 font-semibold text-lg'>{props.error}</p>}
