@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Navbar from './Navbar';
 import Foter from './Foter';
 import Tostyfiy from './Tostyfiy';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
+import { useTheme } from '../hooks/usetheame';
 
 const Card2 = (props) => {
 
@@ -41,14 +42,15 @@ const Card2 = (props) => {
     }).showToast();
   }
 
+ 
   const totalPrice = addcard.reduce((acc, item) => acc + parseFloat(item.price.replace(/,/g, "")) * item.quantity, 0);
   const formateTotal = totalPrice.toLocaleString("en-IN");
-
+const {theme,setTheme} = useTheme();
 
   return (
     <>
       <div>
-        <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} sigin={props.sigin} />
+        <Navbar  logout={props.logOut} sigin={props.sigin} />
         {props.error && <  Tostyfiy error={props.error} />}
 
         {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {formateTotal}</p>}
@@ -56,7 +58,7 @@ const Card2 = (props) => {
         <div className='grid md:grid-cols-3 gap-3'>
           {addcard.map((items, index) => {
             return <div key={index}>
-              <div className=' p-2 shadow-2xl'>
+              <div className={`p-2 ${theme==='light'?'shadow-2xl':'border'} rounded`}>
                 <div className='w-full'>
                   <div className='h-100'>
                     <img className='w-full h-100 object-contain' src={items.img} alt="" onError={(e) => {

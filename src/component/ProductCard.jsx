@@ -13,7 +13,7 @@ import { useTheme } from '../hooks/usetheame';
 
 const ProductCard = (props) => {
 
-const [count,setCount] = useState(3);
+const [count,setCount] = useState(6);
   const [salected, setSalected] = useState("all");
 const {theme,setTheme} = useTheme();
 
@@ -133,7 +133,7 @@ const {theme,setTheme} = useTheme();
         })}
       </div>
       {count < products.length &&(<div className='p-3 flex justify-center'>
-        <button onClick={handleCount} className='bg-amber-300 rounded font-medium p-2'>View More</button>
+        <button onClick={handleCount} className='bg-amber-300 rounded font-medium p-2 cursor-pointer'>View More</button>
       </div>)}
       <Foter />
     </>
