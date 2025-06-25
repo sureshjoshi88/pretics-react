@@ -6,6 +6,7 @@ import "toastify-js/src/toastify.css"
 import Tostyfiy from './Tostyfiy';
 import Navbar from './Navbar';
 import Foter from './Foter';
+import { useTheme } from '../hooks/usetheame';
 
 
 
@@ -14,6 +15,8 @@ const ProductCard = (props) => {
 
 const [count,setCount] = useState(3);
   const [salected, setSalected] = useState("all");
+const {theme,setTheme} = useTheme();
+
   const handleCount = () =>{
     setCount(count+3)
   }
@@ -84,29 +87,28 @@ const [count,setCount] = useState(3);
   return (
     <>
       {/* {props.error && <Tostyfiy error={props.error} />}/ */}
-      <Navbar mode={props.mode} colorMode={props.colorMode} logout={props.logOut} sigin={props.sigin} />
+      <Navbar mode={theme} colorMode={props.colorMode} logout={props.logOut} sigin={props.sigin} />
 
 
       <div className='p-3'>
         <div className='flex flex-wrap justify-around  mt-3'>
 
-          <select onChange={(e) => setSalected(e.target.value)} name="" id="salect" className={`${props.mode === "light" ? "text-black " : "text-white"} border rounded mt-2`}>
-            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="all">all</option>
-            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="electric">electric</option>
-            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="vihicle">vihicle</option>
-            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="clothes">clothes</option>
-            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="books">books</option>
-            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="toys">toys</option>
-            <option className={`${props.mode === "light" ? "text-black " : "text-white bg-black"}`} value="furniture">furniture</option>
+          <select onChange={(e) => setSalected(e.target.value)} name="" id="salect" className={`${theme === "light" ? "text-black " : "text-white "}  rounded border mt-2`}>
+            <option className={`${theme === "light" ? "text-black " : "text-white bg-black"}`} value="all">all</option>
+            <option className={`${theme === "light" ? "text-black " : "text-white bg-black"}`} value="electric">electric</option>
+            <option className={`${theme === "light" ? "text-black " : "text-white bg-black"}`} value="vihicle">vihicle</option>
+            <option className={`${theme === "light" ? "text-black " : "text-white bg-black"}`} value="clothes">clothes</option>
+            <option className={`${theme === "light" ? "text-black " : "text-white bg-black"}`} value="books">books</option>
+            <option className={`${theme === "light" ? "text-black " : "text-white bg-black"}`} value="toys">toys</option>
+            <option className={`${theme === "light" ? "text-black " : "text-white bg-black"}`} value="furniture">furniture</option>
           </select>
-
         </div>
       </div>
 
 
       <div className=' grid  md:grid-cols-2 lg:grid-cols-3  gap-4 mt-5   p-2'>
         {filterData.map((value, index) => {
-          return <div className={`shadow-xl  rounded p-2 ${props.mode==='light'?'shadow-xl':"border"}`} key={index}>
+          return <div className={`shadow-xl  rounded p-2 ${theme==='light'?'shadow-xl':"border"}`} key={index}>
             <div className='w-full'>
               <div className='h-100'>
                 <img className='w-full h-100 object-contain' src={value.img} alt="" onError={(e) => {
@@ -124,7 +126,7 @@ const [count,setCount] = useState(3);
                 <button className='text-white rounded bg-green-600 font-semibold hover:bg-green-500 h-8 w-30 p-1 mt-3 cursor-pointer'>Buy Now</button>
               </div>
               <div className='mt-3'>
-                <Comment modes={props.mode} />
+                <Comment  />
               </div>
             </div>
           </div>

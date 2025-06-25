@@ -10,30 +10,18 @@ const Card2 = lazy(() => import('./component/Card2'));
 const Fetchapi = lazy(() => import('./component/Fetchapi'));
 const ProductCard = lazy(() => import('./component/ProductCard'))
 import { useNavigate } from 'react-router-dom';
-import { usetheme } from './hooks/usetheame';
+import { useTheme } from './hooks/usetheame';
 
 
 function App() {
 
-  const [mode, setMode] = useState("light");
   const [login, setLogin] = useState(false);
   const [error, setError] = useState("");
-  const [theme,setTheme] = usetheme();
+  const {theme,setTheme} = useTheme();
 
 
 
-
-  const colorMode = () => {
-    if (mode === "light") {
-      document.body.style.backgroundColor = "black";
-      document.body.style.color = "white";
-      setMode("dark")
-    } else {
-      document.body.style.backgroundColor = "white";
-      document.body.style.color = "black";
-      setMode("light")
-    }
-  }
+  
 
   const logOut = () => {
     localStorage.removeItem("login");
@@ -69,11 +57,11 @@ function App() {
             <Route path='*' element={<DefaulPage />} />
             <Route path='/' element={
               <ProtectRoute>
-                < ProductCard mode={mode} error={error} colorMode={colorMode} logOut={logOut} sigin={sigin} /> </ProtectRoute>} />
+                < ProductCard  error={error}  logOut={logOut} sigin={sigin} /> </ProtectRoute>} />
             <Route path='cart' element={
-              <Card2 error={error} mode={mode} colorMode={colorMode} logOut={logOut} sigin={sigin} />} />
+              <Card2 error={error} logOut={logOut} sigin={sigin} />} />
             <Route path='about' element={
-              <Fetchapi mode={mode} colorMode={colorMode} logOut={logOut} sigin={sigin} />
+              <Fetchapi logOut={logOut} sigin={sigin} />
             } />
 
             <Route path='form' element={<Form setLogin={setLogin} error={error} setError={setError} />} />

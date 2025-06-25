@@ -3,13 +3,23 @@ import { NavLink,Link} from 'react-router-dom';
 import { CiDark } from "react-icons/ci";
 import { MdSunny } from "react-icons/md";
 import { HiMenu, HiX } from "react-icons/hi";
-import { usetheme } from '../hooks/usetheame';
+import { useTheme } from '../hooks/usetheame';
 
 const Navbar = (props) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const token = JSON.parse(localStorage.getItem('login'))
-  const [theme,setTheme] = usetheme()
-
+  const {theme,setTheme} = useTheme();
+ const colorMode = () => {
+    if (theme === "light") {
+      document.body.style.backgroundColor = "black";
+      document.body.style.color = "white";
+      setTheme("dark")
+    } else {
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+      setTheme("light")
+    }
+  }
   return (
     <div className={`sticky top-0 z-50 ${theme=== 'light' ? 'bg-white' : 'bg-black '} shadow-md`}>
       <nav className="flex justify-between items-center px-4 md:px-10 py-3">
@@ -33,11 +43,11 @@ const Navbar = (props) => {
           <li><NavLink to="/cart" className={({isActive})=>isActive?'text-blue-500 border-b-2 font-medium ':"hover:text-blue-500 font-medium"}>Cart</NavLink></li>
           <li>
             {theme=== 'light' ? (
-              <button onClick={props.colorMode} className="text-2xl text-black cursor-pointer">
+              <button onClick={colorMode} className="text-2xl text-black cursor-pointer">
                 <CiDark />
               </button>
             ) : (
-              <button onClick={props.colorMode} className="text-2xl text-white cursor-pointer">
+              <button onClick={colorMode} className="text-2xl text-white cursor-pointer">
                 <MdSunny />
               </button>
             )}
@@ -71,11 +81,11 @@ const Navbar = (props) => {
           <NavLink to="/cart" className={({isActive})=>isActive?'text-blue-500 border-b-2 font-medium':""} onClick={() => setMenuOpen(false)}>Cart</NavLink>
           <div className="pt-2 flex items-center gap-4">
             {theme=== 'light' ? (
-              <button onClick={props.colorMode} className="text-2xl text-black">
+              <button onClick={colorMode} className="text-2xl text-black">
                 <CiDark />
               </button>
             ) : (
-              <button onClick={props.colorMode} className="text-2xl text-white">
+              <button onClick={colorMode} className="text-2xl text-white">
                 <MdSunny />
               </button>
             )}

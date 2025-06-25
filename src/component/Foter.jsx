@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Foter = (props) => {
+const Foter = () => {
   return (
     <div className='p-1' >
       <div className='grid md:grid-cols-2'>

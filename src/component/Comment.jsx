@@ -3,12 +3,14 @@ import { AiFillLike, AiFillDislike } from "react-icons/ai";
 import { GiPlayButton } from "react-icons/gi";
 import { GrPowerReset } from "react-icons/gr";
 import { MdDeleteForever } from "react-icons/md";
+import { useTheme } from '../hooks/usetheame';
 
 const Comment = (props) => {
   const [like, setLike] = useState(0);
   const [dislike, setDislike] = useState(0);
   const [comment, setComment] = useState([]);
   const [inputValue, setinputValue] = useState("");
+  const {theme,setTheme} = useTheme();
 
   const button = () => {
     if (inputValue == "") {
@@ -67,8 +69,8 @@ const Comment = (props) => {
         </button>
       </div>
       <div className="flex gap-2 mt-3 border w-fit rounded items-center">
-        <input className={` outline-0 rounded cursor-pointer p-1 ${props.modes === "light" ? " text-black" : "text-white"}`}  value={inputValue} type="text" name='comment' onChange={(e) => setinputValue(e.target.value)} onKeyDown={handleevent} placeholder="Enter a comment" />
-        <div className={`text-2xl   cursor-pointer ${props.modes === "light" ? "text-neutral-700" : "text-white"}`} onClick={button}><GiPlayButton /></div>
+        <input className={` outline-0 rounded cursor-pointer p-1 ${theme === "light" ? " text-black" : "text-white"}`}  value={inputValue} type="text" name='comment' onChange={(e) => setinputValue(e.target.value)} onKeyDown={handleevent} placeholder="Enter a comment" />
+        <div className={`text-2xl   cursor-pointer ${theme === "light" ? "text-neutral-700" : "text-white"}`} onClick={button}><GiPlayButton /></div>
       </div>
       <div className='h-20 overflow-hidden overflow-y-scroll webkit '>
         {comment.map((value, index) =>
