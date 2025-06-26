@@ -11,6 +11,7 @@ const Fetchapi = lazy(() => import('./component/Fetchapi'));
 const ProductCard = lazy(() => import('./component/ProductCard'))
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from './hooks/usetheame';
+import Details from './component/Details';
 
 
 function App() {
@@ -62,6 +63,9 @@ function App() {
               <Card2 error={error} logOut={logOut} sigin={sigin} />} />
             <Route path='about' element={
               <Fetchapi logOut={logOut} sigin={sigin} />
+            } />
+            <Route path='/details/:id' element={
+              <Details logOut={logOut} sigin={sigin} />
             } />
 
             <Route path='form' element={<Form setLogin={setLogin} error={error} setError={setError} />} />

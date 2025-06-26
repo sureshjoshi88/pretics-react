@@ -88,12 +88,12 @@ const {theme,setTheme} = useTheme();
   }, [addcard]);
 
   const handleNavigate = (id) =>{
-    navigate(`/details/id=${id}`)
+    navigate(`/details/${id}`)
   }
   return (
     <>
       {/* {props.error && <Tostyfiy error={props.error} />}/ */}
-      <Navbar mode={theme} colorMode={props.colorMode} logout={props.logOut} sigin={props.sigin} />
+      <Navbar  logout={props.logOut} sigin={props.sigin} />
 
 
       <div className='p-3'>
