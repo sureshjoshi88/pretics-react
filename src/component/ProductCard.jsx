@@ -7,11 +7,13 @@ import Tostyfiy from './Tostyfiy';
 import Navbar from './Navbar';
 import Foter from './Foter';
 import { useTheme } from '../hooks/usetheame';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 const ProductCard = (props) => {
+  const navigate = useNavigate();
 
 const [count,setCount] = useState(6);
   const [salected, setSalected] = useState("all");
@@ -84,6 +86,10 @@ const {theme,setTheme} = useTheme();
     localStorage.setItem("cart", JSON.stringify(addcard));
     localStorage.setItem("length", JSON.stringify(addcard.length));
   }, [addcard]);
+
+  const handleNavigate = (id) =>{
+    navigate(`/details/id=${id}`)
+  }
   return (
     <>
       {/* {props.error && <Tostyfiy error={props.error} />}/ */}
@@ -111,7 +117,7 @@ const {theme,setTheme} = useTheme();
           return <div className={`shadow-xl  rounded p-2 ${theme==='light'?'shadow-xl':"border"}`} key={index}>
             <div className='w-full'>
               <div className='h-100'>
-                <img className='w-full h-100 object-contain' src={value.img} alt="" onError={(e) => {
+                <img onClick={()=>handleNavigate(value.id)} className='w-full h-100 object-contain' src={value.img} alt="" onError={(e) => {
                   e.target.onerror = null;
                   e.target.src =
                     "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg";
