@@ -18,14 +18,11 @@ const navigate  = useNavigate()
 
   return (
     <>
-          <Navbar  logout={props.logOut} sigin={props.sigin} />
-
     <div className='p-3'>
       <button onClick={handleNavigates} className='p-2 bg-blue-500 cursor-pointer text-white font-medium rounded'>Back to Home</button>
       <h1 className='text-2xl text-center font-medium'>Details page</h1>
     <div className='w-full flex justify-center m-3'>
       {data.map((items,index)=>
-      
         <div key={index}>
               <div className={`p-2 ${theme==='light'?'shadow-2xl':'border'} rounded`}>
                 <div className='w-100'>

@@ -93,7 +93,7 @@ const {theme,setTheme} = useTheme();
   return (
     <>
       {/* {props.error && <Tostyfiy error={props.error} />}/ */}
-      <Navbar  logout={props.logOut} sigin={props.sigin} />
+      {/* <Navbar  logout={props.logOut} sigin={props.sigin} /> */}
 
 
       <div className='p-3'>

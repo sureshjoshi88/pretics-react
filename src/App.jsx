@@ -12,17 +12,18 @@ const ProductCard = lazy(() => import('./component/ProductCard'))
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from './hooks/usetheame';
 import Details from './component/Details';
+import MainLayout from './component/MainLayout';
 
 
 function App() {
 
   const [login, setLogin] = useState(false);
   const [error, setError] = useState("");
-  const {theme,setTheme} = useTheme();
+  const { theme, setTheme } = useTheme();
 
 
 
-  
+
 
   const logOut = () => {
     localStorage.removeItem("login");
@@ -30,7 +31,7 @@ function App() {
   }
 
   const navigate = useNavigate();
-  const sigin = ()=>{
+  const sigin = () => {
     navigate('/form')
   }
   useEffect(() => {
@@ -55,10 +56,11 @@ function App() {
           </div>
         }>
           <Routes>
-            <Route path='*' element={<DefaulPage />} />
-            <Route path='/' element={
+            <Route path='/' element={<MainLayout logOut={logOut} sigin={sigin}/> }>
+            <Route index element={
               <ProtectRoute>
-                < ProductCard  error={error}  logOut={logOut} sigin={sigin} /> </ProtectRoute>} />
+                < ProductCard error={error} logOut={logOut} sigin={sigin} /> </ProtectRoute>} />
+            <Route path='*' element={<DefaulPage />} />
             <Route path='cart' element={
               <Card2 error={error} logOut={logOut} sigin={sigin} />} />
             <Route path='about' element={
@@ -69,6 +71,7 @@ function App() {
             } />
 
             <Route path='form' element={<Form setLogin={setLogin} error={error} setError={setError} />} />
+            </Route>
           </Routes>
         </Suspense>
       </div>
