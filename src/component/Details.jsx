@@ -2,7 +2,6 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { products } from '../datas/products'
 import { useTheme } from '../hooks/usetheame'
-import Navbar from './Navbar'
 
 const Details = (props) => {
 const {theme,setTheme} = useTheme()

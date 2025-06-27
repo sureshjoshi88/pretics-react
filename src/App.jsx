@@ -59,15 +59,15 @@ function App() {
             <Route path='/' element={<MainLayout logOut={logOut} sigin={sigin}/> }>
             <Route index element={
               <ProtectRoute>
-                < ProductCard error={error} logOut={logOut} sigin={sigin} /> </ProtectRoute>} />
+                < ProductCard error={error}  /> </ProtectRoute>} />
             <Route path='*' element={<DefaulPage />} />
             <Route path='cart' element={
-              <Card2 error={error} logOut={logOut} sigin={sigin} />} />
+              <Card2 error={error}  />} />
             <Route path='about' element={
-              <Fetchapi logOut={logOut} sigin={sigin} />
+              <Fetchapi/>
             } />
             <Route path='/details/:id' element={
-              <Details logOut={logOut} sigin={sigin} />
+              <Details />
             } />
 
             <Route path='form' element={<Form setLogin={setLogin} error={error} setError={setError} />} />
