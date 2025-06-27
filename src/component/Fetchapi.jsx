@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Foter from './Foter';
-import Navbar from './Navbar';
 
-const Fetchapi = (props) => {
+const Fetchapi = () => {
   const [data, setData] = useState([]);
   useEffect( () => {
      fetch("https://jsonplaceholder.typicode.com/posts")
@@ -15,7 +14,6 @@ const Fetchapi = (props) => {
   }, []);
   return (
     <div>
-      {/* <Navbar logout={props.logOut} sigin={props.sigin} /> */}
 
       <div className='grid grid-cols-3 gap-3 p-1'>
         {data.map((item, index) => {

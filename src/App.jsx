@@ -59,7 +59,7 @@ function App() {
             <Route path='/' element={<MainLayout logOut={logOut} sigin={sigin}/> }>
             <Route index element={
               <ProtectRoute>
-                < ProductCard error={error}  /> </ProtectRoute>} />
+                < ProductCard   /> </ProtectRoute>} />
             <Route path='*' element={<DefaulPage />} />
             <Route path='cart' element={
               <Card2 error={error}  />} />

@@ -4,7 +4,6 @@ import Comment from './Comment';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
 import Tostyfiy from './Tostyfiy';
-import Navbar from './Navbar';
 import Foter from './Foter';
 import { useTheme } from '../hooks/usetheame';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const ProductCard = (props) => {
+const ProductCard = () => {
   const navigate = useNavigate();
 
 const [count,setCount] = useState(6);
@@ -93,7 +92,6 @@ const {theme,setTheme} = useTheme();
   return (
     <>
       {/* {props.error && <Tostyfiy error={props.error} />}/ */}
-      {/* <Navbar  logout={props.logOut} sigin={props.sigin} /> */}
 
 
       <div className='p-3'>
@@ -138,7 +136,7 @@ const {theme,setTheme} = useTheme();
           </div>
         })}
       </div>
-      {count < products.length &&(<div className='p-3 flex justify-center'>
+      {count < products.length &&(<div className='p-3 flex justify-center mb-3'>
         <button onClick={handleCount} className='bg-amber-300 rounded font-medium p-2 cursor-pointer'>View More</button>
       </div>)}
       <Foter />
