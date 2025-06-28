@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import Navbar from './Navbar';
 import Foter from './Foter';
 import Tostyfiy from './Tostyfiy';
 import Toastify from 'toastify-js'

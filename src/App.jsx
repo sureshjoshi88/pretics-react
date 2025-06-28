@@ -56,21 +56,21 @@ function App() {
           </div>
         }>
           <Routes>
-            <Route path='/' element={<MainLayout logOut={logOut} sigin={sigin}/> }>
-            <Route index element={
-              <ProtectRoute>
-                < ProductCard   /> </ProtectRoute>} />
-            <Route path='*' element={<DefaulPage />} />
-            <Route path='cart' element={
-              <Card2 error={error}  />} />
-            <Route path='about' element={
-              <Fetchapi/>
-            } />
-            <Route path='/details/:id' element={
-              <Details />
-            } />
+            <Route path='/' element={<MainLayout logOut={logOut} sigin={sigin} />}>
+              <Route index element={
 
-            <Route path='form' element={<Form setLogin={setLogin} error={error} setError={setError} />} />
+                < ProductCard />} />
+              <Route path='*' element={<DefaulPage />} />
+              <Route path='cart' element={<ProtectRoute>
+                <Card2 error={error} /> </ProtectRoute>} />
+              <Route path='about' element={
+                <Fetchapi />
+              } />
+              <Route path='/details/:id' element={
+                <Details />
+              } />
+
+              <Route path='form' element={<Form setLogin={setLogin} error={error} setError={setError} />} />
             </Route>
           </Routes>
         </Suspense>
