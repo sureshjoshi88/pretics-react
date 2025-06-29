@@ -19,7 +19,6 @@ function App() {
 
   const [login, setLogin] = useState(false);
   const [error, setError] = useState("");
-  const { theme, setTheme } = useTheme();
 
 
 
@@ -35,8 +34,8 @@ function App() {
     navigate('/form')
   }
   useEffect(() => {
-    const localdata = JSON.parse(localStorage.getItem("login"));
-    if (localdata) {
+    const localdata = localStorage.getItem("login");
+    if (localdata==="true") {
       setLogin(true);
     }
   }, []);
