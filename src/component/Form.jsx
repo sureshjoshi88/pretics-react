@@ -69,22 +69,25 @@ const Form = (props) => {
     return (
         <>
             {props.error && <Tostyfiy error={props.error} />}
-             <div className='flex justify-center mt-14 mb-4'>
+            <div className='bg-gradient-to-br from-purple-400 via-blue-500 to-indigo-600 p-6 rounded-xl  shadow-xl h-dvh w-full'>
+
+          
+             <div className='flex justify-center mt-14 mb-4 font-medium'>
                 <div className={`p-3 rounded shadow-xl shadow-blue-300 ${theme==='light'?'bg-white':'bg-gray-200 text-black'}`}>
-                    <form action="" id='main' onSubmit={mainFull} className='p-2'>
+                    <form action="" id='main' onSubmit={mainFull} className='p-2 space-y-4'>
                         <div>
                             <label className='font-medium' htmlFor="101">Username</label><br />
-                            <input id='101' autoFocus name='username' className='border hover:border-green-300 mt-3 w-100 p-1 rounded cursor-pointer' value={value} onChange={(e) => setValue(e.target.value)} type="text" placeholder='Username' required />
+                            <input id='101' autoFocus name='username' className='border hover:border-green-300 mt-3 w-100 p-2 rounded cursor-pointer' value={value} onChange={(e) => setValue(e.target.value)} type="text" placeholder='Username' required />
                         </div>
                         <div className='mt-2'>
                             <label className='font-medium' htmlFor="102">Password</label><br />
-                            <div className='border  hover:border-green-300  mt-3 w-100 p-1 rounded cursor-pointer flex gap-1'>
-                                <input className='w-100 outline-0' id='102' name='password'  value={value2} onChange={(e) => setValue2(e.target.value)} type="password" placeholder='Password' required />
+                            <div className='border  hover:border-green-300  mt-3 w-100 p-2 rounded cursor-pointer flex gap-1'>
+                                <input className='w-100 outline-0 ' id='102' name='password'  value={value2} onChange={(e) => setValue2(e.target.value)} type="password" placeholder='Password' required />
                                 <button className='cursor-pointer outline-0 '  id='buton-show' type='button' onClick={ShowPassword}>Show</button>
                             </div>
                         </div>
                         <div>
-                            <button onClick={sumbitButton} type='submit' className='p-1 bg-green-400 font-medium  rounded w-100 mt-3 cursor-pointer'>Sign Up</button>
+                            <button onClick={sumbitButton} type='submit' className='p-2 text-black bg-blue-500 font-blod text-lg  rounded w-100 mt-3 cursor-pointer'>Sign Up</button>
                         </div>
                         {props.error==='congrass yor are logined'?<p className='text-green-700 font-semibold text-lg'>{props.error}</p>:
                         <p className='text-red-500 font-semibold text-lg'>{props.error}</p>}
@@ -92,7 +95,7 @@ const Form = (props) => {
                 </div>
             </div>
                 
-
+  </div>
         </>
     )
 }
