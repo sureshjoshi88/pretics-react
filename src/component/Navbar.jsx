@@ -21,7 +21,7 @@ const Navbar = (props) => {
     }
   }
   return (
-    <div className={`sticky top-0 z-50 ${theme=== 'light' ? 'bg-white' : 'bg-black '} shadow-md`}>
+    <div className={` z-50 ${theme=== 'light' ? 'bg-white' : 'bg-black '} shadow-md`}>
       <nav className="flex justify-between items-center px-4 md:px-10 py-3">
 
         {/* Logo */}
