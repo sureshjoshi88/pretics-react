@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTheme } from './hooks/usetheame';
 import Details from './component/Details';
 import MainLayout from './component/MainLayout';
+import Todo from './component/Todo';
 
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
 
   return (
     <>
-      <div>
+      {/* <div>
         <Suspense fallback={
           <div role="status" className='flex justify-center items-center h-100 '>
             <div>
@@ -73,8 +74,9 @@ function App() {
             </Route>
           </Routes>
         </Suspense>
-      </div>
+      </div> */}
 
+<Todo/>
 
     </>
   )
