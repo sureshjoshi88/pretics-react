@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import { addTodo,removeTodo } from '../todos/todoSlice'
+import { addTodo,removeTodo,updatedTodo } from '../todos/todoSlice'
 
 
 const Todo = () => {
@@ -46,6 +46,11 @@ const Todo = () => {
           >
             Delete
           </button>
+          <button
+            onClick={() => dispatch(updatedTodo(item.id))}
+            className="bg-amber-600 hover:bg-red-700 text-white px-3 py-1 rounded"
+          >
+edit          </button>
         </li>
       ))}
     </ul>
