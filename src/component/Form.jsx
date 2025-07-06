@@ -3,14 +3,17 @@ import "toastify-js/src/toastify.css"
 import Tostyfiy from './Tostyfiy';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useTheme } from '../hooks/usetheame';
+import {useForm} from 'react-hook-form';
+import {z} from 'zod';
+import {zodResolver} from '@hookform/resolvers/zod';
 
 
 
 const Form = (props) => {
 
-    // const {theme,setTheme} = useTheme();
+    const {theme,setTheme} = useTheme();
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     // const mainFull = (event) => {
     //     event.preventDefault();
@@ -62,41 +65,48 @@ const Form = (props) => {
     //     }
     // }
 
-
+const schema = {
+    name:z.string().min(5,'must be 5 character'),
+    email:z.string().email(),
+    password:z.string().min(8,'must be 8 letter password')
+}
     
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
+const {register,handleSubmit,formState:{errors}} = useForm({resolver:zodResolver(schema),});
+//   const [formData, setFormData] = useState({
+//     name: '',
+//     email: '',
+//     password: '',
+//     confirmPassword: ''
+//   });
 
-  const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value });
-  };
+//   const handleChange = (e) => {
+//     setFormData({...formData, [e.target.name]: e.target.value });
+//   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+//   const handleSubmits = () => {
+    
+//     if (formData.password !== formData.confirmPassword) {
+//       alert("Passwords do not match!");
+//       return;
+//     }
 
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
+//     console.log('Signup Data:', formData);
+//     alert("Signup Successful!");
 
-    console.log('Signup Data:', formData);
-    alert("Signup Successful!");
-
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    });
-  };
+//     // Reset form
+//     setFormData({
+//       name: '',
+//       email: '',
+//       password: '',
+//       confirmPassword: ''
+//     });
+//   };
 
    
-
+const handllevalue = ()=>{
+    console.log('submit');
+    
+}
   
 
     return (
@@ -104,7 +114,7 @@ const Form = (props) => {
             {props.error && <Tostyfiy error={props.error} />}
        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 p-4">
       <form 
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(handllevalue)}
         className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full space-y-6"
       >
         <h2 className="text-3xl font-bold text-center text-gray-800">Create Account</h2>
@@ -114,25 +124,30 @@ const Form = (props) => {
           <input 
             type="text" 
             name="name" 
+            {...register('name')}
             value={formData.name}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400" 
             placeholder="John Doe"
             required
           />
+    {  errors.name&&     <p className='text-red-600 font-medium text-lg'>{errors.name.message}</p>}
         </div>
-
         <div>
           <label className="block mb-1 text-sm font-semibold text-gray-700">Email</label>
           <input 
             type="email" 
             name="email" 
+                        {...register('email')}
+
             value={formData.email}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400" 
             placeholder="you@example.com"
             required
           />
+    {  errors.email&&     <p className='text-red-600 font-medium text-lg'>{errors.email.message}</p>}
+
         </div>
 
         <div>
@@ -140,12 +155,16 @@ const Form = (props) => {
           <input 
             type="password" 
             name="password" 
+                        {...register('password')}
+
             value={formData.password}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400" 
             placeholder="••••••••"
             required
           />
+              {  errors.password&&     <p className='text-red-600 font-medium text-lg'>{errors.password.message}</p>}
+
         </div>
 
         <div>
