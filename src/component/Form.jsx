@@ -3,195 +3,125 @@ import "toastify-js/src/toastify.css"
 import Tostyfiy from './Tostyfiy';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useTheme } from '../hooks/usetheame';
-import {useForm} from 'react-hook-form';
-import {z} from 'zod';
-import {zodResolver} from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 
 
 const Form = (props) => {
 
-    const {theme,setTheme} = useTheme();
+  const { theme, setTheme } = useTheme();
 
-    const navigate = useNavigate();
-
-    // const mainFull = (event) => {
-    //     event.preventDefault();
-    // }
+  const navigate = useNavigate();
 
 
-    // const [value, setValue] = useState("");
-    // const [value2, setValue2] = useState("");
+  // const ShowPassword = () => {
+  //     let inputPassword = document.getElementById("102");
+  //     let buton_show = document.getElementById("buton-show")
+  //     if (inputPassword.type === "password") {
+  //         inputPassword.type = "text"
+  //         buton_show.innerText = "Hide"
+  //     } else if (inputPassword.type === "text") {
+  //         inputPassword.type = "password"
+  //         buton_show.innerText = "Show"
+  //     }
+  // }
+
+  const schema = z.object({
+    name: z.string().min(5, 'must be 5 character'),
+    email: z.string().email(),
+    password: z.string().min(8, 'must be 8 letter password'),
+    confirmPassword: z.string().min(8, "must be 8 letter password")
+
+  }).refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  })
+
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({ resolver: zodResolver(schema), })
 
 
-    // const showAlert = (msg) => {
-    //     props.setError(msg)
-    //     setTimeout(() => {
-    //         props.setError(null)
-    //     }, 4000);
-    // }
-    // const sumbitButton = () => {
-
-    //     if (value.trim() === "" || value.length <= 5) {
-    //         setValue("")
-    //         setValue2("")
-    //         showAlert("Please correct username(min 5 char)")
-    //     } else if (value2.trim() === "" || value2.length <= 8) {
-    //         setValue("")
-    //         setValue2("")
-    //         showAlert("Please correct password(min 8 char)")
-    //     } else {
-    //         localStorage.setItem("login", true);
-    //         props.setLogin(true)
-    //         showAlert("congrass yor are logined")
-    //         setValue("")
-    //         setValue2("")
-    //         navigate('/')
-    //     }
-
-    // }
+  const handllevalue = (data) => {
+    console.log(data);
+    alert("form submited")
+    reset()
+    localStorage.setItem("login", true);
+          navigate('/')
+  }
 
 
-
-    // const ShowPassword = () => {
-    //     let inputPassword = document.getElementById("102");
-    //     let buton_show = document.getElementById("buton-show")
-    //     if (inputPassword.type === "password") {
-    //         inputPassword.type = "text"
-    //         buton_show.innerText = "Hide"
-    //     } else if (inputPassword.type === "text") {
-    //         inputPassword.type = "password"
-    //         buton_show.innerText = "Show"
-    //     }
-    // }
-
-const schema = {
-    name:z.string().min(5,'must be 5 character'),
-    email:z.string().email(),
-    password:z.string().min(8,'must be 8 letter password')
-}
-    
-const {register,handleSubmit,formState:{errors}} = useForm({resolver:zodResolver(schema),});
-//   const [formData, setFormData] = useState({
-//     name: '',
-//     email: '',
-//     password: '',
-//     confirmPassword: ''
-//   });
-
-//   const handleChange = (e) => {
-//     setFormData({...formData, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmits = () => {
-    
-//     if (formData.password !== formData.confirmPassword) {
-//       alert("Passwords do not match!");
-//       return;
-//     }
-
-//     console.log('Signup Data:', formData);
-//     alert("Signup Successful!");
-
-//     // Reset form
-//     setFormData({
-//       name: '',
-//       email: '',
-//       password: '',
-//       confirmPassword: ''
-//     });
-//   };
-
-   
-const handllevalue = ()=>{
-    console.log('submit');
-    
-}
-  
-
-    return (
-        <>
-            {props.error && <Tostyfiy error={props.error} />}
-       <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 p-4">
-      <form 
-        onSubmit={handleSubmit(handllevalue)}
-        className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full space-y-6"
-      >
-        <h2 className="text-3xl font-bold text-center text-gray-800">Create Account</h2>
-
-        <div>
-          <label className="block mb-1 text-sm font-semibold text-gray-700">Name</label>
-          <input 
-            type="text" 
-            name="name" 
-            {...register('name')}
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400" 
-            placeholder="John Doe"
-            required
-          />
-    {  errors.name&&     <p className='text-red-600 font-medium text-lg'>{errors.name.message}</p>}
-        </div>
-        <div>
-          <label className="block mb-1 text-sm font-semibold text-gray-700">Email</label>
-          <input 
-            type="email" 
-            name="email" 
-                        {...register('email')}
-
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400" 
-            placeholder="you@example.com"
-            required
-          />
-    {  errors.email&&     <p className='text-red-600 font-medium text-lg'>{errors.email.message}</p>}
-
-        </div>
-
-        <div>
-          <label className="block mb-1 text-sm font-semibold text-gray-700">Password</label>
-          <input 
-            type="password" 
-            name="password" 
-                        {...register('password')}
-
-            value={formData.password}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400" 
-            placeholder="••••••••"
-            required
-          />
-              {  errors.password&&     <p className='text-red-600 font-medium text-lg'>{errors.password.message}</p>}
-
-        </div>
-
-        <div>
-          <label className="block mb-1 text-sm font-semibold text-gray-700">Confirm Password</label>
-          <input 
-            type="password" 
-            name="confirmPassword" 
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400" 
-            placeholder="••••••••"
-            required
-          />
-        </div>
-
-        <button 
-          type="submit" 
-          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-xl font-semibold transition duration-200"
+  return (
+    <>
+      {props.error && <Tostyfiy error={props.error} />}
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 p-3 mt-7">
+        <form
+          onSubmit={handleSubmit(handllevalue)}
+          className="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full space-y-5"
         >
-          Sign Up
-        </button>
+          <h2 className="text-3xl font-bold text-center text-gray-800">Create Account</h2>
+          <div>
+            <label className="block mb-1 text-sm font-semibold text-gray-700">Name</label>
+            <input
+              type="text"
+              name="name"
+              {...register('name')}
+              className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              placeholder="John Doe"
+              required
+            />
+            {errors.name && <p className='text-red-600 font-medium text-lg'>{errors.name.message}</p>}
+          </div>
+          <div>
+            <label className="block mb-1 text-sm font-semibold text-gray-700">Email</label>
+            <input
+              type="email"
+              name="email"
+              {...register('email')}
+              className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              placeholder="you@example.com"
+              required
+            />
+            {errors.email && <p className='text-red-600 font-medium text-lg'>{errors.email.message}</p>}
+          </div>
 
-        <p className="text-sm text-center text-gray-600">Already have an account? <span className="text-indigo-600 cursor-pointer hover:underline">Login</span></p>
-      </form>
-    </div>
-        </>
-    )
+          <div>
+            <label className="block mb-1 text-sm font-semibold text-gray-700">Password</label>
+            <input
+              type="password"
+              name="password"
+              {...register('password')}
+              className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              placeholder="••••••••"
+              required
+            />
+            {errors.password && <p className='text-red-600 font-medium text-lg'>{errors.password.message}</p>}
+          </div>
+          <div>
+            <label className="block mb-1 text-sm font-semibold text-gray-700">Confirm Password</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              {...register('confirmPassword')}
+              className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              placeholder="••••••••"
+              required
+            />
+            {errors.confirmPassword && <p className='text-red-600 font-medium text-lg'>{errors.confirmPassword.message}</p>}
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-xl font-semibold transition duration-200"
+          >
+            Sign Up
+          </button>
+
+          <p className="text-sm text-center text-gray-600">Already have an account? <span className="text-indigo-600 cursor-pointer hover:underline">Login</span></p>
+        </form>
+      </div>
+    </>
+  )
 }
 
 export default Form
