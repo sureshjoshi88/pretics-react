@@ -43,7 +43,7 @@ function App() {
 
   return (
     <>
-      {/* <div>
+      <div>
         <Suspense fallback={
           <div role="status" className='flex justify-center items-center h-100 '>
             <div>
@@ -74,9 +74,9 @@ function App() {
             </Route>
           </Routes>
         </Suspense>
-      </div> */}
+      </div>
 
-<Todo/>
+{/* <Todo/> */}
 
     </>
   )
