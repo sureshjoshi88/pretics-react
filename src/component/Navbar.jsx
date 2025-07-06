@@ -4,11 +4,12 @@ import { CiDark } from "react-icons/ci";
 import { MdSunny } from "react-icons/md";
 import { HiMenu, HiX } from "react-icons/hi";
 import { useTheme } from '../hooks/usetheame';
+import { memo } from 'react';
 
-const Navbar = (props) => {
+const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [token ,setToken] = useState( ()=>JSON.parse(localStorage.getItem('login')));
 
-  const token = JSON.parse(localStorage.getItem('login'))
   const {theme,setTheme} = useTheme();
  const colorMode = () => {
     if (theme === "light") {
@@ -23,12 +24,15 @@ const Navbar = (props) => {
   }
   const logOut = () => {
     localStorage.removeItem("login");
-    setLogin(false)
+    setToken(null)    
+    setMenuOpen(false)
   }
 
   const navigate = useNavigate();
   const sigin = () => {
     navigate('/form')
+    setMenuOpen(false)
+
   }
   return (
     <div className={` z-50 ${theme=== 'light' ? 'bg-white' : 'bg-black '} shadow-md`}>
@@ -63,18 +67,18 @@ const Navbar = (props) => {
             )}
           </li>
          
-          { token? <button
+          { token? (<button
               onClick={logOut}
               className="bg-red-600 text-white px-3 py-1 font-medium rounded hover:bg-red-700 transition"
             >
               Log-out
-            </button>:
-             <button
+            </button>):
+             (<button
               onClick={sigin}
               className="bg-blue-500 text-white px-3 py-1 rounded font-medium  hover:bg-blue-700 transition"
             >
               Sign Up
-            </button>}
+            </button>)}
         </ul>
 
         {/* Mobile Toggle Button */}
@@ -100,13 +104,13 @@ const Navbar = (props) => {
               </button>
             )}
             { token? <button
-              onClick={props.logout}
+              onClick={logout}
               className="bg-red-600 text-white px-3 py-1 font-medium rounded hover:bg-red-700 transition"
             >
               Log-out
             </button>:
              <button
-              onClick={props.sigin}
+              onClick={sigin}
               className="bg-blue-500 text-white px-3 py-1 rounded font-medium  hover:bg-blue-700 transition"
             >
               Sign Up
@@ -119,4 +123,4 @@ const Navbar = (props) => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar)
