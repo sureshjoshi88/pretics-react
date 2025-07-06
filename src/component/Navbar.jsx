@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { NavLink,Link} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useNavigate} from 'react-router-dom';
 import { CiDark } from "react-icons/ci";
 import { MdSunny } from "react-icons/md";
 import { HiMenu, HiX } from "react-icons/hi";
@@ -7,6 +7,7 @@ import { useTheme } from '../hooks/usetheame';
 
 const Navbar = (props) => {
   const [menuOpen, setMenuOpen] = useState(false);
+
   const token = JSON.parse(localStorage.getItem('login'))
   const {theme,setTheme} = useTheme();
  const colorMode = () => {
@@ -19,6 +20,15 @@ const Navbar = (props) => {
       document.body.style.color = "black";
       setTheme("light")
     }
+  }
+  const logOut = () => {
+    localStorage.removeItem("login");
+    setLogin(false)
+  }
+
+  const navigate = useNavigate();
+  const sigin = () => {
+    navigate('/form')
   }
   return (
     <div className={` z-50 ${theme=== 'light' ? 'bg-white' : 'bg-black '} shadow-md`}>
@@ -54,13 +64,13 @@ const Navbar = (props) => {
           </li>
          
           { token? <button
-              onClick={props.logout}
+              onClick={logOut}
               className="bg-red-600 text-white px-3 py-1 font-medium rounded hover:bg-red-700 transition"
             >
               Log-out
             </button>:
              <button
-              onClick={props.sigin}
+              onClick={sigin}
               className="bg-blue-500 text-white px-3 py-1 rounded font-medium  hover:bg-blue-700 transition"
             >
               Sign Up

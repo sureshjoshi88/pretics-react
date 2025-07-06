@@ -34,12 +34,7 @@ function App() {
   const sigin = () => {
     navigate('/form')
   }
-  useEffect(() => {
-    const localdata = localStorage.getItem("login");
-    if (localdata==="true") {
-      setLogin(true);
-    }
-  }, []);
+ 
 
   return (
     <>
@@ -70,7 +65,7 @@ function App() {
                 <Details />
               } />
 
-              <Route path='form' element={<Form setLogin={setLogin} error={error} setError={setError} />} />
+              <Route path='form' element={<Form   />} />
             </Route>
           </Routes>
         </Suspense>
