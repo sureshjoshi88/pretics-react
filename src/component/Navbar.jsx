@@ -8,8 +8,11 @@ import { memo } from 'react';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [token ,setToken] = useState( ()=>JSON.parse(localStorage.getItem('login')));
-
+  const [token ,setToken] = useState('');
+useEffect(() => {
+  const loginToken = JSON.parse(localStorage.getItem('login'));
+  setToken(loginToken);
+}, [window.location.pathname]);
   const {theme,setTheme} = useTheme();
  const colorMode = () => {
     if (theme === "light") {
@@ -35,7 +38,7 @@ const Navbar = () => {
 
   }
   return (
-    <div className={` z-50 ${theme=== 'light' ? 'bg-white' : 'bg-black '} shadow-md`}>
+    <div className={`z-50 ${theme=== 'light' ? 'bg-white' : 'bg-black '} shadow-md`}>
       <nav className="flex justify-between items-center px-4 md:px-10 py-3">
 
         {/* Logo */}

@@ -24,12 +24,12 @@ const Fetchapi = () => {
               <span className="sr-only">Loading...</span>
             </div>
           </div>
-     : <div className='grid md:grid-cols-3 gap-3 p-1'>
+     : <div className='grid md:grid-cols-3 gap-3 p-1 mt-17'>
         {data.map((item, index) => {
           return <div className=' mt-2 p-2 rounded shadow shadow-blue-400' key={index}>
             <p className='text-blue-600 font-semibold'>ID: {item.id}</p>
             <p className='text-xl font-medium'>{item.title}</p>
-            <p className='opacity-80'>{item.body}</p>
+            <p className='font-sans'>{item.body}</p>
           </div>
         })}
       </div>}
