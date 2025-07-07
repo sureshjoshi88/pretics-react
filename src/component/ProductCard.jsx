@@ -124,8 +124,7 @@ const producList = filterData.filter((item,ind)=>{
                     "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg";
                 }} />
               </div>
-              <p className='ps-4 font-semibold'>ID: {value.id}</p>
-              <p className='ps-4 font-semibold'>Name: {value.name}</p>
+              <p className='ps-4 font-medium'>Name: {value.name}</p>
               <p className='ps-4 font-semibold'>Price: {value.price}</p>
               <div className='flex gap-3 flex-wrap'>
                 <button onClick={() => handleAddCard(value)} className='text-white rounded bg-blend-luminosity bg-blue-600 hover:bg-blue-500 font-semibold h-8 w-30 p-1 mt-3 cursor-pointer'>Add to cart</button>
