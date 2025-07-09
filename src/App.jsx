@@ -18,24 +18,6 @@ import Todo from './component/Todo';
 
 function App() {
 
-  const [login, setLogin] = useState(false);
-  const [error, setError] = useState("");
-
-
-
-
-
-  const logOut = () => {
-    localStorage.removeItem("login");
-    setLogin(false)
-  }
-
-  const navigate = useNavigate();
-  const sigin = () => {
-    navigate('/form')
-  }
- 
-
   return (
     <>
       <div>
@@ -51,7 +33,7 @@ function App() {
           </div>
         }>
           <Routes>
-            <Route path='/' element={<MainLayout logOut={logOut} sigin={sigin} />}>
+            <Route path='/' element={<MainLayout />}>
               <Route index element={
 
                 < ProductCard />} />
