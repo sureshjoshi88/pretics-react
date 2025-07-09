@@ -120,7 +120,7 @@ const producList = filterData.filter((item,ind)=>{
       key={index}
       className={`${
         theme === "light" ? "shadow-xl" : "border border-gray-700"
-      } bg-white dark:bg-gray-800 rounded-2xl p-4 transition-transform transform hover:scale-[1.02] duration-300`}
+      } bg-white dark:bg-gray-800 rounded-2xl p-4 transition-transform  hover:scale-[1.02] duration-300`}
     >
       {/* Image */}
       <div
@@ -172,7 +172,7 @@ const producList = filterData.filter((item,ind)=>{
     </div>
   ))}
 </div>
-      {count < products.length && (<div className='p-3 flex justify-center mb-3'>
+      {count < products.length && (<div className='p-3 flex justify-center m-4'>
         <button onClick={handleCount} className='bg-amber-300 rounded font-medium p-2 cursor-pointer'>View More</button>
       </div>)}
       <Foter />

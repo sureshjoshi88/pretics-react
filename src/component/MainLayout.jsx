@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 const MainLayout = (props) => {
   return (
     <div>
-      <div className='fixed top-0 w-full'>
+      <div className='fixed top-0 w-full z-50'>
         <Navbar logout={props.logOut} sigin={props.sigin}/>
       </div>
       <Outlet/>
