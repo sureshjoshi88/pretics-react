@@ -7,6 +7,7 @@ import Tostyfiy from './Tostyfiy';
 import Foter from './Foter';
 import { useTheme } from '../hooks/usetheame';
 import { useNavigate } from 'react-router-dom';
+import { FaShoppingCart,FaRupeeSign,FaBolt,FaPlus, FaImage,} from "react-icons/fa";
 
 
 
@@ -113,31 +114,64 @@ const producList = filterData.filter((item,ind)=>{
       </div>
 
 
-      <div className=' grid  md:grid-cols-2 lg:grid-cols-3  gap-4 mt-5   p-2'>
-        {producList.map((value, index) => {
-          return <div className={`shadow-xl  rounded p-2 ${theme === 'light' ? 'shadow-xl' : "border"}`} key={index}>
-            <div className='w-full'>
-              <div className='h-100'>
-                <img onClick={() => handleNavigate(value.id)} className='w-full h-100 object-contain' src={value.img} alt="" onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src =
-                    "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg";
-                }} />
-              </div>
-              <p className='ps-4 font-medium'>Name: {value.name}</p>
-              <p className='ps-4 font-semibold'>Price: {value.price}</p>
-              <div className='flex gap-3 flex-wrap'>
-                <button onClick={() => handleAddCard(value)} className='text-white rounded bg-blend-luminosity bg-blue-600 hover:bg-blue-500 font-semibold h-8 w-30 p-1 mt-3 cursor-pointer'>Add to cart</button>
-
-                <button className='text-white rounded bg-green-600 font-semibold hover:bg-green-500 h-8 w-30 p-1 mt-3 cursor-pointer'>Buy Now</button>
-              </div>
-              <div className='mt-3'>
-                <Comment />
-              </div>
-            </div>
-          </div>
-        })}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 px-4">
+  {producList.map((value, index) => (
+    <div
+      key={index}
+      className={`${
+        theme === "light" ? "shadow-xl" : "border border-gray-700"
+      } bg-white dark:bg-gray-800 rounded-2xl p-4 transition-transform transform hover:scale-[1.02] duration-300`}
+    >
+      {/* Image */}
+      <div
+        className="w-full cursor-pointer"
+        onClick={() => handleNavigate(value.id)}
+      >
+        <img
+          src={value.img}
+          alt={value.name}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src =
+              "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg";
+          }}
+          className="w-full h-48 object-contain rounded mb-4"
+        />
       </div>
+
+      {/* Product Info */}
+      <div className="space-y-2">
+        <h2 className="text-lg font-semibold text-gray-800 dark:text-white flex items-center gap-2">
+          <FaShoppingCart className="text-blue-600" /> {value.name}
+        </h2>
+        <p className="text-md font-medium text-blue-600 dark:text-blue-400 flex items-center gap-2">
+          <FaRupeeSign /> ₹ {value.price}
+        </p>
+      </div>
+
+      {/* Buttons */}
+      <div className="flex flex-wrap gap-3 mt-4">
+        <button
+          onClick={() => handleAddCard(value)}
+          className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition"
+        >
+          <FaPlus /> Add to Cart
+        </button>
+
+        <button
+          className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition"
+        >
+          <FaBolt /> Buy Now
+        </button>
+      </div>
+
+      {/* Comment */}
+      <div className="mt-4">
+        <Comment />
+      </div>
+    </div>
+  ))}
+</div>
       {count < products.length && (<div className='p-3 flex justify-center mb-3'>
         <button onClick={handleCount} className='bg-amber-300 rounded font-medium p-2 cursor-pointer'>View More</button>
       </div>)}
