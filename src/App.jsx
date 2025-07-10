@@ -40,7 +40,7 @@ function App() {
               <Route path='*' element={<DefaulPage />} />
               
               <Route path='cart' element={<ProtectRoute>
-                <Card2 error={error} /> </ProtectRoute>} />
+                <Card2  /> </ProtectRoute>} />
               <Route path='about' element={
                 <Fetchapi />
               } />

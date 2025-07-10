@@ -6,7 +6,7 @@ import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
 import { useTheme } from '../hooks/usetheame';
 
-const Card2 = (props) => {
+const Card2 = () => {
 
 
 
@@ -14,17 +14,17 @@ const Card2 = (props) => {
     return JSON.parse(localStorage.getItem("cart")) || [];
   });
 
-  const [cardcount, setCardcount] = useState(() => {
-    return JSON.parse(localStorage.getItem("length")) || 0;
-  });
+  // const [cardcount, setCardcount] = useState(() => {
+  //   return JSON.parse(localStorage.getItem("length")) || 0;
+  // });
 
   const removeitem = (id, name) => {
     const updatedaddcard = addcard.filter(item => item.id !== id);
     localStorage.setItem("cart", JSON.stringify(updatedaddcard));
-    localStorage.setItem("length", JSON.stringify(updatedaddcard.length))
+    // localStorage.setItem("length", JSON.stringify(updatedaddcard.length))
     setAddcard(updatedaddcard);
-    let totalLength = updatedaddcard.length;
-    setCardcount(totalLength);
+    // let totalLength = updatedaddcard.length;
+    // setCardcount(totalLength);
     Toastify({
       text: `${name} is succedfully deleted `,
       duration: 3000,
@@ -48,8 +48,8 @@ const {theme,setTheme} = useTheme();
 
   return (
     <>
-      <div>
-        {props.error && <  Tostyfiy error={props.error} />}
+      <div className='mt-20'>
+        {/* {props.error && <  Tostyfiy error={props.error} />} */}
 
         {addcard.length > 0 && <p className='text-center font-bold text-xl p-2'>Total: ₹ {formateTotal}</p>}
         {addcard.length > 0 ? "" : <p className='text-center top-20'>No data found</p>}
@@ -58,8 +58,8 @@ const {theme,setTheme} = useTheme();
             return <div key={index}>
               <div className={`p-2 ${theme==='light'?'shadow-2xl':'border'} rounded`}>
                 <div className='w-full'>
-                  <div className='h-100'>
-                    <img className='w-full h-100 object-contain' src={items.img} alt="" onError={(e) => {
+                  <div>
+                    <img className=' h-50 mx-auto' src={items.img} alt="" onError={(e) => {
                       e.target.onerror = null;
                       e.target.src =
                         "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg";
