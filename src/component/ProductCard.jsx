@@ -175,7 +175,7 @@ const producList = filterData.filter((item,ind)=>{
       {count < products.length && (<div className='p-3 flex justify-center m-4'>
         <button onClick={handleCount} className='bg-amber-300 rounded font-medium p-2 cursor-pointer'>View More</button>
       </div>)}
-      <Foter />
+      {/* <Foter /> */}
     </>
 
   )
