@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import Foter from './Foter';
 import Tostyfiy from './Tostyfiy';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
@@ -80,8 +79,6 @@ const {theme,setTheme} = useTheme();
         </div>
         <div>
         </div>
-
-        <Foter />
       </div>
     </>
 

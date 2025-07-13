@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Foter from './Foter';
 
 const Fetchapi = () => {
   const [data, setData] = useState([]);
@@ -33,7 +32,6 @@ const Fetchapi = () => {
           </div>
         })}
       </div>}
-      <Foter />
     </div>
   )
 }

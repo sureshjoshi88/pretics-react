@@ -11,10 +11,9 @@ const MainLayout = (props) => {
       </div>
       <div>
       <Outlet/>
-
       </div>
       <div>
-        <Foter/>
+        <Foter/>j
       </div>
     </div>
   )
