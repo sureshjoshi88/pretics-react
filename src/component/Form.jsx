@@ -54,14 +54,14 @@ const Form = (props) => {
   return (
     <>
       {props.error && <Tostyfiy error={props.error} />}
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 p-3 mt-7">
+      <div className="min-h-screen flex items-center justify-center  p-3 mt-7">
         <form
           onSubmit={handleSubmit(handllevalue)}
-          className="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full space-y-5"
+          className={`rounded-2xl shadow-2xl p-6 max-w-md w-full space-y-5 ${theme==='light'?"bg-white":"bg-gray-800 text-white"}`}
         >
-          <h2 className="text-3xl font-bold text-center text-gray-800">Create Account</h2>
+          <h2 className="text-3xl font-bold text-center">Create Account</h2>
           <div>
-            <label className="block mb-1 text-sm font-semibold text-gray-700">Name</label>
+            <label className="block mb-1 text-sm font-semibold ">Name</label>
             <input
               type="text"
               name="name"
@@ -73,7 +73,7 @@ const Form = (props) => {
             {errors.name && <p className='text-red-600 font-medium text-lg'>{errors.name.message}</p>}
           </div>
           <div>
-            <label className="block mb-1 text-sm font-semibold text-gray-700">Email</label>
+            <label className="block mb-1 text-sm font-semibold ">Email</label>
             <input
               type="email"
               name="email"
@@ -86,7 +86,7 @@ const Form = (props) => {
           </div>
 
           <div>
-            <label className="block mb-1 text-sm font-semibold text-gray-700">Password</label>
+            <label className="block mb-1 text-sm font-semibold ">Password</label>
             <input
               type="password"
               name="password"
@@ -98,7 +98,7 @@ const Form = (props) => {
             {errors.password && <p className='text-red-600 font-medium text-lg'>{errors.password.message}</p>}
           </div>
           <div>
-            <label className="block mb-1 text-sm font-semibold text-gray-700">Confirm Password</label>
+            <label className="block mb-1 text-sm font-semibold ">Confirm Password</label>
             <input
               type="password"
               name="confirmPassword"
@@ -117,7 +117,7 @@ const Form = (props) => {
             Sign Up
           </button>
 
-          <p className="text-sm text-center text-gray-600">Already have an account? <span className="text-indigo-600 cursor-pointer hover:underline">Login</span></p>
+          <p className="text-sm text-center ">Already have an account? <span className="text-indigo-600 cursor-pointer hover:underline">Login</span></p>
         </form>
       </div>
     </>
