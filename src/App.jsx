@@ -3,17 +3,13 @@ import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Form from './component/Form'
-import { useState, useEffect } from 'react'
 import DefaulPage from './component/DefaulPage'
 import ProtectRoute from './component/ProtectRoute';
 const Card2 = lazy(() => import('./component/Card2'));
 const Fetchapi = lazy(() => import('./component/Fetchapi'));
 const ProductCard = lazy(() => import('./component/ProductCard'))
-import { useNavigate } from 'react-router-dom';
-import { useTheme } from './hooks/usetheame';
 import Details from './component/Details';
 import MainLayout from './component/MainLayout';
-import Todo from './component/Todo';
 
 
 function App() {
@@ -54,7 +50,6 @@ function App() {
         </Suspense>
       </div>
 
-{/* <Todo/> */}
 
     </>
   )
