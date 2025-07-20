@@ -4,7 +4,6 @@ import Comment from './Comment';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
 import Tostyfiy from './Tostyfiy';
-import Foter from './Foter';
 import { useTheme } from '../hooks/usetheame';
 import { useNavigate } from 'react-router-dom';
 import { FaShoppingCart,FaRupeeSign,FaBolt,FaPlus, FaImage,} from "react-icons/fa";
@@ -120,7 +119,7 @@ const producList = filterData.filter((item,ind)=>{
       key={index}
       className={`${
         theme === "light" ? "shadow-xl" : "border border-gray-700"
-      } bg-white dark:bg-gray-800 rounded-2xl p-4 transition-transform  hover:scale-[1.02] duration-300`}
+      }  dark:bg-gray-800 rounded-2xl p-4 transition-transform  hover:scale-[1.02] duration-300`}
     >
       {/* Image */}
       <div
@@ -141,7 +140,7 @@ const producList = filterData.filter((item,ind)=>{
 
       {/* Product Info */}
       <div className="space-y-2">
-        <h2 className="text-lg font-semibold text-gray-800 dark:text-white flex items-center gap-2">
+        <h2 className="text-lg font-semibold  dark:text-white flex items-center gap-2">
           <FaShoppingCart className="text-blue-600" /> {value.name}
         </h2>
         <p className="text-md font-medium text-blue-600 dark:text-blue-400 flex items-center gap-2">
