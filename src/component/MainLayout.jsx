@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from './Navbar'
 import { Outlet } from 'react-router-dom'
 import Foter from './Foter'
@@ -13,7 +12,7 @@ const MainLayout = (props) => {
       <Outlet/>
       </div>
       <div>
-        <Foter/>j
+        <Foter/>
       </div>
     </div>
   )
