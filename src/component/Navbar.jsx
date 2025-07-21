@@ -107,7 +107,7 @@ useEffect(() => {
               </button>
             )}
             { token? <button
-              onClick={logout}
+              onClick={logOut}
               className="bg-red-600 text-white px-3 py-1 font-medium rounded hover:bg-red-700 transition"
             >
               Log-out
