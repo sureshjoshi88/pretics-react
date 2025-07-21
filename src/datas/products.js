@@ -3,13 +3,13 @@ export const products = [
         id: 1,
         name: "laptop",
         price: "50,000",
-        img: "https://img.freepik.com/free-photo/still-life-books-versus-technology_23-2150062920.jpg?semt=ais_hybrid&w=740",
+        img: "https://images.pexels.com/photos/7974/pexels-photo.jpg?cs=srgb&dl=pexels-life-of-pix-7974.jpg&fm=jpg",
         catergory: "electric"
     },
     {
-        id: 2, name: "mobile",
+        id: 2, name: "iPhone",
         price: "20,000",
-        img: "https://i.pinimg.com/736x/06/ac/af/06acaf69d781f5f13518bc8e084258c5.jpg",
+        img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1662703674/Croma%20Assets/Communication/Mobiles/Images/261977_uozyah.png?tr=w-600",
         catergory: "electric"
 
     },
