@@ -38,14 +38,14 @@ export const products = [
         id: 6,
         name: "honda",
         price: "18,00,000",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSga0e2jecxSRGxHXkj3IgfKWoQ8YtsVPubfQ&s",
+        img: "https://static.vecteezy.com/system/resources/previews/036/268/360/non_2x/ai-generated-car-sedan-car-white-sedan-car-sports-car-isolated-sedan-car-luxurious-car-luxury-car-white-sedan-car-transparent-background-png.png",
         catergory: "vihicle"
     },
     {
         id: 7,
         name: "T-shirt",
         price: "1,200",
-        img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQkBXfnvx4fswAhpNqL8NP69fP4D-1fTsFddvLy9V-TerE0I_hNzWZnBR4iCwVCJJHNYC34P-pFx_jY4es0ABRRoprwgF7L1w9TFOjZ9LRv3wucXrVm_07fxWhb",
+        img: "https://rosepng.com/wp-content/uploads/2024/09/pikaso_enhance__vivid_2k_standard_r_c_-removebg-preview.png",
         catergory: "clothes"
 
 
