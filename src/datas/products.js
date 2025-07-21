@@ -17,21 +17,21 @@ export const products = [
         id: 3,
         name: "Headphones",
         price: "10,000",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlwxosWqpw8mUj97usc80HchSbruOguOJc0g&s",
+        img: "https://static.vecteezy.com/system/resources/thumbnails/017/054/098/small_2x/headphones-design-3d-rendering-for-product-mockup-png.png",
         catergory: "electric"
     },
     {
         id: 4,
         name: "scorpio",
         price: "24,00,000",
-        img: "https://imgd.aeplcdn.com/1280x720/n/cw/ec/128413/scorpio-exterior-right-front-three-quarter-47.jpeg?isig=0&q=80",
+        img: "https://static.pbcdn.in/car-cdn/ModelImg/193.png",
         catergory: "vihicle"
     },
     {
         id: 5,
         name: "creata",
         price: "16,00,000",
-        img: "https://imgd.aeplcdn.com/664x374/n/cw/ec/141115/creta-exterior-right-front-three-quarter-16.jpeg?isig=0&q=80",
+        img: "https://ackodrive-assets.ackodrive.com/media/test_MQm3rUW.png",
         catergory: "vihicle"
     },
     {
