@@ -68,7 +68,7 @@ const Form = (props) => {
               {...register('name')}
               className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
               placeholder="John Doe"
-              required
+             
             />
             {errors.name && <p className='text-red-600 font-medium text-lg'>{errors.name.message}</p>}
           </div>
@@ -80,7 +80,7 @@ const Form = (props) => {
               {...register('email')}
               className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
               placeholder="you@example.com"
-              required
+              
             />
             {errors.email && <p className='text-red-600 font-medium text-lg'>{errors.email.message}</p>}
           </div>
@@ -93,7 +93,7 @@ const Form = (props) => {
               {...register('password')}
               className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
               placeholder="••••••••"
-              required
+             
             />
             {errors.password && <p className='text-red-600 font-medium text-lg'>{errors.password.message}</p>}
           </div>
@@ -105,7 +105,7 @@ const Form = (props) => {
               {...register('confirmPassword')}
               className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
               placeholder="••••••••"
-              required
+            
             />
             {errors.confirmPassword && <p className='text-red-600 font-medium text-lg'>{errors.confirmPassword.message}</p>}
           </div>
