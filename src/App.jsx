@@ -45,7 +45,7 @@ function App() {
                 <Details />
               } />
 
-              <Route path='form' element={<Form   />} />
+              <Route path='/form' element={<Form   />} />
               <Route path='/login' element={<Login   />} />
             </Route>
           </Routes>
