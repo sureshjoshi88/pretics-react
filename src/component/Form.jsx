@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import "toastify-js/src/toastify.css"
 import Tostyfiy from './Tostyfiy';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useTheme } from '../hooks/usetheame';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -117,7 +117,7 @@ const Form = (props) => {
             Sign Up
           </button>
 
-          <p className="text-sm text-center ">Already have an account? <span className="text-indigo-600 cursor-pointer hover:underline">Login</span></p>
+          <p className="text-sm text-center ">Already have an account? <Link to='/login' className="text-indigo-600 cursor-pointer hover:underline">Login</Link></p>
         </form>
       </div>
     </>

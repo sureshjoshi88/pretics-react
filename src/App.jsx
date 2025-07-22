@@ -10,6 +10,7 @@ const Fetchapi = lazy(() => import('./component/Fetchapi'));
 const ProductCard = lazy(() => import('./component/ProductCard'))
 import Details from './component/Details';
 import MainLayout from './component/MainLayout';
+import Login from './component/Login';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
               } />
 
               <Route path='form' element={<Form   />} />
+              <Route path='/login' element={<Login   />} />
             </Route>
           </Routes>
         </Suspense>
