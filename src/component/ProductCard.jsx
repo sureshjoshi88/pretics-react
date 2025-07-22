@@ -143,7 +143,7 @@ const producList = filterData.filter((item,ind)=>{
         <h2 className="text-lg font-semibold  dark:text-white flex items-center gap-2">
           <FaShoppingCart className="text-blue-600" /> {value.name}
         </h2>
-        <p className="text-md font-medium text-blue-600 dark:text-blue-400 flex items-center gap-2">
+        <p className={`text-md font-medium ${theme==='light'?'text-blue-600':"text-gray-100"} dark:text-blue-400 flex items-center gap-2`}>
           <FaRupeeSign /> ₹ {value.price}
         </p>
       </div>
