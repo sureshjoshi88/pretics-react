@@ -4,9 +4,11 @@ import Tostyfiy from './Tostyfiy';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
 import { useTheme } from '../hooks/usetheame';
+import { useNavigate } from 'react-router-dom';
 
 const Card2 = () => {
 
+  const navigate = useNavigate();
 
 
   const [addcard, setAddcard] = useState(() => {
@@ -45,6 +47,12 @@ const Card2 = () => {
   const formateTotal = totalPrice.toLocaleString("en-IN");
 const {theme,setTheme} = useTheme();
 
+
+
+ const handleNavigate = (id) => {
+    navigate(`/details/${id}`)
+  }
+
   return (
     <>
       <div className='mt-20'>
@@ -56,7 +64,7 @@ const {theme,setTheme} = useTheme();
           {addcard.map((items, index) => {
             return <div key={index}>
               <div className={`p-2 ${theme==='light'?'shadow-2xl':'border'} rounded`}>
-                <div className='w-full'>
+                <div className='w-full'  onClick={() => handleNavigate(items.id)}>
                   <div>
                     <img className=' h-50 mx-auto' src={items.img} alt="" onError={(e) => {
                       e.target.onerror = null;
