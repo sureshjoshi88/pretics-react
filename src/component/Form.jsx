@@ -46,8 +46,7 @@ const Form = (props) => {
     console.log(data);
     alert("form submited")
     reset()
-    localStorage.setItem("login", true);
-          navigate('/')
+          navigate('/login')
   }
 
 

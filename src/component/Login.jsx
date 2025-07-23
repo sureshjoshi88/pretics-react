@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
+
+    const navigate = useNavigate();
+  
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState("")
   const [emailError, setEmailError] = useState("")
@@ -23,6 +27,8 @@ const Login = () => {
       }, 3000);
     } else {
       alert("successfully login")
+       localStorage.setItem("login", true);
+          navigate('/')
       setEmail("");
       setEmailError("");
       setPassword("");
@@ -63,7 +69,6 @@ const Login = () => {
                 required
               />
               {passwordError && <p className='text-red-600 font-semibold text-lg'>{passwordError}</p>}
-
             </div>
             <button
               type="submit"
