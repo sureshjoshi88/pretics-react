@@ -38,7 +38,7 @@ const Login = () => {
           <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
           <form className="space-y-4" onSubmit={(e) => {
             e.preventDefault(),
-            handleSubmit
+            handleSubmit()
           }}>
             <div>
               <label className="block mb-1 font-medium">Email</label>
@@ -68,7 +68,6 @@ const Login = () => {
             <button
               type="submit"
               className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-              // onClick={handleSubmit}
             >
               Login
             </button>
