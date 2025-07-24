@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
-    const navigate = useNavigate();
-  
+  const navigate = useNavigate();
+
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState("")
@@ -22,29 +22,29 @@ const Login = () => {
       }, 3000);
     } else if (password !== fixPassword) {
       setPasswordError("invalid password")
-       setTimeout(() => {
+      setTimeout(() => {
         setPasswordError("")
       }, 3000);
     } else {
       alert("successfully login")
-       localStorage.setItem("login", true);
-          navigate('/')
+      localStorage.setItem("login", true);
+      navigate('/')
       setEmail("");
       setEmailError("");
       setPassword("");
       setPasswordError("");
     }
   }
- 
-  
+
+
   return (
     <div>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex items-center justify-center min-h-screen bg-gray-200">
         <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
           <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
           <form className="space-y-4" onSubmit={(e) => {
             e.preventDefault(),
-            handleSubmit()
+              handleSubmit()
           }}>
             <div>
               <label className="block mb-1 font-medium">Email</label>
