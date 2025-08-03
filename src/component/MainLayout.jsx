@@ -5,15 +5,15 @@ import Foter from './Foter'
 const MainLayout = (props) => {
   return (
     <div>
-      <div className='fixed top-0 w-full z-50'>
+      <section className='fixed top-0 w-full z-50'>
         <Navbar/>
-      </div>
-      <div>
+      </section>
+      <section>
       <Outlet/>
-      </div>
-      <div>
+      </section>
+      <section>
         <Foter/>
-      </div>
+      </section>
     </div>
   )
 }
