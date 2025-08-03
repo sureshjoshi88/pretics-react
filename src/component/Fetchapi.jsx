@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useTheme } from '../hooks/usetheame';
 
 const Fetchapi = () => {
   const [data, setData] = useState([]);
@@ -9,11 +10,11 @@ const Fetchapi = () => {
       }).then((datas) => {
         setData(datas)
       })
-
   }, []);
+
+  const {theme,setTheme} = useTheme();
   return (
     <div>
-
     {data.length<=0? <div role="status" className='flex justify-center items-center h-124 '>
             <div>
               <svg aria-hidden="true" className="w-12 h-12 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +27,7 @@ const Fetchapi = () => {
      : <div className='grid md:grid-cols-3 gap-3 p-1 mt-17'>
         {data.map((item, index) => {
           return <div className=' mt-2 p-2 rounded shadow shadow-blue-400' key={index}>
-            <p className='text-blue-600 font-semibold'>ID: {item.id}</p>
+            <p className={`${theme==='light'?"text-blue-500":"text-amber-300"} font-semibold`}>ID: {item.id}</p>
             <p className='text-xl font-medium'>{item.title}</p>
             <p className='font-sans'>{item.body}</p>
           </div>

@@ -2,7 +2,7 @@ import Navbar from './Navbar'
 import { Outlet } from 'react-router-dom'
 import Foter from './Foter'
 
-const MainLayout = (props) => {
+const MainLayout = () => {
   return (
     <div>
       <section className='fixed top-0 w-full z-50'>
