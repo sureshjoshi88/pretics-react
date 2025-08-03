@@ -32,7 +32,6 @@ function App() {
           <Routes>
             <Route path='/' element={<MainLayout />}>
               <Route index element={
-
                 < ProductCard />} />
               <Route path='*' element={<DefaulPage />} />
               
@@ -44,7 +43,6 @@ function App() {
               <Route path='/details/:id' element={
                 <Details />
               } />
-
               <Route path='/form' element={<Form   />} />
               <Route path='/login' element={<Login   />} />
             </Route>
