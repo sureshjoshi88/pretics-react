@@ -50,7 +50,6 @@ function App() {
         </Suspense>
       </div>
 
-
     </>
   )
 }

@@ -94,7 +94,6 @@ const producList = filterData.filter((item,ind)=>{
   }
   return (
     <>
-      {/* {props.error && <Tostyfiy error={props.error} />}/ */}
 
 
       <div className='p-3 mt-14'>
