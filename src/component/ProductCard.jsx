@@ -95,7 +95,6 @@ const producList = filterData.filter((item,ind)=>{
   return (
     <>
 
-
       <div className='p-3 mt-14'>
         <div className='flex flex-wrap justify-around  mt-3'>
         <input type="search" name="" className='border-1 p-1 rounded w-100 outline-0 ' value={searchitem} onChange={(e)=>setSearchitem(e.target.value)} placeholder='Search Name' id="" />
