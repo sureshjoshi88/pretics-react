@@ -33,11 +33,9 @@ const producList = filterData.filter((item,ind)=>{
 
   const [addcard, setAddcard] = useState(() => {
     return JSON.parse(localStorage.getItem("cart")) || [];
-
   });
   const [cardcount, setCardcount] = useState(() => {
     return JSON.parse(localStorage.getItem("length")) || 0;
-
   });
 
 
