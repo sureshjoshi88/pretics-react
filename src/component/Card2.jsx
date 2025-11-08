@@ -63,9 +63,9 @@ const {theme,setTheme} = useTheme();
         <div className='grid md:grid-cols-3 gap-3'>
           {addcard.map((items, index) => {
             return <div key={index}>
-              <div className={`p-2 ${theme==='light'?'shadow-2xl':'border'} rounded`}>
-                <div className='w-full'  onClick={() => handleNavigate(items.id)}>
-                  <div>
+              <div className={`p-2 ${theme==='light'?'shadow-2xl':'border'} rounded`} >
+                <div className='w-full'  >
+                  <div onClick={() => handleNavigate(items.id)}>
                     <img className=' h-50 mx-auto' src={items.img} alt="" onError={(e) => {
                       e.target.onerror = null;
                       e.target.src =
